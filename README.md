@@ -1,1 +1,1 @@
-Algorithm Everyday 💻
+Algorithm Everyday 💻🔥
