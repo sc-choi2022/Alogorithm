@@ -13,9 +13,14 @@ for test_case in range(1, 10+1):
             h4 = data[i] - data[i+2]
             # 높이의 차이를 담은 list
             height = [h1, h2, h3, h4]
-            # sort()로 정렬
-            height.sort()
-            # 가장 작은 값인 index 0의 value를 더해줌
+
+            # Bubble Sort를 통해 height를 정렬한다.
+            for i in range(3, 0, -1):
+                for j in range(0,i):
+                    if height[j] > height[j+1]:
+                        height[j], height[j+1] = height[j+1], height[j]
+
+            # height의 가장 작은 값인 index 0의 value를 더해줌
             view +=height[0]
 	
-    print(f'#{test_case} {view}')      
+    print(f'#{test_case} {view}')
