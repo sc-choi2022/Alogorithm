@@ -61,3 +61,19 @@ for test_case in range(10):
 
     # 테스트 케이스의 번호와 테스트 케이스의 최고점과 최저점의 높이 차 출력
     print(f'#{test_case + 1} {max(boxes) - min(boxes)}')
+
+# 세번째 방법 sort사용
+for case in range(1, 10+1):
+    # 덤프 횟수
+    N = int(input())
+    # 덤프 상태
+    dump = list(map(int, input().split()))
+
+    while N>0:
+        dump.sort()
+        dump[0] = dump[0]+1
+        dump[-1] = dump[-1]-1
+        N -= 1
+
+    dump.sort()
+    print(f'#{case} {dump[-1]-dump[0]}')

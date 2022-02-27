@@ -1,55 +1,54 @@
-import sys
-sys.stdin = open("input.txt")
+import sys, copy
+sys.stdin = open('input.txt')
 
-# 10번의 케이스에 대해
-for _ in range(1, 10 + 1):
-    # 테스트 케이스의 번호 받기
+for _ in range(1, 10+1):
+    # 케이스 번호
     case = int(input())
-    # 100 x 100 크기의 2차원 배열을 arr에 할당
+    # 100 x 100 크기의 2차원 배열로 주어진 사다리
     arr = [list(map(int, input().split())) for _ in range(100)]
-    min_ans = 10000 #모든 칸을 지났을 경우
-    ans = -1
 
-    # 100개의 열 중에 1인 값만을 찾는 for문
-    for k in range(100):
-        if arr[0][k] != 1:
-            continue
+    # 행의 방향 di, 열의 방향 dj에 대한 정보를 담은 리스트
+    di = [0, 0 , -1]
+    dj = [1, -1, 0]
 
-        # 가는 거리를 세는 cnt 초기화
+    # 짧은 길이를 10000로 초기화
+    # x의 위치를 담을 ans 0으로 초기화
+    # 도착점의 모든 위치 담을 리스트 js 생성
+    min_cnt = 10000
+    ans = 0
+    js = []
+
+    # 99번 행의 1이 있는 위치를 찾아 리스트 js에 추가
+    for t in range(100):
+        if arr[99][t] == 1:
+            js.append(t)
+
+    # 도착지점의 j값 수만큼 진행하여 모든 가능성의 j위치에서 이동거리 확인
+    for jj in range(len(js)):
+        i = 99
+        j = js[jj]
         cnt = 0
-        # 0번째 행부터 k번째 열까지
-        i, j = 0, k
-        j = k
-        # 좌측에서 우측가는 방향, 우측에서 좌측으로 가는 방향 확인을 위해
-        # l_r 와 r_l를 True로 설정
-        l_r = True
-        r_l = True
-        while True:
-            # 마지막 행에 도착하면 거리를 비교하는 for문
-            if i == 99:
-                if min_ans > cnt:
-                    min_ans = cnt
-                    ans = k
-                break
-            # 행이 범위를 벗어나지 않음, 오른쪽 칸에 1이 있음, 좌측에서 우측으로 가는 방향가능 확인 조건
-            if j != 99 and arr[i][j + 1] == 1 and l_r == True:
-                # 우측에서 좌측으로 가는 방향을 멈춤
-                r_l = False
-                # 오른쪽 열로 이동
-                j += 1
-            # 행이 번위를 벗어나지 않음, 왼쪽 칸에 1이 있음, 우측에서 좌측로 가는 방향가능 확인 조건
-            elif j != 0 and arr[i][j - 1] == 1 and r_l == True:
-                # 좌측에서 우측으로 가는 방향을 멈춤
-                l_r = False
-                # 왼쪽 열로 이동
-                j -= 1
-            elif arr[i + 1][j] == 1:
-                # 방향 이동하는 확인 조건 초기화
-                r_l = True
-                l_r = True
-                # 다음 행으로 이동
-                i += 1
-            # 한번 움직일 때마다 1씩 증가
-            cnt += 1
-    # 케이스의 번호 출발점의 x좌표 출력
+        # 리스트 arr를 deepcopy
+        temp = copy.deepcopy(arr)
+        # 행이 첫 줄에 도착할 때까지
+        while i>0:
+            # di, dj의 방향으로 움직인다.
+            for d in range(3):
+                ni = i + di[d]
+                nj = j + dj[d]
+                # di, dj에 의해 움직인 임시 위치 ni, nj가 범위를 벗어나지않고 지나갈 수 있는 1이라면
+                if 0<= ni <= 99 and 0<= nj <= 99 and temp[ni][nj] == 1:
+                    # i, j의 위치를 옮기고
+                    i = ni
+                    j = nj
+                    # 지난 곳을 0으로 변경한다.
+                    temp[i][j] = 0
+                    cnt += 1
+        # 이동거리를 min_cnt와 비교하여 필요하다면 재설정
+        if min_cnt > cnt:
+            min_cnt = cnt
+            # 그 위치의 x좌표를 ans에 할당
+            ans = j
+
+    # 테스트 케이스의 번호와 출발점의 x좌표 출력
     print(f'#{case} {ans}')
