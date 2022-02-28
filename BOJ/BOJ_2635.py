@@ -1,21 +1,21 @@
-data = int(input())
-max_cnt = 0
+N = int(input())
+max_num = 0
+max_lst = []
 
-for i in range(data, 0, -1):
-    test_list = [data, i]
-    first_n = data    
-    second_n = i
-    next_n = first_n - second_n
-    while next_n>=0:
-        test_list.append(next_n)
-        first_n = second_n
-        second_n = next_n
-        next_n = first_n - second_n
-    cnt = len(test_list)
-    if max_cnt <= cnt:
-        max_cnt = cnt
-        ans_list = test_list
-
-print(max_cnt)
-result = ' '.join(map(str,ans_list))
-print(result)
+for i in range(N,0,-1):
+    temp_lst = [N, i]
+    start = temp_lst[0]
+    middle = temp_lst[1]
+    end = start - middle
+    while True:
+        temp_lst.append(end)
+        start = middle
+        middle = end
+        end = start - middle
+        if end<0:
+            break
+    if max_num < len(temp_lst):
+        max_num = len(temp_lst)
+        max_lst = temp_lst
+print(max_num)
+print(*max_lst)
