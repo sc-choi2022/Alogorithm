@@ -1,50 +1,53 @@
 import sys
 sys.stdin = open('input.txt')
 
-# 10번의 테스트 케이스를 진행하기 위한 for문
+# 10개의 테스트 케이스
 for _ in range(10):
-    # 테스크 케이스 번호와 길의 총 개수를 각각 case와 N에 할당
+    # 테스크케이스 번호 case 길의 총 개수 N
     case, N = map(int, input().split())
-    # 순서쌍에 대한 정보를 arr에 모두 할당
+    # 순서쌍을 담을 리스트 arr
     arr = list(map(int, input().split()))
-    # 순서쌍의 정보를 확인하여 입력할 리스트 grid 생성
-    grid = [[0]*100 for _ in range(100)]
+    # 순서쌍의 정보를 통해 방향을 반영한 정보를 담을 리스트 grid
+    grid = [[0]*100 for g in range(100)]
 
-    # arr에 담긴 값을 각 정점과 도착하는 정점의 번호로 구분하여 순서쌍 위치에 1을 할당
-    for i in range(0, N*2, 2):
+    # 리스트 arr의 정보를 grid에 반영하는 for문
+    for i in range(0, 2*N, 2):
         grid[arr[i]][arr[i+1]] = 1
 
-    # 스택을 담을 리스트 stack과 방문정보를 저장할 visted 리스트 초기화
+    # stack과 visited 리스트 초기화
     stack = []
     visited = []
 
-    # 출발점이 0으로 지정되어 있기 때문에 stack과 visted에 0을 추가
+    # 시작위치 0을 stack과 visited의 첫 값으로 추가
     stack.append(0)
     visited.append(0)
 
-    # 답으로 출력할 ans를 초기화
+    # 답을 0으로 초기화
     ans = 0
-    # stack이 empty가 될 때까지
+    # stack이 비어있을 때까지 while문 진행
     while stack:
-        # stack에 top에 있는 값을 temp에 할당
+        # stack의 top을 변수 temp에 할당
         temp = stack[-1]
 
-        # 0~99까지의 노드에서
+        # 모든 node에 대해
         for node in range(100):
-            # grid의 값이 1이며 방문정보가 없는 노드를 stack과 vistied에 추가
+            # temp에서 node로 가는 길이 있고, visited에 없는 방문한 적 없는 node일 경우
             if grid[temp][node] == 1 and node not in visited:
+                # stack과 visited에 추가
                 stack.append(node)
                 visited.append(node)
+                # node로 넘어간다.
                 break
-        # for문의 반복이 끝날 때까지 break되지 않았다면 top 노드에서 갈수 있는 모든 node를 간 것이므로
-        # stack의 top값을 pop
+        # for문에서 break를 만나지 않았다면 temp에서 node로 가는 길이 없는 것
         else:
+            # stack의 top값을 pop
             stack.pop()
 
-        # 도착 지점인 99에 방문한 기록이 있다면
+        # visited에 99가 있다. 마지막 node에 도착했다면
         if 99 in visited:
-            # ans에 1을 할당하고 while문을 탈출
+            # ans에 1을 할당
             ans = 1
+            #while문을 벗어난다.
             break
     # 테스트 케이스 번호와 답을 출력
     print(f'#{case} {ans}')
