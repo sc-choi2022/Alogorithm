@@ -74,7 +74,7 @@ for case in range(10):
     visited.append((s[0], s[1]))
     # 답 ans 초기화
     ans = 0
-    # stack에 무언가 있고 ans값이 0일 때 계속
+    # queue에 무언가 있고 ans값이 0일 때 계속
     while queue and ans == 0:
         # temp는 queue의 첫 값
         temp = queue.popleft()

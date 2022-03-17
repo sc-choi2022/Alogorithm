@@ -1,29 +1,32 @@
-import sys, collections
+from collections import deque
+import sys
 sys.stdin = open('input.txt')
 
+# 10번의 테스트 케이스
 for _ in range(10):
+    # 테스트 케이스 번호
     case = int(input())
-    # 8개의 숫자를 입력받고 deque를 활용하여 q에 할당
-    q = collections.deque(list(map(int, input().split())), maxlen = 8)
+    # 8개의 숫자데이터를 deque()에 담아 code 생성
+    code = deque(map(int, input().split()))
 
-    # 사이클에서 감소시키는 값 i를 첫번째 사이클 값이 1로 초기화
-    i = 1
-    # 1부터 5까지 감소시키는 사이클을 while문으로 통해 실행
+    # 사이클의 감소양을 첫 값 1로 초기화
+    n = 1
     while True:
-        # i가 사이클의 마지막 값 5을 넘었다면 다시 1로 초기화
-        if i > 5:
-            i = 1
-        # q의 첫번째 값을 pop을 꺼내서 사이클에 맞게 i를 감소
-        in_q = q.popleft() - i
-        # 숫자가 감소할 때 0보다 작아지는 경우
-        if in_q <= 0:
-            # 0으로 유지한채 종료
-            q.append(0)
-            break
-        # 숫자가 0보다 큰 경우 q의 마지막 값에 추가
-        q.append(in_q)
-        # 사이클에 따라 1 추가
-        i += 1
+        # n이 5보다 커져 사이클 주기가 끝났다면 다시 1로 초기화
+        if n > 5:
+            n = 1
 
-    # 테스트케이스의 번호와 답을 출력
-    print(f'#{case}', *list(q))
+        # 처음 위치의 값에서 n을 뺀 변수 tmp
+        tmp = code.popleft() - n
+
+        # tmp가 0보다 작다면 0을 code에 추가하고 while문 탈출
+        if tmp <= 0:
+            code.append(0)
+            break
+        # tmp가 0보다 크다면 code에 값을 추가하고 계속 진행
+        else:
+            code.append(tmp)
+        # 감소 값 1 증가
+        n += 1
+    # 테스트케이스 번호와 완성된 암호 출력
+    print(f'#{case}', *code)
