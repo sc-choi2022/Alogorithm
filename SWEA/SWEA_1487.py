@@ -29,3 +29,31 @@ for case in range(1, test_case+1):
             cnt += 1
     # 부분집합의 합이 S인 부분집합의 개수 출력
     print(f'{cnt}')
+
+def dfs(n, arr):
+    global cnt
+    # 완성 전에 합이 S를 넘으면
+    if sum(arr) > S:
+        return
+    # 부분집합 완성
+    if n == N:
+        # 합이 S면 cnt 1증가
+        if sum(arr) == S:
+            cnt += 1
+        return
+
+    dfs(n+1, arr + [lst[n]])    # lst[n]을 포함
+    dfs(n+1, arr)               # lst[n]을 미포함
+
+T = int(input())
+for case in range(1, T + 1):
+    # 집합의 원소의 수 N, 합이 기준 S
+    N, S = map(int, input().split())
+    # N개의 원소를 가진 집합 리스트 lst
+    lst = list(map(int, input().split()))
+    # 부분집합의 합이 S인 개수 cnt 초기화
+    cnt = 0
+    # lst의 0 인덱스와 빈 리스트로 시작
+    dfs(0, [])
+    # cnt 출력
+    print(cnt)
