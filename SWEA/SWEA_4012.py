@@ -39,3 +39,38 @@ for case in range(1, T+1):
             min_d = abs(allo_s-temp_s)
     # 테스트케이스 번호와 min_d를 출력
     print(f'#{case} {min_d}')
+
+def dfs(n, p1, p2):
+    global ans
+
+    # N개의 재료를 배분했다면
+    if n == N:
+        # 재료의 개수를 동일하게 분배했다면
+        if len(p1) == len(p2):
+            # 합을 초기화
+            suma = sumb = 0
+            # ingre의 시너지 값을 계산하는 이중 for문
+            for i in range(len(p1)):
+                for j in range(len(p1)):
+                    suma += ingre[p1[i]][p1[j]]
+                    sumb += ingre[p2[i]][p2[j]]
+                # ans값과 비교하여 작은 값을 ans에 저장
+            if ans > abs(suma - sumb):
+                ans = abs(suma - sumb)
+        return
+    # n번째 재료를 p1혹은 p2에 배분
+    dfs(n+1, p1 + [n], p2)
+    dfs(n+1, p1, p2 + [n])
+
+# 테스트 케이스 개수
+T = int(input())
+for case in range(1, T+1):
+    # 식재료의 개수
+    N = int(input())
+    # 시너지값을 담은 리스트 ingre
+    ingre = [list(map(int, input().split())) for _ in range(N)]
+    # 최대 시너지 값로 ans 초기화
+    ans = 20000*N//2
+    dfs(0, [], [])
+    # 테스트케이스 번호와 ans 출력
+    print(f'#{case} {ans}')
