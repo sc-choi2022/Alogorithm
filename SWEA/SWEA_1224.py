@@ -1,6 +1,3 @@
-import sys
-sys.stdin = open('input.txt')
-
 for case in range(1, 10+1):
     N = int(input())
     # 계산식을 equation 변수에 할당
@@ -26,13 +23,13 @@ for case in range(1, 10+1):
                 while temp != '(':
                     answer.append(temp)
                     temp = stack.pop()
-            elif eq == '*':
+            elif eq == '*' or eq == '/':
                 # stack이 비어있지 않고 top의 값이 *와 /일 때 answer에 top값 추가
                 while len(stack)>0 and stack[-1] == '*' or stack[-1] == '/':
                     answer.append(stack.pop())
                 stack.append(eq)
                 # stack이 비어있지 않고 top의 값이 +와 -일 때 answer에 top값 추가
-            elif eq == '+':
+            elif eq == '+' or eq == '-':
                 while len(stack)>0 and stack[-1] != '(':
                     answer.append(stack.pop())
                 stack.append(eq)
@@ -45,11 +42,19 @@ for case in range(1, 10+1):
         if answer[i].isdigit():
             c_stack.append(int(answer[i]))
         elif answer[i] == '+':
-            a = c_stack.pop()
             b = c_stack.pop()
+            a = c_stack.pop()
             c_stack.append(a+b)
-        elif answer[i] == '*':
-            a = c_stack.pop()
+        elif answer[i] == '-':
             b = c_stack.pop()
+            a = c_stack.pop()
+            c_stack.append(a-b)
+        elif answer[i] == '*':
+            b = c_stack.pop()
+            a = c_stack.pop()
             c_stack.append(a*b)
+        elif answer[i] == '/':
+            b = c_stack.pop()
+            a = c_stack.pop()
+            c_stack.append(a/b)
     print(f'#{case} {c_stack[0]}')
