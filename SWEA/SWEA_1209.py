@@ -1,6 +1,7 @@
 import sys
 sys.stdin = open("input.txt")
 
+
 # 10번의 테스트 케이스에 대한 for문
 for _ in range(1, 10+1):
     # 최댓값 초기화
