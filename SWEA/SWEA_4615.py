@@ -1,52 +1,54 @@
-import sys
-sys.stdin = open('sample_input.txt')
-from pprint import pprint
-
+# 테스트 케이스 수 T
 T = int(input())
-for case in range(1, T+1):
-    # 한변의 길이 N, 놓을 돌의 개수
+
+for case in range(1, T + 1):
+    # 보드의 한 변의 길이 N과 플레이어가 돌을 놓는 횟수 M
     N, M = map(int, input().split())
-    # idx를 맞추기 위해 (N + 1) x (N + 1) 크기의 배열 생성
-    board = [[0]*(N+1) for _ in range(N+1)]
 
-    # 초기 돌의 4곳을 표시
+    # N에 따라 보드의 크기가 정해진다.
+    board = [[0] * N for _ in range(N)]
+
+    # board의 흑돌과 백돌의 기본 위치를 반영한다.
+    # 1이면 흑돌, 2이면 백돌
+    board[N//2 - 1][N//2 - 1] = 2
+    board[N//2 - 1][N//2] = 1
+    board[N//2][N//2 - 1] = 1
     board[N//2][N//2] = 2
-    board[N//2][N//2+1] = 1
-    board[N//2+1][N//2] = 1
-    board[N//2+1][N//2+1] = 2
 
-    # M개의 줄의 정보를 활용하여 돌을 놓기
-    for _ in range(M):
-        # 좌표 ni, nj, 돌의 종류 color
-        si, sj, color = map(int, input().split())
-        board[si][sj] = color
-        # 규칙에 따라 돌의 색이 바꾼다.
-        for di, dj in ((-1, 0), (-1, 1), (0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1)):
-            # 돌의 색이 바뀔 가능성이 있는 위치값들을 담을 리스트 s
-            s = []
-            # k만큼 범위내에서 움직인다.
-            for k in range(1, N):
-                ni = si + di*k
-                nj = sj + dj*k
-                # ni, nj가 범위 내에 존재
-                if 1<= ni <= N  and 1<= nj <= N:
-                    # board[ni][nj] == 0이면 중지
-                    if board[ni][nj] == 0:
-                        break
-                    # board[ni][nj]이 현재 값과 동일하면 s의 모든 위치의 값을 color로 변경
-                    elif board[ni][nj] == color:
-                        for ci, cj in s:
-                            board[ci][cj] = color
-                    # board[ni][nj]이 다른 색이면 s에 위치 추가
-                    else:
-                        s.append((ni, nj))
-                # 범위를 벗어나면 break
-                else:
+    for i in range(M):
+        # 돌의 위치와 색상
+        ii, jj, colour = map(int, input().split())
+        ii, jj = ii - 1, jj - 1
+        flip = []
+
+        for di, dj in (1, 0), (1, 1), (0, 1), (-1, 1), (-1, 0), (-1, -1), (0, -1), (1, -1):
+            ni, nj = ii + di, jj + dj
+            while True:
+                if ni < 0 or ni > N-1 or nj < 0 or nj > N - 1 or board[ni][nj] == 0:
+                    # 다른 색을 만나고 다시 같은 색을 만나지 못했거나 빈 자리를 만난경우 flip을 초기화
+                    flip = []
                     break
-    # 흑돌과 흰돌의 수 bcnt, wcnt
-    bcnt = wcnt = 0
+                if board[ni][nj] == colour:
+                    # 다른 색을 만나고 다시 자신의 색을 만난 경우
+                    break
+                else:
+                    flip.append((ni, nj))
+                ni, nj = ni + di, nj + dj
+
+            # 뒤집어야하는 flip안의 모든 위치 값들을 colour로 변경해준다.
+            for fi, fj in flip:
+                board[fi][fj] = colour
+
+        board[ii][jj] = colour
+
+    # 출력해줄 흑돌과 백돌의 변수 black과 white를 선언
+    black = 0
+    white = 0
+
+    # 돌의 수를 count한다.
     for b in board:
-        bcnt += b.count(1)
-        wcnt += b.count(2)
-    # 테스트케이스 번호와 흑돌의 수, 흰돌의 수 출력
-    print(f'#{case} {bcnt} {wcnt}')
+        black += b.count(1)
+        white += b.count(2)
+
+    # 조건에 맞게 출력
+    print(f'#{case} {black} {white}')
