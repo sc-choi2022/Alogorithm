@@ -1,9 +1,9 @@
 # 상담가능한 일수 N
 N = int(input())
 # N번째 일에 상담 시간을 담을 리스트 T
-T = [0 for i in range(N+1)]
+T = [0 for _ in range(N+1)]
 # N번째 일에 금액을 담을 리스트 P
-P = [0 for i in range(N+1)]
+P = [0 for _ in range(N+1)]
 
 # N개의 줄에 Ti와 Pi가 주어지는 데 이를 리스트 T와 P에 할당
 for i in range(N):
