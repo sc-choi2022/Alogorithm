@@ -1,5 +1,4 @@
 import sys
-from pprint import pprint
 
 # 정점 i를 시작으로 가지는 모든 경로를 확인하는 dfs
 def dfs(i):
