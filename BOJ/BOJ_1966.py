@@ -6,10 +6,10 @@ T = int(sys.stdin.readline())
 
 for _ in range(T):
     # 문서의 개수, 궁금한 문서의 현재 위치 M
-    N, M = list(map(int, sys.stdin.readline().split()))
+    N, M = map(int, sys.stdin.readline().split())
     important = deque(map(int, sys.stdin.readline().split()))
     # 문서마다의 idx을 지정해준다.
-    idx = deque(range(len(important)))
+    idx = deque(range(N))
     # 확인 문서의 현재 위치의 값을 target으로 수정
     idx[M] = 'target'
 
