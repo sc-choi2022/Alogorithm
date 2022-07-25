@@ -1,8 +1,10 @@
+import sys
+
 # 집의 수 N
-N = int(input())
+N = int(sys.stdin.readline())
 
 # N개의 줄에는 각 집을 빨강, 초록, 파랑으로 칠하는 비용을 담은 리스트 p
-p = [list(map(int, input().split())) for _ in range(N)]
+p = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
 # i번째 집까지 칠하는 비용의 최솟값을 담을 리스트 dp
 dp = [[0]*N for _ in range(N)]
 # dp[0]은 p[0]로 저장
