@@ -10,8 +10,7 @@ for i in range(N):
         # 증가하는 부분이고 이전 길이 중 큰 길이를 구하고
         if A[i] > A[j] and dp[i] < dp[j]:
             dp[i] = dp[j]
-        # 그 길이에 1을 증가
-        number = A[i]
+    # 그 길이에 1을 증가
     dp[i] += 1
 # 수열 A의 가장 긴 증가하는 부분 수열의 길이를 출력
 print(max(dp))
