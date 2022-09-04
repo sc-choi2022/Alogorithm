@@ -1,18 +1,13 @@
-# 배열 A의 크기 N
-N = int(input())
-# 배열 A
-A = list(map(int, input().split()))
-# 출력할 배열 P값을 -1로 초기화
-P = [-1]*N
-# P에 값으로 넣어줄 idx을 0 초기화
-idx = 0
-for _ in range(N):
-    # A에서 가장 작은 값의 index을 min_idx에 저장
-    min_idx = A.index(min(A))
-    # A[min_idx] 값을 범위 밖인 1001로 저장
-    A[min_idx] = 1001
-    # P[min_idx]에 값 idx 저장
-    P[min_idx] = idx
-    idx += 1
-# P 출력
-print(*P)
+def hanoi(n, a, b):
+    if n > 1:
+        hanoi(n-1, a, 6-a-b)              # 기둥이 1개 이상이면 그룹으로 묶인 n-1개 원판을
+                                          # 중간으로 먼저 다 옮긴다
+    print(a, b)
+
+    if n > 1:
+        hanoi(n-1, 6-a-b, b)
+
+n = int(input())
+
+print(2**n -1)                               #총 이동해야 하는 횟수
+hanoi(n, 1, 3)
