@@ -1,13 +1,16 @@
-def hanoi(n, a, b):
-    if n > 1:
-        hanoi(n-1, a, 6-a-b)              # 기둥이 1개 이상이면 그룹으로 묶인 n-1개 원판을
-                                          # 중간으로 먼저 다 옮긴다
-    print(a, b)
+def hanoi(N, start, end):
+    if N == 1:
+        print(start, end)
+        return
 
-    if n > 1:
-        hanoi(n-1, 6-a-b, b)
+    hanoi(N-1, start, 6 - start - end)  # 첫번째 장대의 N-1개의 원판을 중간 장대으로 옮긴다.
+    print(start, end)   # 첫번째 장대에서 남은 1개의 원판을 1번 장대에서 마지막 장대로 옮긴다.
+    hanoi(N-1, 6 - start - end, end)    # 중간 장대의 N-1개의 원판을 마지막 장대로 옮긴다.
 
-n = int(input())
+# 첫 번째 장대에 쌓인 원판의 개수 N
+N = int(input())
 
-print(2**n -1)                               #총 이동해야 하는 횟수
-hanoi(n, 1, 3)
+# 옮긴 횟수 K를 출력
+print(2**N - 1)
+# 옮겨야하는 원판의 개수 N, 원판의 위치 1, 이동하기원하는 위치 3
+hanoi(N, 1, 3)
