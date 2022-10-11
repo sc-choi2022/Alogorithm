@@ -2,7 +2,7 @@ import sys
 from collections import defaultdict
 # AN의 값이 이미 존재하는 확인하고 dp[N]을 return하는 함수 check
 def check(N):
-    if dp[N] != 0:
+    if dp[N]:
         return dp[N]
     dp[N] = check(N//P) + check(N//Q)
     return dp[N]
