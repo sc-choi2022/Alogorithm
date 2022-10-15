@@ -16,7 +16,7 @@ for i in range(N-1):
 print(str(queue.popleft())+'>')
 
 # 사람의 수 N, 양의 정수 K
-N, K = map(int, input().split())
+N, K = map(int, sys.stdin.readline().split())
 
 queue = list(range(1, N+1))
 result = []
@@ -26,4 +26,4 @@ while queue:
     idx = (idx + (K - 1)) % len(queue)
     result.append(queue.pop(idx))
 # 조건에 맞게 출력
-print("<" + ", ".join(map(str, result)) + ">")
+print('<' + ', '.join(map(str, result)) + '>')
