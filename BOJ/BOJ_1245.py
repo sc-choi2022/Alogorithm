@@ -36,7 +36,6 @@ for i in range(N):
             dfs(i, j)
             # dfs를 후 ckeck가 True로 봉우리가 맞는 경우
             if check:
-                print(i, j)
                 # 봉우리를 cnt
                 cnt += 1
 # 산봉우리의 개수 출력
