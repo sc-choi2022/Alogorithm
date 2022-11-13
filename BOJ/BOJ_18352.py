@@ -31,7 +31,7 @@ while queue:
             queue.append(end)
 
 # visited의 값중 거리가 K인 경우 도시의 번호를 출력한다.
-for i in range(N+1):
+for i in range(1, N+1):
     if visited[i] == K:
         print(i)
 # 위 for문에서 출력되지 않았다면 K가 없는 것이므로 -1 출력
