@@ -1,3 +1,5 @@
+import sys
+
 # 모든 경우의 수의 연산을 진행하기 위한 dfs 함수
 def dfs(idx):
     # 변수를 변경하기 위해 global을 활용
@@ -14,7 +16,7 @@ def dfs(idx):
         # 이전 단계의 ans값을 변수 tmp에 할당
         tmp = ans
         # i번째 연산자의 사용할 수 있는 개수가 남았다면
-        if operator[i] > 0:
+        if operator[i]:
             # 각 연산자에 맞는 계산을 하기 위한 if, elif, else문
             if i == 0:
                 ans += numbers[idx]
@@ -40,11 +42,11 @@ def dfs(idx):
 
 
 # 주어질 수의 개수
-N = int(input())
+N = int(sys.stdin.readline())
 # N개의 숫자를 담을 리스트 numbers
-numbers = list(map(int, input().split()))
+numbers = list(map(int, sys.stdin.readline().split()))
 # 연산자 + - x / 각각의 개수 정보가 담긴
-operator = list(map(int, input().split()))
+operator = list(map(int, sys.stdin.readline().split()))
 
 # 출력할 최솟값 min_ans와 최댓값 max_ans의 초기값을 범위내 최댓값 최솟값으로 할당
 min_ans = int(1e9)
