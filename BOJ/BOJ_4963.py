@@ -35,7 +35,7 @@ while True:
     for i in range(h):
         for j in range(w):
             # island[i][j]가 땅인 경우 bfs(i, j) 실행
-            if island[i][j] == 1:
+            if island[i][j]:
                 bfs(i, j)
                 ans += 1
     # ans 출력
