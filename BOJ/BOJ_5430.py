@@ -11,7 +11,7 @@ for _ in range(T):
     # 배열에 들어있는 수의 개수 N
     N = int(sys.stdin.readline())
     # 배열 X
-    X = deque(input().rstrip()[1:-1].split(','))
+    X = deque(sys.stdin.readline().rstrip()[1:-1].split(','))
 
     # N이 0인 경우 X 재설정 필요
     if N == 0:
