@@ -1,19 +1,21 @@
 from collections import deque
 import sys
 
+# 자리수의 합을 구하는 함수 checkNum
+def checkNum(xx):
+    add = 0
+    for x in xx:
+        if x.isdigit():
+            add += int(x)
+    return add
+
 # 시리얼번호의 개수 N
 N = int(sys.stdin.readline())
-numbers = {}
+# 시리얼번호를 담는 배열 numbers
+numbers = [sys.stdin.readline().strip() for _ in range(N)]
+# 주어지는 3개의 조건 순서로 정렬
+numbers.sort(key=lambda x: (len(x), checkNum(x), x))
 
-for _ in range(N):
-    number = sys.stdin.readline().strip()
-    add = 0
-    for n in number:
-        if n.isdigit():
-            add += int(n)
-    numbers[number] = add
-
-ans = sorted(numbers.items(), key=lambda x: (len(x), x[1], x))
-
-for a in ans:
-    print(a[0])
+# numbers를 출력
+for number in numbers:
+    print(number)
