@@ -14,5 +14,7 @@ for i in range(M):
 package.sort()
 each.sort()
 
-ans = [package[0] * (N // 6 + 1), each[0] * N, package[0] * (N // 6) + each[0]* (N % 6)]
+# 가능한 모든 돈의 경우의 수를 담은 배열 ans
+ans = [package[0] * (N // 6 + 1), each[0] * N, package[0] * (N // 6) + each[0] * (N % 6)]
+# ans의 최소값을 출력
 print(min(ans))
