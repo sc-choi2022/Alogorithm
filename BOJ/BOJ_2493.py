@@ -4,14 +4,17 @@ import sys
 N = int(sys.stdin.readline())
 # 탑들의 높이를 담을 배열 towers
 towers = list(map(int, sys.stdin.readline().split()))
+stack = towers.copy()
+stack.pop()
 
-for i in range(N - 1, -1, -1):
-    for j in range(i - 1, -1, -1):
-        if towers[i] >= towers[j]:
-            print(j, end=' ')
+ans = [0] * N
+
+for i in range(N - 1, 0, -1):
+    while stack:
+        temp = stack.pop()
+
+        if temp >= towers[i]:
+            ans[i] = len(stack) + 1
+            print(stack)
             break
-        if towers[i] < towers[j] and j == 0:
-            print(0, end=' ')
-            break
-    print()
-    print(i)
+print(*ans)
