@@ -11,9 +11,9 @@ ans = 0
 # 현재 우유의 상태 -1 초기화
 status = -1
 
-for i in range(N):
-    # 맨 처음은 딸기우유를 마신다.
-    if milk[i] == (status + 1) % 3:
+for m in milk:
+    # 규칙에 맞는 경우 ans와 status 1 증가
+    if m == (status + 1) % 3:
         ans += 1
         status += 1
 
