@@ -43,5 +43,5 @@ for i in infix:
 # stack의 값들을 ans에 반영
 while stack:
     ans += stack.pop()
-# 후위 표기식을 출력력
+# 후위 표기식을 출력
 print(ans)
