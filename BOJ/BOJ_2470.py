@@ -2,7 +2,7 @@ import sys
 
 # 전체 용액의 수
 N = int(sys.stdin.readline())
-# 용액의 특성값을 담을 배열 liq, 이분탑색을 위해 정렬
+# 용액의 특성값을 담을 배열 liq, 이분탐색을 위해 정렬
 liq = list(map(int, sys.stdin.readline().split()))
 liq.sort()
 
