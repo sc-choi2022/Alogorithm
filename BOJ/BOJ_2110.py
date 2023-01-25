@@ -1,34 +1,33 @@
-# 집의 개수 N, 공유기 개수 C
-N, C = map(int, input().split())
-lst = [0] * N
-for i in range(N):
-    lst[i] = int(input())
-# 집의 위치를 정렬
-lst.sort()
-# 최소거리 start
-start = 1
-# 최대 거리 end
-end = lst[-1] - lst[0]
-# 출력할 정답 ans 초기화
-ans = 0
+import sys
+
+# 집의 개수 N, 공유기의 개수 C
+N, C = map(int, sys.stdin.readline().split())
+
+# 집의 좌표를 담을 배열 site
+site = [int(sys.stdin.readline()) for _ in range(N)]
+site.sort()
+
+# 이분탐색을 위한 start, end
+start, end = 0, site[-1] - site[0]
 
 while start <= end:
-    mid = (start + end ) // 2 # 최소 거리와 최대 거리의 중간값
-    first = lst[0]
+    mid = (start + end) // 2
+    # mid를 더해 가능한 위치를 확인하는 위치
+    place = site[0]
+    # 설치가능한 공유기수 cnt, 첫번째 place의 위해에 공유기 설치
     cnt = 1
 
-    # 중간 값을 기준으로 집의 개수를 센다.
-    for j in range(1, N):
-        if lst[j] >= first + mid:
+    # 설치가능한 위치를 확인 후 cnt에 반영
+    for i in range(1, N):
+        if site[i] >= place + mid:
             cnt += 1
-            first = lst[j]
+            place = site[i]
 
-    # 집의 개수가 c보다 크다면 초소값을 중간값 +1로 갱신한다.
+    # C개 이상의 공유기설치가 가능한 경우 start값을 조정
     if cnt >= C:
         start = mid + 1
-        ans = mid
-    # 집의 개수가 c보다 작다면 중간값 -1로 갱신한다.
+    # C개의 공유기설치가 불가능한 경우 end값을 조정
     else:
         end = mid - 1
-# 최대 간격을 출력한다.
-print(ans)
+# 가장 인접한 두 공유기 사이의 최대 거리를 출력
+print(end)
