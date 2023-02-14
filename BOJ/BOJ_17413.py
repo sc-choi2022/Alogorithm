@@ -1,23 +1,24 @@
 import sys
-# 문자열 S
 S = list(sys.stdin.readline().rstrip())
 
-i, start = 0, 0
+i = 0
+start = 0
 
 while i < len(S):
-    if S[i] == '<':
+    if S[i] == '<':       # 열린 괄호를 만나면
         i += 1
-        while S[i] != '>':
-            i + 1
-        i += 1
-    elif S[i].isalnum():
+        while S[i] != '>':      # 닫힌 괄호를 만날 때 까지
+            i += 1
+        i += 1               # 닫힌 괄호를 만난 후 인덱스를 하나 증가시킨다
+    elif S[i].isalnum(): # 숫자나 알파벳을 만나면
         start = i
         while i < len(S) and S[i].isalnum():
             i += 1
-        tmp = S[start:i]
-        tmp.reverse()
+        tmp = S[start:i] # 숫자,알파벳 범위에 있는 것들을
+        tmp.reverse()       # 뒤집는다
         S[start:i] = tmp
-    else:
-        i += 1
+    else:                   # 괄호도 아니고 알파,숫자도 아닌것 = 공백
+        i += 1                # 그냥 증가시킨다
 
+# 문자열 S의 단어를 뒤집어서 출력
 print(''.join(S))
