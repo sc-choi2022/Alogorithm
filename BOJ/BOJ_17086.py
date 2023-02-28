@@ -41,3 +41,38 @@ for visit in visited:
 
 # ans의 max값은 출발위치의 값이 1이었으므로 -1을 하여 거리의 최댓값을 출력
 print(ans-1)
+
+from collections import deque
+import sys
+
+def bfs():
+    global ans
+    while shark:
+        ci, cj = shark.popleft()
+        # 8방향 이동
+        for di, dj in (-1, 0), (-1, 1), (0, 1), (1, 1), (1, 0), (1, -1),  (0, -1), (-1, -1):
+            ni, nj = ci + di, cj + dj
+            if 0 <= ni < N and 0 <= nj < M:
+                if space[ni][nj] == 0:
+                    space[ni][nj] = space[ci][cj] + 1
+                    shark.append((ni, nj))
+                # 상어에 도달하기 까지의 거리를 ans값과 비교하여 ans 갱신
+                else:
+                    ans = max(ans, space[ci][cj])
+
+# 공간의 크기 NxM
+N, M = map(int, sys.stdin.readline().split())
+# 상어의 위치를 담을 배열 space
+space = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
+shark = deque()
+# 안전 거리의 최댓값 ans
+ans = 0
+
+for i in range(N):
+    for j in range(M):
+        if space[i][j] == 1:
+            # 상어의 위치를 shark에 저장
+            shark.append((i, j))
+bfs()
+# 안전 거리의 최댓값을 출력
+print(ans - 1)
