@@ -1,19 +1,26 @@
 import sys
 
-# 암호 숫자 N
-N = list(map(int, sys.stdin.readline().rstrip()))
+# 암호 숫자를 담을 배열 N
+N = [0] + list(map(int, sys.stdin.readline().rstrip()))
+# 암호의 길이 L
 L = len(N)
-dp = [0] * (L + 1)
+# 다이나믹 프로그래밍을 활용할 dp
+dp = [0] * L
 
-if N[0] == 0:
-    print('0')
+# 암호가 잘못된 경우
+if N[1] == 0:
+    print(0)
 else:
-    N = [0] + N
     dp[0], dp[1] = 1, 1
-    for i in range(2, L + 1):
+    for i in range(2, L):
+        # N[i]이 0이 아닌 경우
         if N[i]:
             dp[i] += dp[i-1]
-        tmp = 10 * N[i-1] + N[i]
-        if tmp >= 10 and tmp <= 26:
+        # 두자리수의 암호가 가능한 경우를 확인하기 위한 변수 tmp
+        tmp = N[i-1] * 10 + N[i]
+        # tmp이 암호화가능한 경우
+        if 10 <= tmp and tmp <= 26:
             dp[i] += dp[i-2]
-    print(dp[L] % 1000000)
+        dp[i] = dp[i] % 1000000
+    # 나올 수 있는 해석의 가짓수 출력
+    print(dp[L-1])
