@@ -1,47 +1,47 @@
+from collections import defaultdict, deque
 import sys
 
-def function(cnt):
-    for k in range(N):
-        for i in range(N):
-            for j in range(N):
-                if i == j:
-                    continue
-                if friend[i][k] + friend[k][j] == cnt:
-                    friend[i][j] = cnt
+def countNumber(memberI):
+    queue = deque([(memberI, 0)])
 
-def check(cnt):
-    for i in range(N):
-        num = 0
-        for j in range(1, cnt + 1):
-            num += friend[i].count(j)
-        if num == N-1:
-            candidate.append(i+1)
+    while queue:
+        num, cnt = queue.popleft()
 
-    if candidate:
-        return True
-    return False
+        for m in member[num]:
+            if not visit[m]:
+                queue.append((m, cnt + 1))
+                visit[m] = 1
+                score[memberI] = max(score[memberI], cnt + 1)
 
 # 회원의 수 N
 N = int(sys.stdin.readline())
-INF = int(1e9)
-friend = [[INF]*N for _ in range(N)]
-cnt = 1
+# 회원의 친구를 배열로 저장할 딕셔너리 member
+member = defaultdict(list)
+# 회원의 친구점수를 저장할 배열 score
+score = [N] + [0] * N
 
 while True:
+    # 친구관계인 회원 a, b
     a, b = map(int, sys.stdin.readline().split())
 
     if a == -1 and b == -1:
         break
-    friend[a-1][b-1] = 1
-    friend[b-1][a-1] = 1
 
-candidate = []
-flag = check(cnt)
+    member[a].append(b)
+    member[b].append(a)
 
-while not flag:
-    cnt += 1
-    function(cnt)
-    flag = check(cnt)
+# 각 회원의 친구점수를 확인인
+for i in range(1, N+1):
+    visit = [1] + [0] * N
+    visit[i] = 1
+    countNumber(i)
 
-print(cnt, len(candidate))
-print(*sorted(candidate))
+# 회장 후보의 점수 number
+number = min(score)
+# 회장 후보를 저장하는 배열 candidate
+candidate = [j for j in range(1, N+1) if score[j] == number]
+
+# 회장 후보의 점수와 후보의 수를 출력
+print(number, len(candidate))
+# 회장 후보를 오름차순으로 모두 출력
+print(*candidate)
