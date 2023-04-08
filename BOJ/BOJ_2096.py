@@ -1,38 +1,30 @@
-from collections import deque
 import sys
-from pprint import pprint
-
-def bfs(si, sj):
-    queue = deque([(si, sj)])
-
-    while queue:
-        ci, cj = queue.popleft()
-        maxNum, minNum = dp[ci][0], dp[ci][1]
-
-        for di, dj in (1, 0), (1, -1), (1, 1):
-            ni, nj = ci + di, cj + dj
-
-            if 0 <= ni < N and 0 <= nj < 3:
-                num = lines[ni][nj]
-                if maxNum + num > dp[ni][0]:
-                    dp[ni][0] = maxNum + num
-                    queue.append((ni, nj))
-                elif minNum + num < dp[ni][1]:
-                    dp[ni][1] = minNum + num
-                    queue.append((ni, nj))
 
 # 줄의 개수 N
 N = int(sys.stdin.readline())
 
-# 숫자를 담은 줄 lines
-lines = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
+# 이전 줄의 값의 최댓값 max_dp, 최솟값 min_dp
+max_dp, min_dp = [0] * 3, [0] * 3
+# 현재 줄의 값의 최댓값 max_tmp, 최솟값 min_tmp
+max_tmp, min_tmp = [0] * 3, [0] * 3
 
-# 다이나믹프로그래밍을 활용할 배열 dp
-# dp = [[[lines[0][0], lines[0][0]], [lines[0][1], lines[0][1]], [lines[0][2], lines[0][2]]]] + [[[0, int(1e9)]] * 3 for _ in range(N - 1)]
-dp = [[max(lines[0]), min(lines[1])]] + [[0, int(1e9)]] * (N-1)
+for _ in range(N):
+    a, b, c = map(int, sys.stdin.readline().split())
 
-# for i in range(N):
-for j in range(3):
-    bfs(0, j)
-pprint(dp)
-# print(*dp[N-1][0])
+    for i in range(3):
+        if i == 0:
+            max_tmp[i] = a + max(max_dp[i], max_dp[i+1])
+            min_tmp[i] = a + min(min_dp[i], min_dp[i+1])
+        elif i == 1:
+            max_tmp[i] = b + max(max_dp[i-1], max_dp[i], max_dp[i+1])
+            min_tmp[i] = b + min(min_dp[i-1], min_dp[i], min_dp[i+1])
+        else:
+            max_tmp[i] = c + max(max_dp[i-1], max_dp[i])
+            min_tmp[i] = c + min(min_dp[i-1], min_dp[i])
+
+    for j in range(3):
+        max_dp[j] = max_tmp[j]
+        min_dp[j] = min_tmp[j]
+
+# 얻을 수 있는 최대 점수와 최소 점수를 띄어서 출력
+print(max(max_dp), min(min_dp))
