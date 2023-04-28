@@ -12,10 +12,7 @@ for i in range(M):
     alpha = defaultdict(int)
 
     for j in range(N):
-        if DNA[j][i] in alpha:
-            alpha[DNA[j][i]] += 1
-        else:
-            alpha[DNA[j][i]] = 1
+        alpha[DNA[j][i]] += 1
     lst = sorted(list(alpha.items()), key=lambda x: (-x[1], x[0]))
     answer += lst[0][0]
     cnt += N - lst[0][1]
