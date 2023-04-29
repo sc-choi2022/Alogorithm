@@ -1,25 +1,25 @@
+from collections import deque
 import sys
 
-def bfs():
-    global answer
-    
-    for next in (N+U), (N-D):
-        if not visit[next]:
-            visit[next] = 1
-            dfs(next, cnt+1)
+def bfs(start):
+    queue = deque([start])
+    visit[start] = 0
 
-# 건물의 층수 F, 강호의 위치 S층, 스타트링크의 위치 G층, 위로 올라갈 수 있는 층 수 U, 아래로 내려갈 수 있는 층수 D
+    while queue:
+        current = queue.popleft()
+
+        for next in (current + U), (current - D):
+            if 0 < next <= F and visit[next] == -1:
+                visit[next] = visit[current] + 1
+                if next == G:
+                    return
+                queue.append(next)
+
+# 스타트링크의 층수 F, 강호의 위치 S, 스타트링크의 위치 G, 위로 U층, 아래로 D층 이동
 F, S, G, U, D = map(int, sys.stdin.readline().split())
 
-visit = [0] * 2000000
-visit[S] = 1
-
-# 눌러야하는 버튼의 최소값
-answer = 1e9
-
-dfs(S, 0)
-
-if answer == 1e9:
-    print('use the stairs')
-else:
-    print(answer)
+visit = [-1] * (F+1)
+bfs(S)
+# S층에서 G층으로 가기 위해 눌러야 하는 버튼의 수의 최솟값을 출력한다.
+# 만약, 엘리베이터로 이동할 수 없을 때는 "use the stairs"를 출력
+print(visit[G] if visit[G] != -1 else 'use the stairs')
