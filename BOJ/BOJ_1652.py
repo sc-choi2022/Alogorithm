@@ -24,8 +24,5 @@ room = [list(sys.stdin.readline().rstrip()) for _ in range(N)]
 # 세로방향을 확인하기 위한 room의 전치 roomT
 roomT = list(map(list, zip(*room)))
 
-# 자리의 개수 가로, 세로
-garo = func(room)
-sero = func(roomT)
 # 가로로 누울 수 있는 자리와 세로로 누울 수 있는 자리의 개수를 출력
-print(garo, sero)
+print(func(room), func(roomT))
