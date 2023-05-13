@@ -1,40 +1,40 @@
 from collections import deque
 import sys
 
-def bfs(num):
-    global cnt, number
-    tmp = 1
-    queue = deque([num])
+def bfs(start):
+    queue = deque([start])
     visit = [0] * (N+1)
-    visit[num] = 1
+    visit[start] = 1
+    tmp = 1
 
     while queue:
         current = queue.popleft()
 
-        for i in hackable[current]:
-            if not visit[i]:
-                queue.append(i)
-                visit[i] = 1
+        for c in trust[current]:
+            if not visit[c]:
+                queue.append(c)
+                visit[c] = 1
                 tmp += 1
-    if tmp > cnt:
-        cnt = tmp
-        number = [num]
-    elif tmp == cnt:
-        number.append(num)
+    return tmp
 
 # 컴퓨터의 개수 N, 신뢰하는 관계의 수 M
 N, M = map(int, sys.stdin.readline().split())
-hackable = [[0] for _ in range(N+1)]
-
-cnt, number = 0, []
+# 신뢰 정보를 저장하는 배열 trust
+trust= [[] for _ in range(N+1)]
+# 해킹할 수 있는 컴퓨터의 최대수 cnt, cnt만큼 해킹 가능한 컴퓨터 배열 computer
+cnt, computer = 1, []
 
 for _ in range(M):
     A, B = map(int, sys.stdin.readline().split())
-    # hackable[A].append(B)
-    hackable[B].append(A)
+    trust[B].append(A)
 
-for j in range(1, N):
-    bfs(j)
+for j in range(1, N+1):
+    number = bfs(j)
+    if number > cnt:
+        cnt = number
+        computer.clear()
+        computer = [j]
+    elif number == cnt:
+        computer.append(j)
 
-number.sort()
-print(*number)
+print(*computer)
