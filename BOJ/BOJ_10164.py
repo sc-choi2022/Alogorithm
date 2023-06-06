@@ -4,30 +4,31 @@ import sys
 N, M, K = map(int, sys.stdin.readline().split())
 # 확인을 위한 배열 dp
 dp = [[0]*M for _ in range(N)]
-
+# 출력하는 결과 answer
+answer = 1
+# K가 존재할 경우
 if K:
-    ci, cj = K//M, K%M-1
-    dp[0] = [1] * M
-    for i in range(1, ci+1):
+    ci, cj = (K-1)//M, (K-1)%M
+    for i in range(ci+1):
         for j in range(cj+1):
-            if j == 0:
+            if i == 0 or j == 0:
                 dp[i][j] = 1
-            dp[i][j] = dp[i-1][j] + dp[i][j-1]
+            else:
+                dp[i][j] = dp[i-1][j] + dp[i][j-1]
+    answer *= dp[ci][cj]
     for ii in range(ci, N):
         for jj in range(cj, M):
-            if (ii, jj) == (ci, cj):
-                continue
-            elif ii == ci:
-                dp[ii][jj] = dp[ci][cj]
-            elif jj == cj:
-                dp[ii][jj] = dp[ci][cj]
+            if ii==ci or jj==cj:
+                dp[ii][jj] = 1
             else:
-                dp[ii][jj] = dp[ii-1][jj] + dp[ii][jj-1]
+                dp[ii][jj] = dp[ii][jj-1] + dp[ii-1][jj]
+# K가 존재하지 않을 경우
 else:
-    dp[0] = [1] * M
-    for i in range(1, N):
+    for i in range(N):
         for j in range(M):
-            if j == 0:
+            if i == 0 or j == 0:
                 dp[i][j] = 1
-            dp[i][j] = dp[i-1][j] + dp[i][j-1]
-print(dp[N-1][M-1])
+            else:
+                dp[i][j] = dp[i-1][j] + dp[i][j-1]
+# 서로 다른 경로의 수를 계산하여 출력
+print(answer*dp[N-1][M-1])
