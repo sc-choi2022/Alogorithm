@@ -27,3 +27,20 @@ while queue:
     result.append(queue.pop(idx))
 # 조건에 맞게 출력
 print('<' + ', '.join(map(str, result)) + '>')
+
+# 요세푸스 문제 풀이 2
+import sys
+
+# 사람의 명수 N, 양의 정수 K
+N, K = map(int, sys.stdin.readline().split())
+# 제거를 위치를 저장하는 변수 idx
+idx = 0
+# 사람의 수를 담은 배열 numbers
+numbers = [x for x in range(1, N+1)]
+
+# 요세푸스 순열을 출력
+print('<', end='')
+for i in range(N-1):
+    idx = (idx+K-1)%len(numbers)
+    print(numbers.pop(idx), end=', ')
+print(numbers.pop(), end='>')
