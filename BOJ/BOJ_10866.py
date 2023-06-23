@@ -32,3 +32,32 @@ for _ in range(N):
     # back라면 dq의 가장 뒤에 있는 값을 출력 정수가 없다면 -1 출력
     elif words[0] == 'back':
         print(dq[-1] if dq else -1)
+
+# 코드 수정 후
+from collections import deque
+import sys
+
+# 명령의 수 N
+N = int(sys.stdin.readline())
+queue = deque([])
+
+for _ in range(N):
+    # 명령 order, 필요한 경우 숫자 number
+    order, *number = list(sys.stdin.readline().rstrip().split())
+
+    if order == 'push_front':
+        queue.appendleft(int(number[0]))
+    elif order == 'push_back':
+        queue.append(int(number[0]))
+    elif order == 'pop_front':
+        print(queue.popleft() if queue else -1)
+    elif order == 'pop_back':
+        print(queue.pop() if queue else -1)
+    elif order == 'size':
+        print(len(queue))
+    elif order == 'empty':
+        print(0 if queue else 1)
+    elif order == 'front':
+        print(queue[0] if queue else -1)
+    else:
+        print(queue[-1] if queue else -1)
