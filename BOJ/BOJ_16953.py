@@ -1,3 +1,4 @@
+# 1. DFS, 재귀
 import sys
 # B를 만드는데 필요한 연산의 수를 구하는 함수 dfs
 def dfs(number, cnt):
@@ -28,3 +29,23 @@ if ans == 1000000000:
 else:
     # 연산의 최솟값에 1을 더한 값을 출력
     print(ans + 1)
+
+# 2. BFS, visit배열 없이
+from collections import deque
+import sys
+
+def bfs():
+    queue = deque([(A, 1)])
+    while queue:
+        node, cnt = queue.popleft()
+        if node == B:
+            return cnt
+        nums = [node*2, node*10+1]
+        for num in nums:
+            if num <= B:
+                queue.append((num, cnt+1))
+    return -1
+
+# 정수 A, 정수 B
+A, B = map(int, sys.stdin.readline().split())
+print(bfs())
