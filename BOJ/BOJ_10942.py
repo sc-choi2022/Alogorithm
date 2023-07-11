@@ -18,8 +18,11 @@ for i in range(N):
             dp[start][end] = 1
         # 범위의 첫 글자와 마지막 글자가 같은 경우
         elif numbers[start] == numbers[end]:
-            # 범위의 글자가 두글자 인 경우 혹은 [start+1]부터 [end-1]범위가 펠린드롬인 경우
-            if start + 1 == end or dp[start+1][end-1] == 1:
+            # 범위의 글자가 두글자 인 경우
+            if start + 1 == end:
+                dp[start][end] = 1
+            # [start+1]부터 [end-1]범위가 펠린드롬였기에 현재 범위도 펠린드롬인 경우
+            elif dp[start+1][end-1] == 1:
                 dp[start][end] = 1
 
 for _ in range(M):
