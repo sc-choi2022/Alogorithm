@@ -18,11 +18,12 @@ def bfs(si, sj):
         for di, dj in (0, 1), (1, 0), (0, -1), (-1, 0):
             ni, nj = ci + di, cj + dj
             if 0 <= ni < R and 0 <= nj < C and area[ni][nj] != '#' and not visit[ni][nj]:
-                visit[ni][nj] = 0
+                visit[ni][nj] = 1
                 if area[ni][nj] == 'v':
                     tmp_wolf += 1
                 elif area[ni][nj] == 'k':
-                    queue.append((ni, nj))
+                    tmp_sheep += 1
+                queue.append((ni, nj))
 
     if tmp_sheep > tmp_wolf:
         sheep += tmp_sheep
@@ -42,4 +43,4 @@ for i in range(R):
         if area[i][j] != '#' and not visit[i][j]:
             bfs(i, j)
 # 살아남게 되는 양과 늑대의 수를 각각 순서대로 출력
-print(wolf, sheep)
+print(sheep, wolf)
