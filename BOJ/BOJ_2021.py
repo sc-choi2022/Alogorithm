@@ -20,6 +20,7 @@ if start == end:
     print(0)
 else:
     queue = deque()
+    queue.append(start)
     visit[start] = 1
     flag = False
 
