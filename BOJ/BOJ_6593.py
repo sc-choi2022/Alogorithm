@@ -6,8 +6,10 @@ while True:
 
     if L==0 and R==0 and C==0:
         break
-
-    building = [[list(sys.stdin.readline().rstrip()) for _ in range(C)] for _ in range(L)]
-
-    # for b in building:
-    #     print(*b)
+    building = [[] for _ in range(L)]
+    for i in range(L):
+        lst = [[] for _ in range(R)]
+        for j in range(R):
+            lst[j] = list(sys.stdin.readline().rstrip())
+        blank = sys.stdin.readline().rstrip()
+        building[i] = lst

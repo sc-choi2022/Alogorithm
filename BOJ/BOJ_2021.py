@@ -16,31 +16,35 @@ for l in range(L):
 
 # 시작역 start, 도착역 end
 start, end = map(int, sys.stdin.readline().split())
-if start == end:
-    print(0)
-else:
-    queue = deque()
-    queue.append(start)
-    visit[start] = 1
-    flag = False
 
-    while queue:
-        # 현재 역 current
-        current = queue.popleft()
-        # 도착역에 도달한 경우
-        if current == end:
+queue = deque([start])
+visit[start] = 1
+# 목적지 도달 여부를 확인하는 변수 flag
+flag = False
+
+while queue:
+    # 현재 역 current
+    current = queue.popleft()
+
+    if current == end:
+        if start == end:
+            # 출발지와 목적지가 동일한 경우
+            print(0)
+        else:
             print(visit[current]-2)
-            flag = True
-            break
+        flag = True
+        break
 
-        for i in info[current]:
-            if line_visit[i]:
+    for lin in info[current]:
+        # 방문한 노선이 아닌 경우
+        if line_visit[lin]:
+            continue
+        line_visit[lin] = 1
+        for i in lines[lin]:
+            if visit[i]:
                 continue
-            line_visit[i] = 1
-            for st in lines[i]:
-                if visit[st]:
-                    continue
-                visit[st] = visit[current] + 1
-                queue.append(st)
-    if not flag:
-        print(-1)
+            visit[i] = visit[current] + 1
+            queue.append(i)
+# 목적지 도달이 불가능한 경우
+if not flag:
+    print(-1)
