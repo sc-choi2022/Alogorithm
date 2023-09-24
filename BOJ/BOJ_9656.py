@@ -37,3 +37,19 @@ else:
 # 규칙
 import sys
 print('SK' if int(sys.stdin.readline()) % 2 == 0 else 'CY')
+
+# dp
+# 돌의 개수 N
+N = int(sys.stdin.readline())
+# 가져간 돌의 주인을 저장할 배열 dp 0: 창영(CY), 1:상근(SK)
+dp = [0] * 1001
+dp[1], dp[2], dp[3] = 'CY', 'SK', 'CY'
+
+for i in range(4, N+1):
+    for stone in (1, 3):
+        if dp[i-stone] == 'CY':
+            dp[i] = 'SK'
+            break
+        dp[i] = 'CY'
+# 상근이가 게임을 이기면 SK를, 창영이가 게임을 이기면 CY을 출력
+print(dp[N])
