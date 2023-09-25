@@ -1,38 +1,52 @@
 import sys
 
-def java2C():
-    print(lst[0], end='')
-    for j in range(1, L):
-        if lst[j].isupper():
-            print('_', end='')
-            lst[j] = lst[j].lower()
-        print(lst[j], end='')
+# Java
+# 첫 단어는 소문자, 다음 단어부터는 첫 문자만 대문자로 쓴다.
+# 모든 단어를 붙여쓴다.
+# javaIdentifier, longAndMnemonicIdentifier
 
-def C2java():
-    for j in range(1, L):
-        if lst[j] == '_':
-            lst[j] = ''
-            if j+1 < L:
-                lst[j+1] = lst[j+1].upper()
-    print(''.join(lst))
+# C++
+# 소문자만 사용
+# 단어구분은 _으로 이용
+# c_identifier, long_and_mnemonic_identifier
 
-# 변수명을 담을 배열 lst
-lst = list(sys.stdin.readline().rstrip())
-# lst의 길이 L
-L = len(lst)
+# 1. 언어 형식 확인
+# 2. 반대 형식으로 변수명을 출력
+# 둘 다 아닌 경우 Error 출력
 
-# 조건 1: 대문자, 조건 2: _ 존재 여부
-# java인 경우 조건1 True, 조건 2 False, 첫문자 소문자
-# C++인 경우 조건 1 False, 조건 2 True
-flag1, flag2 = False, False
-for i in range(L):
-    if lst[i].isupper():
-        flag1 = True
-    elif lst[i] == "_":
-        flag2 = True
-if (flag1 and flag2) or (not flag1 and not flag2):
+# 주어지는 변수명 name
+name = sys.stdin.readline().rstrip()
+
+if name[-1] == '_' or name[0] == '_' or '__' in name or name[0].isupper():
     print('Error!')
-elif flag1 and not flag2:
-    java2C()
 else:
-    C2java()
+    # check = [0, 0] Jave, C+= 여부
+    check = [0, 0]
+
+    for n in name:
+        if n.isupper():
+            check[0] = 1
+        elif n == '_':
+            check[1] = 1
+        if sum(check) == 2:
+            print('Error!')
+            exit()
+
+    # C++
+    if check[1]:
+        word = name.split('_')
+        print(word[0], end='')
+        for i in range(1, len(word)):
+            print(word[i][0].upper()+word[i][1:], end='')
+    # Java
+    else:
+        print(name[0], end='')
+        tmp = ''
+        for i in range(1, len(name)):
+            if name[i].isupper():
+                print(tmp+'_'+name[i].lower(), end='')
+                tmp = ''
+            else:
+                tmp += name[i]
+        if tmp:
+            print(tmp)
