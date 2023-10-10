@@ -1,26 +1,20 @@
-from collections import defaultdict
 import sys
-
-def check(word):
-    tmp = defaultdict(int)
-    for w in word:
-        if w not in letter:
-            return 0
-        tmp[w] += 1
-    if abs(sum(list(letter.values())) - sum(list(tmp.values()))) >= 2:
-        return 0
-    return 1
 
 # 단어의 개수 N
 N = int(sys.stdin.readline())
 # 첫번째 단어 first
-first = sys.stdin.readline().rstrip()
-letter = defaultdict(int)
+first = list(sys.stdin.readline().rstrip())
 answer = 0
-for f in first:
-    letter[f] += 1
-
 for _ in range(N-1):
-    answer += check(sys.stdin.readline().rstrip())
+    compare = first[::]
+    word = sys.stdin.readline().rstrip()
+    cnt = 0
+    for w in word:
+        if w in compare:
+            compare.remove(w)
+        else:
+            cnt += 1
+    if cnt < 2 and len(compare) > 2:
+        answer += 1
 
 print(answer)
