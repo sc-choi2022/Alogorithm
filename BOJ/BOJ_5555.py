@@ -10,9 +10,8 @@ answer = 0
 
 for _ in range(N):
     ring = sys.stdin.readline().rstrip()
-    M = len(ring)
     ring += ring
-    for i in range(M+1):
+    for i in range(11):
         if string == ring[i:i+L]:
             answer += 1
             break
