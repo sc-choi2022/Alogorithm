@@ -19,8 +19,8 @@ for _ in range(N):
             # word에 숫자문자가 존재
             if word:
                 numbers.append(int(word))
-            # word 초기화
-            word = ''
+                # word 초기화
+                word = ''
     if word:
         numbers.append(int(word))
 # 비내림차순 정렬
