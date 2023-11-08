@@ -1,12 +1,10 @@
 import sys
 
+# 유클리드 호제법
 def gcd(A, B):
-    mod = A%B
-    while mod > 0:
-        A = B
-        B = mod
-        mod = A%B
-    return B
+    while B != 0:
+        A, B = B, A%B
+    return A
 
 # 두 자연수 A와 B
 A, B = map(int, sys.stdin.readline().split())
