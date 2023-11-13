@@ -1,34 +1,11 @@
 import sys
 
-input = sys.stdin.readline
-dx = [-1, 0, 1, 0]
-dy = [0, 1, 0, -1]
-
-def clean(x, y, d):
-    global ans
-    if a[x][y] == 0:
-        a[x][y] = 2
-        ans += 1
-    for _ in range(4):
-        nd = (d + 3) % 4
-        nx = x + dx[nd]
-        ny = y + dy[nd]
-        if a[nx][ny] == 0:
-            clean(nx, ny, nd)
-            return
-        d = nd
-    nd = (d + 2) % 4
-    nx = x + dx[nd]
-    ny = y + dy[nd]
-    if a[nx][ny] == 1:
-        return
-    clean(nx, ny, d)
-
-
-n, m = map(int, input().split())
-x, y, d = map(int, input().split())
-a = [list(map(int, input().split())) for _ in range(n)]
-
-ans = 0
-clean(x, y, d)
-print(ans)
+# 방의 크기 N, M
+N, M = map(int, sys.stdin.readline().split())
+# 로봇 청소기가 있는 칸의 좌표 R, C, 바라보는 방향 D
+R, C, D = map(int, sys.stdin.readline().split())
+# 장소의 상태를 저장하는 배열 place
+# 0: 청소가 되지 않은 칸, 1: 벽이 있는 것
+place = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
+# 청소여부를 저장하는 배열 visit
+visit = [[0]*M in range(M)]
