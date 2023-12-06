@@ -10,7 +10,7 @@ country = defaultdict(int)
 students.sort(key=lambda x:-x[2])
 
 for i in range(N):
-    # 학생의 나라, 번호, 점수 C, num, score
+    # 학생의 소속국가 번호와 학생 번호, 점수 C, num, score
     C, num, score = students[i]
     if C in country and country[C] >= 2:
         continue
