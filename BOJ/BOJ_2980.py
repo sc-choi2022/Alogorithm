@@ -14,10 +14,14 @@ for _ in range(N):
     D, R, G = map(int, sys.stdin.readline().split())
     signal[D] = 1
     info[D] = [R, G]
+
+# 상근이의 위치
 idx = 0
 while True:
+    # 도로의 끝에 도달한 경우
     if idx == L:
         break
+    # 신호등이 있는 위치인 경우
     if signal[idx]:
         tmpR, tmpD = info[idx]
         tmp = time%(tmpR+tmpD)
@@ -26,8 +30,10 @@ while True:
         else:
             idx += 1
             time += 1
+    # 신호등이 없는 위치인 경우
     else:
         idx += 1
         time += 1
+        
 # 상근이가 도로의 끝까지 이동하는데 걸리는 시간을 출력
 print(time)
