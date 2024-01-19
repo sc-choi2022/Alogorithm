@@ -34,6 +34,6 @@ while True:
     else:
         idx += 1
         time += 1
-        
+
 # 상근이가 도로의 끝까지 이동하는데 걸리는 시간을 출력
 print(time)

@@ -32,7 +32,7 @@ for _ in range(N):
             # 여전히 팀1이 이기는 경우
             if team1[0] > team2[0] + 1:
                 team1[1] += MMSS - pre[1]
-                pre = [1, MMSS]
+                pre[1] = MMSS
             # 동점이 되는 경우
             elif team1[0] == team2[0] + 1:
                 team1[1] += MMSS - pre[1]
@@ -49,7 +49,7 @@ for _ in range(N):
             # 여전히 팀2가 이기는 경우
             if team1[0] + 1 < team2[0]:
                 team2[1] += MMSS - pre[1]
-                pre = [2, MMSS]
+                pre[1] = MMSS
             # 동점이 되는 경우
             elif team1[0] + 1 == team2[0]:
                 team2[1] += MMSS - pre[1]

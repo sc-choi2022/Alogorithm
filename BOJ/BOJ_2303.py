@@ -17,7 +17,7 @@ for i in range(1, N+1):
         tmp = max(tmp, sum(com)%10)
     # i번 선수의 최대 숫자
     scores[i] = tmp
-    
+
 # 이기는 가장 큰수 maxTmp
 maxTmp = max(scores)
 for j in range(1, N+1):
