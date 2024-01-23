@@ -10,23 +10,12 @@ for _ in range(T):
     origin = sys.stdin.readline().rstrip()
     # 오셀로 말의 목표 상태
     goal = sys.stdin.readline().rstrip()
-    # 위치가 다른 말의 개수 cnt
-    cnt = 0
-    # 초기 상태의 흰색면 oW, 검은면 oB
-    oW, oB = 0, 0
-    # 목표 상태의 흰색면 gW, 검은면 gB
-    gW, gB = 0, 0
+    # 둘의 다른 개수 tmp, origin, goal의 검은돌 개수 b1, b2
+    tmp, b1, b2 = 0, origin.count('B'), goal.count('B')
     for i in range(N):
         if origin[i] != goal[i]:
-            cnt += 1
-        if origin[i] == 'W':
-            oW += 1
-        else:
-            oB += 1
-        if goal[i] == 'W':
-            gW += 1
-        else:
-            gB += 1
-    answer = 0
-
-    print(answer)
+            tmp += 1
+    # 검은 말의 개수 차이 cnt
+    cnt = abs(b1-b2)
+    # 초기 상태에서 목표 상태를 만들기 위한 작업의 최소 횟수 출력
+    print(cnt + (tmp-cnt)//2)
