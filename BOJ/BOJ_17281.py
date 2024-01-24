@@ -7,7 +7,7 @@ N = int(sys.stdin.readline())
 score = 0
 # 이닝의 점수를 저장하는 배열 innings
 innings = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
-# 1번 선수를 제외한 선수들의 모든 라인업을 저장하는 배열 permu
+# 1번 선수를 제외한 선수들의 모든 라인업을 저장하는 permutations
 for p in permutations(range(1,9), 8):
     # 1번 선수는 고정으로 4번타자 이므로 순서에 맞춰 정해준다.
     p = list(p[:3]) + [0] + list(p[3:])
@@ -52,5 +52,3 @@ for p in permutations(range(1,9), 8):
     score = max(score, now)
 # 얻을 수 있는 최대 점수를 출력
 print(score)
-
-# dfs
