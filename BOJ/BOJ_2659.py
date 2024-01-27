@@ -13,7 +13,7 @@ def find(number):
     return numberR
 
 # 입력되는 카드를 저장하는 배열의 시계수
-card = deque(map(int, sys.stdin.readline().split()))
+card = list(map(int, sys.stdin.readline().split()))
 # 주어진 카드의 시계수
 clock = find(card)
 # 시계수를 개수를 저장하는 변수 answer
