@@ -19,4 +19,15 @@ while True:
 
     if (M, N) == (0, 0):
         break
-    
+
+    parent = [i for i in range(M+1)]
+    edges = [tuple(map(int, sys.stdin.readline().split())) for _ in range(N)]
+    edges.sort(key=lambda x:x[2])
+
+    answer = 0
+    for a, b, c in edges:
+        if find(a) != find(b):
+            union(a, b)
+            answer += c
+    print(answer)
+
