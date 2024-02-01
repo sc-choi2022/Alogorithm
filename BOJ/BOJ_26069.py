@@ -1,4 +1,3 @@
-from collections import defaultdict
 import sys
 
 # 사람들이 만나 기록의 수 N
