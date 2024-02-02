@@ -11,14 +11,15 @@ visit = [[0]*M for _ in range(N)]
 si, sj = 0, 0
 # 도연이가 만날 수 있는 사람의 명수 cnt
 cnt = 0
-# 도연이의 위치의 학인 여부를 저장하는 변수 flag
+# 도연의 위치의 학인 여부를 저장하는 변수 flag
 flag = False
 
 for i in range(N):
     campus[i] = list(sys.stdin.readline().rstrip())
+    # 도연의 위치를 찾은 경우
     if flag:
         continue
-    # 도연이의 위치가 있는 경우
+    # 도연이의 위치가 campus[i]에 있는 경우
     if 'I' in campus[i]:
         si, sj = i, campus[i].index('I')
         flag = True
