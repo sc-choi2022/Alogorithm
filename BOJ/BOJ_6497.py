@@ -22,12 +22,15 @@ while True:
 
     parent = [i for i in range(M+1)]
     edges = [tuple(map(int, sys.stdin.readline().split())) for _ in range(N)]
-    edges.sort(key=lambda x:x[2])
+    edges.sort(key=lambda x: x[2])
 
+    # 연결되지 않아 절약되는 비용 answer
     answer = 0
     for a, b, c in edges:
         if find(a) != find(b):
             union(a, b)
+        else:
             answer += c
-    print(answer)
 
+    # 절약할 수 있는 최대 비용을 출력
+    print(answer)
