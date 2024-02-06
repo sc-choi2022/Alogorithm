@@ -17,7 +17,7 @@ N = int(sys.stdin.readline())
 # 행성의 연결정보를 저장하는 배열 planet
 planet = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
 
-parents = [0] * (N+1)
+parents = [i for i in range(N+1)]
 # 간선의 정보를 저장하는 배열 edges
 edges = []
 for i in range(1, N):
