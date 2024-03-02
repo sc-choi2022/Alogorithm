@@ -13,7 +13,7 @@ queue = deque([0])
 pick = [[] for _ in range(N)]
 for i in range(N):
     # i번 사람이 지목하는 사람의 번호 a
-    pick[i].append(int(sys.stdin.readline()))
+    pick[i] = [int(sys.stdin.readline())]
 
 while queue:
     current = queue.popleft()
