@@ -9,10 +9,11 @@ M = int(sys.stdin.readline())
 friends = [[] for _ in range(N+1)]
 visit = [0]*(N+1)
 visit[1] = 1
+
 for _ in range(M):
     # 친구관계 A, B
     A, B = map(int, sys.stdin.readline().split())
-
+    # 친구배열의 친구관계를 저장
     friends[A].append(B)
     friends[B].append(A)
 
@@ -25,4 +26,5 @@ while queue:
     for friend in friends[current]:
         if not visit[friend]:
             visit[friend] = 1
+# 결혼식에 초대하는 동기의 수를 출력
 print(sum(visit)-1)
