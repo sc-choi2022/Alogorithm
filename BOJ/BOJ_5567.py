@@ -17,6 +17,7 @@ for _ in range(M):
     friends[A].append(B)
     friends[B].append(A)
 
+# 상근의 친구를 visit에 반영
 for f in friends[1]:
     visit[f] = 1
 
