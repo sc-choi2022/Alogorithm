@@ -1,9 +1,8 @@
-from collections import defaultdict
 import sys
 
 # 걸그룹의 수 N, 퀴즈의 개수
 N, M = map(int, sys.stdin.readline().split())
-girlgroup = defaultdict(list)
+girlgroup = dict()
 
 for _ in range(N):
     group = sys.stdin.readline().rstrip()
