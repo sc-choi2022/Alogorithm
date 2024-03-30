@@ -5,7 +5,7 @@ while True:
 
     if not line:
         break
-# 소문자, 대문자, 숫자, 공백의 개수 lower, upper, number, blank
+    # 소문자, 대문자, 숫자, 공백의 개수 lower, upper, number, blank
     lower, upper, number, blank = 0, 0, 0, 0
 
     for l in line:
@@ -17,4 +17,5 @@ while True:
             lower += 1
         else:
             number += 1
+    # 각각의 문자열에 대해서 소문자, 대문자, 숫자, 공백의 개수를 공백으로 구분해 출력
     print(lower, upper, number, blank)
