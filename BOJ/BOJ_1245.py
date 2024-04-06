@@ -1,42 +1,36 @@
+from collections import deque
 import sys
-def dfs(a, b):
+
+def dfs(si, sj):
     global check
-    # 방문을 표시
-    visited[a][b] = True
-    # 인접한 격자를 모두 확인
-    for di, dj in (1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (1, -1), (-1, -1), (-1, 1):
-        # 방향에 따른 인접 격자의 위치 ni, nj
-        ni, nj = a + di, b + dj
-        # ni, nj가 범위안에 존재하는 경우
+    visit[si][sj] = 1
+    for di, dj in (-1, 0), (-1, 1), (0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1):
+        ni, nj = si + di, sj + dj
         if 0 <= ni < N and 0 <= nj < M:
-            # 현재 위치가 인접 격자의 위치보다 낮을 경우 check에 False 저장
-            if farm[a][b] < farm[ni][nj]:
-                check = False
-            # 확인하지 않은 위치이며 현재위치와 인접 격자 위치의 높이가 동일한 경우
-            if not visited[ni][nj] and farm[a][b] == farm[ni][nj]:
-                # 인접 위치로 dfs 실행
+            if farm[ni][nj] > farm[si][sj]:
+                check = 0
+            if farm[ni][nj] == farm[si][sj] and not visit[ni][nj]:
                 dfs(ni, nj)
 
-# 농장의 격자를 이루는 N, M
+# 농장의 크기 N, M
 N, M = map(int, sys.stdin.readline().split())
-# 농장의 높이를 담을 행렬 farm
+# 농장의 높이를 저장하는 배열 farm
 farm = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
-# 하나의 격자가 인접한 경우를 확인하기 위한 행렬 visited
-visited = [[0]*M for _ in range(N)]
-# 출력할 산봉우리의 개수 cnt
-cnt = 0
+visit = [[0]*M for _ in range(N)]
+# 봉우리의 개수 answer
+answer = 0
 
+# 봉우리 가능한 위치 찾기
+# dfs로 주변이 다 작은지 확인
+
+# 봉우리를 저장하는 배열 peaks
+peaks = []
 for i in range(N):
     for j in range(M):
-        # 농장의 높이가 존재하고 확인하지 않은 곳인 경우
-        if farm[i][j] and not visited[i][j]:
-            # 변수 check를 True로 초기화
-            check = True
-            # 함수 dfs를 실행
+        if farm[i][j] and not visit[i][j]:
+            check = 1
             dfs(i, j)
-            # dfs를 후 ckeck가 True로 봉우리가 맞는 경우
-            if check:
-                # 봉우리를 cnt
-                cnt += 1
-# 산봉우리의 개수 출력
-print(cnt)
+            answer += check
+
+# 산봉우리의 개수를 출력
+print(answer)
