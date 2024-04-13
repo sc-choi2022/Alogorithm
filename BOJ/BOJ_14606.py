@@ -7,7 +7,7 @@ dp = [0, 0, 1] + [0] * (N-2)
 for i in range(3, N+1):
     number = i//2
     if i%2:
-        dp[i] = dp[number] + dp[number+1] + i//2 * (number+1)
+        dp[i] = dp[number] + dp[number+1] + number * (number+1)
     else:
         dp[i] = 2 * dp[number] + number**2
 
