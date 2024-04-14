@@ -16,14 +16,13 @@ while queue:
 
     for di, dj in (0, 1), (1, 0), (0, -1), (-1, 0):
         ni, nj = ci + di, cj + dj
-        if 0 <= ni < N and 0 <= nj < N:
-            if visit[ni][nj] == -1:
-                if rooms[ni][nj]:
-                    queue.appendleft((ni, nj))
-                    visit[ni][nj] = visit[ci][cj]
-                else:
-                    queue.append((ni, nj))
-                    visit[ni][nj] = visit[ci][cj] + 1
+        if 0 <= ni < N and 0 <= nj < N and visit[ni][nj] == -1:
+            if rooms[ni][nj]:
+                queue.appendleft((ni, nj))
+                visit[ni][nj] = visit[ci][cj]
+            else:
+                queue.append((ni, nj))
+                visit[ni][nj] = visit[ci][cj] + 1
     # 바꾸어야할 최소 방의 수가 구해진 경우 break
     if visit[N-1][N-1] != -1:
         break
