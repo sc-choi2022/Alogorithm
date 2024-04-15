@@ -14,7 +14,7 @@ def dfs(si, sj, cnt, num):
         if percentage[i]:
             di, dj = direction[i]
             ni, nj = si+di, sj+dj
-            # 단순
+            # 방문하지 않은 곳인 경우
             if not visit[ni][nj]:
                 visit[ni][nj] = 1
                 dfs(ni, nj, cnt+1, num*percentage[i])
@@ -26,7 +26,7 @@ for j in range(4):
     percentage[j] /= 100
 # 동서남북의 이동방향을 저장하는 딕셔너리 direction
 direction = {0 : (0, 1), 1 : (0, -1), 2 : (1, 0), 3 : (-1, 0)}
-# 단순한 경우의 수 P
+# 단순할 확율 P
 P = 0
 # 방문 여부를 저장하는 배열 visit
 visit = [[0]*(2*N+1) for _ in range(2*N+1)]
