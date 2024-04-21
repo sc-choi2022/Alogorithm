@@ -1,4 +1,3 @@
-from collections import deque
 import sys
 
 # 정수의 개수 N
@@ -13,7 +12,7 @@ M = numbers[-1] * K
 dp = [50001] * (M + 1)
 dp[0] = 0
 
-for i in range(M+1):
+for i in range(M):
     for number in numbers:
         if number + i <= M:
             dp[number+i] = min(dp[number+i], dp[i]+1)
