@@ -1,53 +1,65 @@
 from collections import deque
 import sys
 
-# 부피 A, B, C
+# 세 개의 물통의 부피 A, B, C
 A, B, C = map(int, sys.stdin.readline().split())
+# A와 B의 물 용량을 확인 여부를 저장하는 배열 visit
 visit = [[0]*201 for _ in range(201)]
-answer = [0 for _ in range(201)]
-
-queue = deque()
-queue.append((0, 0, C))
+# A와 B의 초기 값을 visit에 저장
+visit[0][0] = 1
+queue = deque([(0, 0, C)])
+# C의 용량을 저장하는 배열
+answer = [0]*201
 
 while queue:
-    a, b, c = queue.popleft()
+    # 현재 물통의 용량 각 cA, cB, cC
+    cA, cB, cC = queue.popleft()
 
-    if visit[a][b] == 1:
+    if visit[cA][cB]:
         continue
-    visit[a][b] = 1
+    visit[cA][cB] = 1
 
-    if a == 0:
-        answer[c] = 1
-    # A -> B:
-    if a+b > B:
-        queue.append((a+b-B, B, c))
+    # 물통 A가 비어 있는 경우
+    if cA == 0:
+        answer[cC] = 1
+
+    # A -> B
+    if cA + cB < B:
+        queue.append((0, cA+cB, cC))
     else:
-        queue.append((0, a+b, c))
+        queue.append((cA+cB-B, B, cC))
 
     # A -> C
-    if a + c > C:
-        queue.append((a+c-C, b, C))
+    if cA + cC < C:
+        queue.append((0, cB, cA + cC))
     else:
-        queue.append((0, b, a+c))
-
-    # B -> C
-    if b + c > C:
-        queue.append((a, b+c-C, C))
-    else:
-        queue.append((a, 0, b+c))
+        queue.append((cA+cC-C, cB, C))
 
     # B -> A
-    if b+a > A:
-        queue.append((A, b+a-A, c))
+    if cA + cB < A:
+        queue.append((cA+cB, 0, cC))
     else:
-        queue.append((b+a, 0, c))
+        queue.append((A, cA+cB-B, cC))
+
+    # B -> C
+    if cB + cC < C:
+        queue.append((cA, 0, cB+cC))
+    else:
+        queue.append((cA, cB+cC-C, C))
+
+    # C -> A
+    if cA + cC < A:
+        queue.append((cA+cC, cB, 0))
+    else:
+        queue.append((A, cB, cA+cC-C))
 
     # C -> B
-    if c+b > B:
-        queue.append((a, B, c+b-B))
+    if cB + cC < C:
+        queue.append((cA, cB+cC, 0))
     else:
-        queue.append((a, c+b, 0))
+        queue.append((cA, B, cB+cB-C))
 
 for i in range(201):
+    # 세 번째 물통(용량이 C인)에 담겨있을 수 있는 물의 양을 공백으로 구분하여 출력
     if answer[i]:
         print(i, end=' ')
