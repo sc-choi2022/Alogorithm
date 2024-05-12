@@ -3,7 +3,7 @@ import sys
 # R행 C열의 위성 사진정보
 R, C = map(int, sys.stdin.readline().split())
 # 실시간 위성 사진을 저장하는 배열 race
-race = [''] + [(sys.stdin.readline().rstrip()) for _ in range(R)]
+race = [''] + [sys.stdin.readline().rstrip() for _ in range(R)]
 # 카약의 번호와 거리를 저장하는 배열 result
 result = []
 for i in range(1, R+1):
@@ -11,7 +11,7 @@ for i in range(1, R+1):
         if race[i][-j].isnumeric():
             result.append([int(race[i][-j]), j])
             break
-result.sort(key=lambda x:(x[1]))
+result.sort(key=lambda x:x[1])
 # 순위를 저장하는 변수 rank
 rank = 0
 # 같은 순위를 확인하기 위한 변수 tmp
