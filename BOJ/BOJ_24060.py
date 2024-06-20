@@ -34,14 +34,17 @@ def mergeSort(L):
 
     return L2
 
-
-n, k = map(int, sys.stdin.readline().split())
-a = list(map(int, sys.stdin.readline().split()))
-
+# 배열 A의 크기 N, 저장 횟수 K
+N, K = map(int, sys.stdin.readline().split())
+# 배열 A
+A = list(map(int, sys.stdin.readline().split()))
+# 저장되는 수 ans
 ans = []
-mergeSort(a)
+mergeSort(A)
 
-if len(ans) >= k:
-    print(ans[k - 1])
+# 배열 A에 K번째 저장 되는 수를 출력
+if len(ans) >= K:
+    print(ans[K - 1])
+# 저장 횟수가 K보다 작으면 -1 출력
 else:
     print(-1)

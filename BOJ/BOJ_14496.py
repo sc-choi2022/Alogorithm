@@ -15,24 +15,21 @@ for _ in range(M):
     change[a].append(b)
     change[b].append(a)
 
-MAX = int(1e9)
-answer = MAX
-visit = [0]*(N+1)
-visit[A] = 1
-queue = deque([(A, 0)])
+visit = [-1]*(N+1)
+visit[A] = 0
+queue = deque([A])
 
 while queue:
-    current, cnt = queue.popleft()
+    current = queue.popleft()
 
     if current == B:
-        answer = cnt
         break
 
     for next in change[current]:
-        if not visit[next]:
-            visit[next] = 1
-            queue.append((next, cnt+1))
+        if visit[next] == -1:
+            visit[next] = visit[current] + 1
+            queue.append(next)
 
 # A를 B로 바꾸기 위해 필요한 최소 치환 횟수를 출력
 # 치환이 불가능한 경우 -1 출력
-print(-1 if answer == MAX else answer)
+print(visit[B])
