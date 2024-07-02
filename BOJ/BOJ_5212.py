@@ -28,10 +28,8 @@ for i in range(R):
                 next[i][j] = '.'
             # 현재 땅이 남는 경우 50년이 지난 후 섬의 범위 재설정
             else:
-                pi = min(pi, i)
-                pii = max(pii, i)
-                pj = min(pj, j)
-                pjj = max(pjj, j)
+                pi, pii = min(pi, i), max(pii, i)
+                pj, pjj = min(pj, j), max(pjj, j)
 
 # 50년 후의 지도를 출력
 for p in range(pi, pii+1):
