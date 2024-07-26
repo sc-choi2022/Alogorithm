@@ -1,33 +1,24 @@
-# dfs를 활용한 방법
-def dfs(permu):
-    # cnt가 M개에 도달하면 permu를 출력 후 return
-    if len(permu) == M:
-        print(*permu)
+import sys
+
+def dfs(sequence):
+    # 길이 M의 수열이 완성된 경우 print
+    if len(sequence) == M:
+        print(*sequence)
         return
-    # 1부터 N까지의 숫자에서
-    for i in range(1, N+1):
-        # permu안에 i가 없다면
-        if i not in permu:
-            # i를 추가하고
-            permu.append(i)
-            # permu와 1 증가 시킨 cnt를 넣어 dfs로 보낸다
-            dfs(permu)
-            # permu에서 i를 제거
-            permu.pop()
 
-# 1부터 N까지 M개를 고르기 위해 N, M이 주어진다.
-N, M = map(int,input().split())
+    for i in range(N):
+        # 자연수 i+1을 sequence에 추가할 수 있는 경우
+        if not visit[i]:
+            sequence.append(i+1)
+            visit[i] = 1
+            dfs(sequence)
+            sequence.pop()
+            visit[i] = 0
 
+
+# 1부터 N까지 자연수의 기준 N, 만드는 수열의 길이 M
+N, M = map(int, sys.stdin.readline().split())
+# 수열에 선택한 자연수를 확인하기 위한 배열 visit
+visit = [0] * N
+# 수열을 만드는 함수 dfs
 dfs([])
-
-# permutaions을 활용하는 방법
-from itertools import permutations
-
-# 1부터 N까지 M개를 고르기 위해 N, M이 주어진다.
-N, M = map(int, input().split())
-
-lst = [ i for i in range(1, N + 1)]
-ans = list(permutations(lst, M))
-
-for a in ans:
-    print(*a)
