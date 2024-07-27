@@ -1,34 +1,25 @@
-# dfs를 활용한 방법
-def dfs(permu):
-    # cnt가 M개에 도달하면 permu를 출력 후 return
-    if len(permu) == M:
-        print(*permu)
+import sys
+
+def dfs(sequence):
+    # 길이 M의 수열이 완성된 경우 print
+    if len(sequence) == M:
+        print(*sequence)
         return
-    # 1부터 N까지의 숫자에서
-    for i in range(1, N+1):
-        # permu안에 i가 없다면
-        if i not in permu:
-            # permu가 빈 배열이 아닐 때
-            if permu:
-                # 사전 순으로 증가하는 순서로 출력하기 위한 if문
-                if max(permu) < i:
-                    # i를 추가하고
-                    permu.append(i)
-                    # permu와 1 증가 시킨 cnt를 넣어 dfs로 보낸다
-                    dfs(permu)
-                    # permu에서 i를 제거
-                    permu.pop()
-            # permu가 빈 배열이라면 추가한다.
-            else:
-                # i를 추가하고
-                permu.append(i)
-                # permu와 1 증가 시킨 cnt를 넣어 dfs로 보낸다
-                dfs(permu)
-                # permu에서 i를 제거
-                permu.pop()
 
-# 1부터 N까지 M개를 고르기 위해 N, M이 주어진다.
-N, M = map(int,input().split())
+    for i in range(N):
+        # 자연수 i+1을 sequence에 추가할 수 있는 경우
+        # 수열의 첫 자연수이거나 오름차순인 경우
+        if not visit[i] and (not sequence or (sequence and sequence[-1] < i+1)):
+            sequence.append(i+1)
+            visit[i] = 1
+            dfs(sequence)
+            sequence.pop()
+            visit[i] = 0
 
-# 빈배열과 0개의 수로 dfs 실행
+
+# 1부터 N까지 자연수의 기준 N, 만드는 수열의 길이 M
+N, M = map(int, sys.stdin.readline().split())
+# 수열에 선택한 자연수를 확인하기 위한 배열 visit
+visit = [0] * N
+# 수열을 만드는 함수 dfs
 dfs([])
