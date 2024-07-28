@@ -1,19 +1,17 @@
-# dfs를 활용한 방법
-def dfs(permu):
-    # cnt가 M개에 도달하면 permu를 출력 후 return
-    if len(permu) == M:
-        print(*permu)
+import sys
+
+def dfs(sequence):
+    # 길이 M의 수열이 완성된 경우 print
+    if len(sequence) == M:
+        print(*sequence)
         return
-    # 1부터 N까지의 숫자에서
-    for i in range(1, N+1):
-        # i를 추가하고
-        permu.append(i)
-        # permu와 1 증가 시킨 cnt를 넣어 dfs로 보낸다
-        dfs(permu)
-        # permu에서 i를 제거
-        permu.pop()
 
-# 1부터 N까지 M개를 고르기 위해 N, M이 주어진다.
-N, M = map(int,input().split())
+    for i in range(N):
+        sequence.append(i+1)
+        dfs(sequence)
+        sequence.pop()
 
+# 1부터 N까지 자연수의 기준 N, 만드는 수열의 길이 M
+N, M = map(int, sys.stdin.readline().split())
+# 수열을 만드는 함수 dfs
 dfs([])
