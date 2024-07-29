@@ -1,12 +1,24 @@
-from itertools import permutations
+import sys
 
-# N개의 자연수 중에서 M개를 고른 수열의 N, M
-N, M = map(int, input().split())
-numbers = sorted(list(map(int, input().split())))
+def dfs(sequence):
+    # 길이 M의 수열이 완성된 경우 print
+    if len(sequence) == M:
+        print(*sequence)
+        return
 
-# 순열을 이용하여 M개의 수열을 저장하는 배열 permu
-permu = list(permutations(numbers, M))
+    for i in range(N):
+        # numbers[i]을 sequence에 추가할 수 있는 경우
+        if not visit[i]:
+            sequence.append(numbers[i])
+            visit[i] = 1
+            dfs(sequence)
+            sequence.pop()
+            visit[i] = 0
 
-# 수열을 증가하는 순서로 공백으로 구분하여 출력한다.
-for p in permu:
-    print(*p)
+# 1부터 N까지 자연수의 기준 N, 만드는 수열의 길이 M
+N, M = map(int, sys.stdin.readline().split())
+# 주어지는 N개의 자연수를 정렬하여 저장하는 numbers
+numbers = sorted(map(int, sys.stdin.readline().split()))
+visit = [0] * N
+# 수열을 만드는 함수 dfs
+dfs([])
