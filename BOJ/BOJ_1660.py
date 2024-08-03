@@ -10,3 +10,5 @@ while B < N:
     B += (i * (i+1))//2
     balls.append(B)
     i += 1
+MAX = sys.maxsize
+dp = [MAX] * (N+1)
