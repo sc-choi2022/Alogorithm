@@ -9,7 +9,7 @@ m = 1
 
 while True:
     B += (m * (m+1))//2
-    if B < N:
+    if B > N:
         break
     balls[B] = 1
     m += 1
@@ -19,12 +19,10 @@ dp = [MAX] * (N+1)
 
 for i in range(1, N+1):
     for j in range(1, N+1):
-        if balls[j]:
+        if balls[j] == 1:
             if j >= i:
                 if j == i:
                     dp[i] = 1
                 break
             dp[i] = min(dp[i], dp[i-j]+1)
 print(dp[N])
-
-print(dp)
