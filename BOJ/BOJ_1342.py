@@ -9,11 +9,10 @@ def dfs(pre, cnt):
         return
     for key, value in number.items():
         # 행운의 문자열에 부합하지 않는 경우 continue
-        if key == pre or value == 0:
-            continue
-        number[key] -= 1
-        dfs(key, cnt+1)
-        number[key] += 1
+        if key != pre and value != 0:
+            number[key] -= 1
+            dfs(key, cnt+1)
+            number[key] += 1
 
 # 문자열 S
 S = sys.stdin.readline().rstrip()
@@ -24,7 +23,7 @@ for s in S:
 
 # 서로 다른 행운의 문자열의 개수
 answer = 0
-for k, v in number.items():
+for k in number.keys():
     number[k] -= 1
     dfs(k, 1)
     number[k] += 1
