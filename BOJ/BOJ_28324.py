@@ -7,6 +7,7 @@ V = list(map(int, sys.stdin.readline().split()))
 # 최대 연습의 성과 answer
 answer = 1
 
+# 이전 속도를 저장하는 변수 pre
 pre = 1
 for i in range(N-2, -1, -1):
     if pre < V[i]:
