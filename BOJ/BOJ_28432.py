@@ -27,14 +27,12 @@ for candidate in candidates:
     if start == '' and end == '':
         print(candidate)
         break
-    elif start != '' and end == '':
-        if candidate[0] == start:
-            print(candidate)
-            break
-    elif start == '' and end != '':
-        if candidate[-1] == end:
-            print(candidate)
-            break
+    elif start != '' and end == '' and candidate[0] == start:
+        print(candidate)
+        break
+    elif start == '' and end != '' and candidate[-1] == end:
+        print(candidate)
+        break
     else:
         if candidate[0] == start and candidate[-1] == end:
             print(candidate)
