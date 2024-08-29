@@ -5,7 +5,7 @@ H, Y = map(int, sys.stdin.readline().split())
 #  해의 최대 자산을 저장하는 배열 dp
 dp = [0] * (Y+1)
 dp[0] = H
-
+# 이율 정보를 저장하는 딕셔너리 interest
 interest = {1:1.05, 3:1.2, 5:1.35}
 
 for i in range(1, Y+1):
