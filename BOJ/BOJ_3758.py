@@ -15,17 +15,14 @@ for _ in range(T):
         if num not in result:
             result[num] = [0]*(K+3)
             result[num][no] = s
-            result[num][K+1] = i
-            result[num][K+2] = 1
+            result[num][K+1], result[num][K+2] = i, 1
         else:
             result[num][no] = max(result[num][no], s)
             result[num][K+1] = i
             result[num][K+2] += 1
     # 순위의 기준이 되는 정보를 저장하는 배열 ranking
-    ranking = []
-    for key, value in result.items():
-        ranking.append([key, sum(value[:K+1]), value[K+1], value[K+2]])
-    ranking.sort(key=lambda x:(-x[1], x[3], x[2]))
+    ranking = list(result.items())
+    ranking.sort(key=lambda x: (-sum(x[1][:K+1]), x[1][K+2], x[1][K+1]))
 
     for j in range(N):
         # 팀의 순위를 찾은 경우 출력
