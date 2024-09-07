@@ -9,9 +9,10 @@ chapters.sort()
 dp = [[0]*(N+1) for _ in range(M+1)]
 
 for i in range(1, M+1):
+    day, page = chapters[i]
     for j in range(1, N+1):
-        if j >= chapters[i][0]:
-            dp[i][j] = max(dp[i-1][j], dp[i-1][j-chapters[i][0]] + chapters[i][1])
+        if j >= day:
+            dp[i][j] = max(dp[i-1][j], dp[i-1][j-day]+page)
         else:
             dp[i][j] = dp[i-1][j]
 

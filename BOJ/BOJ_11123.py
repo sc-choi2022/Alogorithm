@@ -7,8 +7,10 @@ T = int(sys.stdin.readline())
 for _ in range(T):
     # 그리드의 높이 H, 너비 W
     H, W = map(int, sys.stdin.readline().split())
+    # 양들을 저장하는 배열 gird
     grid = [list(sys.stdin.readline().rstrip()) for _ in range(H)]
     visit = [[0] * W for _ in range(H)]
+    # 양의 무리의 개수 answer
     answer = 0
     for i in range(H):
         for j in range(W):
