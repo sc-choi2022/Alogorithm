@@ -21,6 +21,6 @@ for _ in range(T):
         tmp[8] = prev[5] + prev[7] + prev[9]
         tmp[9] = prev[6] + prev[8]
         prev = tmp
-        
+
     # 조건을 만족하는 비밀번호의 개수를 출력
     print(sum(prev)%1234567)
