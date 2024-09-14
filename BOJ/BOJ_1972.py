@@ -1,10 +1,11 @@
 import sys
 
 def func(s):
-    for idx in range(1, len(s)):
+    for d in range(1, len(s)):
+        # d-쌍을 저장하는 셋 check
         check = set()
-        for i in range(len(s)-idx):
-            pair = s[i] + s[i+idx]
+        for i in range(len(s)-d):
+            pair = s[i] + s[i+d]
             if pair in check:
                 print(f'{s} is NOT surprising.')
                 return
