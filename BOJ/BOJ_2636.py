@@ -26,7 +26,7 @@ def bfs():
 N, M = map(int, sys.stdin.readline().split())
 # 치즈의 위치가 담긴 배열 cheeses
 cheeses = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
-# 각 시간에 치즈의 개수
+# 각 시간 녹은 치즈의 개수
 answer = []
 
 # 치즈가 모두 녹아 없어지는 데 걸리는 시간 time
@@ -34,9 +34,9 @@ time = -1
 while True:
     time += 1
     visit = [[0]*M for _ in range(N)]
-    cnt = bfs()
 
-    if cnt == 0:
+    # 남은 치즈가 없는 경우 break
+    if bfs() == 0:
         break
 
 # 치즈가 모두 녹아서 없어지는 데 걸리는 시간을 출력
