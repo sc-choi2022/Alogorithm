@@ -1,7 +1,8 @@
 import sys
 
-# 원소의 개수 N, 질무의 개수 M
+# 배열 A의 원소의 개수 N, 질문의 개수 M
 N, M = map(int, sys.stdin.readline().split())
+# 오름차순으로 정렬한 배열 A
 A = sorted([int(sys.stdin.readline()) for _ in range(N)])
 
 for _ in range(M):
