@@ -1,21 +1,25 @@
-N = int(input())
-max_num = 0
-max_lst = []
+import sys
 
-for i in range(N,0,-1):
-    temp_lst = [N, i]
-    start = temp_lst[0]
-    middle = temp_lst[1]
-    end = start - middle
+# 첫번째 수 N
+N = int(sys.stdin.readline())
+# 최대 수의 길이 L
+L = 0
+# 최대 개수의 수를 저장하는 배열 answer
+answer = []
+
+for i in range(N, 0, -1):
+    tmp = [N, i]
     while True:
-        temp_lst.append(end)
-        start = middle
-        middle = end
-        end = start - middle
-        if end<0:
+        A, B = tmp[-2], tmp[-1]
+        # 더 이상 수를 만들지 않는 경우 break
+        if A-B < 0:
             break
-    if max_num < len(temp_lst):
-        max_num = len(temp_lst)
-        max_lst = temp_lst
-print(max_num)
-print(*max_lst)
+        tmp.append(A-B)
+
+    if len(tmp) > L:
+        L = len(tmp)
+        answer = tmp
+# 최대 개수를 출력
+print(L)
+# 첫 번째 수로 시작하여 위의 규칙에 따라 만들 수 있는 수들의 최대 개수를 출력
+print(*answer)
