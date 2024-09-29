@@ -21,6 +21,7 @@ for _ in range(K):
         i, j = location
         saplings.sort()
         tmp = []
+        # 죽은 나무의 양분을 저장하는 변수 nutrition
         nutrition = 0
         for sapling in saplings:
             if land[i][j] >= sapling:
@@ -35,22 +36,24 @@ for _ in range(K):
         land[i][j] += nutrition
     T = defaultdict(list)
     for location, saplings in next.items():
-        i, j = location
-        T[(i, j)] = T[(i, j)] + saplings
+        ci, cj = location
+        T[(ci, cj)] = T[(ci, cj)] + saplings
         # 가을
         for tree in saplings:
             if tree%5 == 0:
                 for di, dj in (-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1):
-                    ni, nj = i+di, j+dj
+                    ni, nj = ci+di, cj+dj
                     if 0 <= ni < N and 0 <= nj < N:
                         T[(ni, nj)].append(1)
     trees = T
+    # 겨울
     for ii in range(N):
         for jj in range(N):
             land[ii][jj] += A[ii][jj]
+# K년이 지난 후 살아남은 나무의 수 answer
 answer = 0
 for plant in trees.values():
     answer += len(plant)
-    
-# K년이 지난 후 살아남은 나무의 수를 출력
+
+# answer을 출력
 print(answer)
