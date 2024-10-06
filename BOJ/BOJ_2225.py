@@ -1,14 +1,14 @@
 import sys
 
-# 합 N, 정수의 개수 K
+# 범위의 정수 N, 개수의 정수 K
 N, K = map(int, sys.stdin.readline().split())
-# dp[i][j] i를 만드는데 j개의 정수를 사용하는 경우의 수를 저장하는 배열 dp
-dp = [[0]*(K+1) for _ in range(N+1)]
-dp[0] = [1]*(K+1)
+dp = [[0] * (N + 1) for _ in range(K + 1)]
+dp[1] = [1] * (N + 1)
 
-for i in range(1, N+1):
-    for j in range(1, K+1):
-        dp[i][j] = (dp[i-1][j] + dp[i][j-1])%1000000000
+for i in range(2, K + 1):
+    dp[i][0] = 1
+    for j in range(1, N + 1):
+        dp[i][j] = (dp[i - 1][j] + dp[i][j - 1]) % 1000000000
 
-# 답을 1,000,000,000으로 나눈 나머지를 출력
-print(dp[N][K])
+# 0부터 N까지의 정수 K개를 더해 합이 N이 되는 경우의 수를 출력
+print(dp[K][N])
