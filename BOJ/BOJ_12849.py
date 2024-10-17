@@ -20,6 +20,6 @@ for _ in range(D):
     tmp[7] = (dp[5] + dp[6]) % N
 
     dp = tmp
-    
+
 # 가능한 경로의 수 출력
 print(dp[0])
