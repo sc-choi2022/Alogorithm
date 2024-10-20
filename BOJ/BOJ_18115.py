@@ -17,6 +17,6 @@ for i in range(N):
         card.insert(1, i+1)
     else:
         card.append(i+1)
-        
+
 # 초기 카드의 상태를 위에서부터 순서대로 출력
 print(*card)
