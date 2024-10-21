@@ -15,6 +15,6 @@ for _ in range(T):
             K = tmp
             break
         tmp += M
-        
+
     # 정수 K 출력
     print(K)

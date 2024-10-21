@@ -27,6 +27,6 @@ for j in range(S, E):
     else:
         answer += L1*L2
         L1, L2 = 0, 0
-        
+
 # 마지막 코팅지를 더한 코팅지의 면적 출력
 print(answer+L1*L2)
