@@ -1,38 +1,29 @@
-from copy import deepcopy
 import sys
 
-def backtracking(lst):
-    if len(lst) == N - 1:
-        operators.append(deepcopy(lst))
+def backtracking(idx, eq):
+    if idx == N-1:
+        equations.append(eq+numbers[idx])
         return
-    lst.append(' ')
-    backtracking(lst)
-    lst.pop()
 
-    lst.append('+')
-    backtracking(lst)
-    lst.pop()
+    eq += numbers[idx]
+    backtracking(idx+1, eq+' ')
+    backtracking(idx+1, eq+'+')
+    backtracking(idx+1, eq+'-')
 
-    lst.append('-')
-    backtracking(lst)
-    lst.pop()
-
-# 테스트케이스 개수 T
+# 테스트 케이스 개수 T
 T = int(sys.stdin.readline())
 
 for _ in range(T):
-    operators = []
     # 자연수 N
     N = int(sys.stdin.readline())
-    backtracking([])
+    # 수식의 숫자를 저장하는 배열 numbers
+    numbers = [str(i) for i in range(1, N+1)]
+    equations = []
+    backtracking(0, '')
 
-    numbers = [i for i in range(1, N+1)]
-
-    for operator in operators:
-        equation = ''
-        for j in range(N-1):
-            equation += str(numbers[j]) + operator[j]
-        equation += str(numbers[-1])
+    for equation in equations:
+        # 수식의 값이 0인 경우
         if eval(equation.replace(' ', '')) == 0:
             print(equation)
+
     print()
