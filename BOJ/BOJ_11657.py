@@ -1,31 +1,31 @@
-from collections import deque
 import sys
+
+def BF(start):
+    dist[start] = 0
+
+    for i in range(1, N+1):
+        for edge in edges:
+            current, next, cost = edge
+
+            if dist[current] != float('INF') and dist[next] > dist[current] + cost:
+                dist[next] = dist[current] + cost
+                if i == N:
+                    return True
+    return False
 
 # 도시의 개수 N, 버스 노선의 개수 M
 N, M = map(int, sys.stdin.readline().split())
-# 도시의 이동시간을 저장하는 배열 graph
-graph = [[] for _ in range(N+1)]
+# 도시의 이동시간을 저장하는 배열 edges
+edges = [tuple(map(int, sys.stdin.readline().split())) for _ in range(M)]
+dist = [float('INF')] * (N+1)
 
-for _ in range(M):
-    # 시작도시 A, 도착도시 B, 이동시간 C
-    A, B, C = map(int, sys.stdin.readline().split())
-    graph[A].append((B, C))
-
-visit = [0] * (N+1)
-time = [0] * (N+1)
-queue = deque([1])
-visit[1] = 1
-
-while queue:
-    current = queue.popleft()
-
-    for next, t in graph[current]:
-        if not visit[next]:
-            visit[next] = 1
-            time[next] = time[current] + t
-            if t <= 0:
-                queue.appendleft(next)
-            else:
-                queue.append(next)
-print(visit)
-print(time)
+if BF(1):
+    print(-1)
+else:
+    for k in range(2, N+1):
+        # 도달 불가능한 경우
+        if dist[k] == float('INF'):
+            print(-1)
+        # 도달 가능한 경우
+        else:
+            print(dist[k])
