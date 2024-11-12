@@ -1,29 +1,26 @@
+from collections import deque
 import sys
 
-def gold(number, something):
-    global answer
+def gold():
+    queue = deque([(N, [])])
 
-    if number == 0:
-        return 
+    while queue:
+        number, tmp = queue.popleft()
 
-    for i in range(len(str(number)), 0, -1):
-        if number >= int('4'*i) and not visit[number-int('4'*i)]:
-            something.append('4'*i)
-            visit[number-int('4'*i)] = 1
-            gold(number-int('4'*i), something)
-            visit[number-int('4'*i)] = 0
-            something.pop()
-        if number >= int('7'*i) and not visit[number-int('7'*i)]:
-            something.append('7'*i)
-            visit[number-int('7'*i)] = 1
-            gold(number-int('7')*i, something)
-            visit[number-int('7')*i] = 0
-            something.pop()
+        if number == 0:
+            print(*sorted(tmp))
+            break
 
+        L = len(str(number))
+
+        for i in range(L, 0, -1):
+            if int('7'*i) <= number:
+                queue.append((number-int('7'*i), tmp + [int('7'*i)]))
+            if int('4'*i) <= number:
+                queue.append((number-int('4'*i), tmp + [int('4'*i)]))
+    else:
+        print(-1)
+
+# 정수 N
 N = int(sys.stdin.readline())
-visit = [0]*(N+1)
-answer = []
-visit[N] = 1
-gold(N, [])
-print(answer)
-print(['4', '7'] < ['7', '4'])
+gold()
