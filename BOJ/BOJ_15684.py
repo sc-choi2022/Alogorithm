@@ -1,9 +1,9 @@
 import sys
 
-def plus(cnt, x, y):
+def garo(si, sj, cnt):
     global answer
 
-    if answer <= cnt:
+    if cnt >= answer:
         return
     elif play():
         answer = min(answer, cnt)
@@ -11,37 +11,40 @@ def plus(cnt, x, y):
     elif cnt == 3:
         return
 
-    for pi in range(x, H):
-        if pi == x:
-            k = y
-        else:
-            k = 0
-        for pj in range(k, N-1):
-            if not garo[pi][pj]:
-                garo[pi][pj] = 1
-                plus(cnt+1, pi, pj+2)
-                garo[pi][pj] = 0
+    for ni in range(si, H):
+        S = sj if ni == si else 0
+        for nj in range(S, N-1):
+            if not lader[ni][nj]:
+                lader[ni][nj] = 1
+                garo(ni, nj+2, cnt+1)
+                lader[ni][nj] = 0
 
 def play():
-    for jj in range(N):
-        now = jj
-        for ii in range(H):
-            if garo[ii][now]:
+    for pj in range(N):
+        now = pj
+        for pi in range(H):
+            if lader[pi][now]:
                 now += 1
-            elif now > 0 and garo[ii][now-1]:
+            elif now and lader[pi][now-1]:
                 now -= 1
-        if now != jj:
+        if now != pj:
             return False
     return True
 
-# 세로선의 개수 N, 가로선의 개수 M, 세로선마다 가로선을 놓을 수 있는 위치 개수 H
+# 세로선의 개수 N, 가로선의 개수 M, 위치의 개수 H
 N, M, H = map(int, sys.stdin.readline().split())
-garo = [[0]*N for _ in range(H)]
-answer = 4
+# 가로선의 위치를 저장하는 배열 lader
+lader = [[0] * N for _ in range(H)]
 
-for l in range(M):
+for _ in range(M):
+    # 가로선의 위치 정보 a, b
     a, b = map(int, sys.stdin.readline().split())
-    garo[a-1][b-1] = 1
+    lader[a-1][b-1] = 1
 
-plus(0, 0, 0)
-print(answer if answer <= 3 else -1)
+# 추가해야하는 가로선의 개수 answer를 4로 초기화
+answer = 4
+garo(0, 0, 0)
+
+# 가로선 개수의 최솟값을 출력
+# 정답이 3보다 큰 값이면 -1을 출력
+print(-1 if answer > 3 else answer)
