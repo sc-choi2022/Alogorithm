@@ -1,26 +1,23 @@
 from collections import deque
 import sys
 
-def gold():
-    queue = deque([(N, [])])
-
-    while queue:
-        number, tmp = queue.popleft()
-
-        if number == 0:
-            print(*sorted(tmp))
-            break
-
-        L = len(str(number))
-
-        for i in range(L, 0, -1):
-            if int('7'*i) <= number:
-                queue.append((number-int('7'*i), tmp + [int('7'*i)]))
-            if int('4'*i) <= number:
-                queue.append((number-int('4'*i), tmp + [int('4'*i)]))
-    else:
-        print(-1)
-
-# 정수 N
+# 금민수의 합으로 나타내야하는 정수 N
 N = int(sys.stdin.readline())
-gold()
+gold = []
+
+for i in range(2, 200):
+    bi = []
+    s = ''
+    tmp = i
+    while tmp:
+        bi.append(tmp%2)
+        tmp //= 2
+    for j in range(len(bi)-1, -1, -1):
+        if j == len(bi)-1:
+            continue
+        if bi[j] == 0:
+            s += '4'
+        else:
+            s += '7'
+    gold.append(int(s))
+print(gold)
