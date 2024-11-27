@@ -5,6 +5,7 @@ def number(idx, num):
 
     if idx == N and int(num) < B:
         C = max(C, int(num))
+        print(C)
         return
     for i in range(N):
         if idx == 0 and A[i] == '0':
