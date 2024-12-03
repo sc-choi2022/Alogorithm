@@ -15,4 +15,5 @@ for i in range(2, 1001):
 for _ in range(T):
     # 정수 N, M
     N, M = map(int, sys.stdin.readline().split())
+    # N을 1, 2, 3의 합으로 나타내는 방법의 수를 1000000009로 나눈 나머지를 출력
     print(dp[N][M])
