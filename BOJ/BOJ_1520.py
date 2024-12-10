@@ -1,4 +1,5 @@
 import sys
+sys.setrecursionlimit(10**9)
 
 def dfs(si, sj):
     # 목적지점에 도달한 경우
