@@ -25,6 +25,7 @@ for i in range(2, 200):
             s += '4'
         else:
             s += '7'
+
     gold.append(int(s))
 
 visit = [-1] * 1000001
