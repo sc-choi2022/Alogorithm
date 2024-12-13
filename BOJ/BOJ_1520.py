@@ -1,4 +1,5 @@
 import sys
+# 런타임 에러 해결
 sys.setrecursionlimit(10**6)
 
 def dfs(si, sj):
