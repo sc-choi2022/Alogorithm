@@ -15,4 +15,6 @@ for i in range(N):
         line[length] -= 1
     else:
         line[H-length] -= 1
-        
+
+M = min(line)
+print(M, line.count(M))
