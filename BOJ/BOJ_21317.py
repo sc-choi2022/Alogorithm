@@ -18,12 +18,13 @@ else:
     dp0[2] = stones[1][0]
 
     for i in range(3, N+1):
-        dp0[i] += min(dp0[i-1]+stones[i-1][0], dp0[i-2]+stones[i-2][1])
+        dp0[i] = min(dp0[i-1]+stones[i-1][0], dp0[i-2]+stones[i-2][1])
 
     dp1[4] = K
     for j in range(5, N+1):
         if j == 5:
-            dp1[j] += min(dp1[j-1]+stones[j-1][0], dp0[j-3]+K)
+            dp1[j] = min(dp1[j-1]+stones[j-1][0], dp0[j-3]+K)
         else:
-            dp1[j] += min(dp1[j-1]+stones[j-1][0], dp1[j-2]+stones[j-2][1], dp0[j-3]+K)
+            dp1[j] = min(dp1[j-1]+stones[j-1][0], dp1[j-2]+stones[j-2][1], dp0[j-3]+K)
+    # 산삼을 얻기 위해 필요한 영재의 최소 에너지를 출력
     print(min(dp0[N], dp1[N]))
