@@ -14,6 +14,8 @@ elif N == 2:
 elif N == 3:
     print(min(stones[1][0]+stones[2][0], stones[1][1]))
 else:
+    # 매우 큰 점프를 사용하지 않은 에너지를 저장하는 배열 dp0
+    # 매우 큰 점프를 사용한 에너지를 저장하는 배열 dp1
     dp0, dp1 = [0] * (N+1), [0] * (N+1)
     dp0[2] = stones[1][0]
 
