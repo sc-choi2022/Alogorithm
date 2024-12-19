@@ -1,5 +1,8 @@
 import sys
 
+def divide(num):
+    num0, num1 = numbers[0], numbers[0]
+
 # 1차원 배열에 저장된 수의 개수 N, 구간의 최대개수 M
 N, M = map(int, sys.stdin.readline().split())
 
@@ -13,7 +16,3 @@ left, right = 0, max(numbers)
 
 while left <= right:
     middle = (right-left)//2
-    print('middle', middle)
-    # 구간의 개수 cnt
-    cnt = 0
-    # 최소 2개 이상이 필요
