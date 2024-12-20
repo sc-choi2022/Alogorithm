@@ -16,3 +16,6 @@ left, right = 0, max(numbers)
 
 while left <= right:
     middle = (right-left)//2
+
+    if divide(middle) <= M:
+        right = middle-1
