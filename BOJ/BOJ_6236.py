@@ -2,6 +2,7 @@ import sys
 
 # N일 동안 M번 인출하는 정수 N, M
 N, M = map(int, sys.stdin.readline().split())
+# N일 동안 사용할 금액을 저장하는 배열 spend
 spend = [int(sys.stdin.readline()) for _ in range(N)]
 start, end = min(spend), sum(spend)
 
@@ -27,4 +28,5 @@ while start <= end:
         end = mid-1
         K = mid
 
+# 통장에서 인출해야 할 최소 금액 K를 출력
 print(K)
