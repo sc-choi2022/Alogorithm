@@ -9,6 +9,7 @@ def trace(k, visited):
 
 # 금민수의 합으로 나타내야하는 정수 N
 N = int(sys.stdin.readline())
+# 금민수를 저장하는 배열 gold
 gold = []
 
 for i in range(2, 200):
@@ -25,7 +26,6 @@ for i in range(2, 200):
             s += '4'
         else:
             s += '7'
-
     gold.append(int(s))
 
 visit = [-1] * 1000001
@@ -38,12 +38,14 @@ while queue:
     for ii in range(len(gold)):
         next = now + gold[ii]
         if next > N:
-            continue
+            break
         if visit[next] == -1:
             visit[next] = now
             queue.append(next)
 
+# N을 금민수의 합으로 나타낼 수 없는 경우 -1 출력
 if visit[N] == -1:
     print(-1)
+# N을 금민수의 합으로 나타낼 수 있는 사전순으로 가장 앞서는 것을 출력
 else:
     trace(N, visit)
