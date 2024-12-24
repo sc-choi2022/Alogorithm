@@ -19,3 +19,6 @@ while left <= right:
 
     if divide(middle) <= M:
         right = middle-1
+        result = middle
+    else:
+        left = middle - 1
