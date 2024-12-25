@@ -2,9 +2,17 @@ import sys
 
 # 정수 N
 N = int(sys.stdin.readline())
-dp = [0] * (N+1)
+numbers = []
+i, j = 1, 1
 
-for i in range(2, 7072):
-    dp[i] = dp[i-1] + 6*(i-1) - (2*(i-2)+1)
+while True:
+    if i*j <= N:
+        numbers.append(i*j)
+        i += 1
+        j += 2
+    else:
+        break
 
-print(dp[N])
+dp = [0]
+for i in range(N):
+    tmp = float('inf')
