@@ -10,7 +10,8 @@ for i in range(2, 1001):
     for j in range(1, 1001):
         for k in range(1, 4):
             if j-k > 0:
-                dp[j][i] = (dp[j][i]+dp[j-k][i-1])%1000000009
+                dp[j][i] += dp[j-k][i-1]
+        dp[j][i] %= 1000000009
 
 for _ in range(T):
     # 정수 N, M
