@@ -14,5 +14,8 @@ while True:
         break
 
 dp = [0]
-for i in range(N):
+for i in range(1, N+1):
     tmp = float('inf')
+    for j in range(1, len(numbers)):
+        if numbers[j] > i:
+            break
