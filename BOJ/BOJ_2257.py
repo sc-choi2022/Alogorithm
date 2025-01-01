@@ -11,5 +11,17 @@ for f in formula:
         stack.append(mass[f])
     elif f == '(':
         stack.append(f)
-    else:
+    elif f == ')':
         tmp = 0
+
+        while True:
+            if stack[-1] == '(':
+                stack.pop()
+                stack.append(tmp)
+                break
+            else:
+                tmp += stack.pop()
+    else:
+        stack[-1] *= int(f)
+
+print(sum(stack))
