@@ -34,6 +34,7 @@ for k in range(1, K+1):
         for j in range(N):
             if area[i][j] == k:
                 queue.append((i,j))
+                
 # S 시간이 될때까지 while문을 진행한다.
 while cnt < S:
     # queue에 담긴 위치를 가지고 bfs를 진행
@@ -43,6 +44,6 @@ while cnt < S:
     # bfs에서 만들어진 next_queue를 queue에 할당 후 next_queue를 초기화
     queue = next_queue
     next_queue = deque()
-    
+
 # X, Y 위치의 S초 후의 바이러스 정보를 출력한다.
 print(area[X-1][Y-1])

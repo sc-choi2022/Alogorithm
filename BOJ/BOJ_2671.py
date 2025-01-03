@@ -54,7 +54,7 @@ if flag:
     # 첫 번째 패턴이 마무리 되지 않은 경우
     if cnt0 < 2 or cnt1 < 1:
         answer = 'NOISE'
-        
+
 # 잠수함의 엔진 소리에 해당하는 스트링이면 'SUBMARINE'을 출력
 # 그렇지 않으면 'NOISE'를 출력
 print(answer)
