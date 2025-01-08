@@ -10,7 +10,7 @@ def bfs():
             # ni,nj가 범위 안에 있고 area[ni][nj]가 바이러스에 감염되지 않았다면
             if 0 <= ni < N and 0 <= nj < N and not area[ni][nj]:
                 # 다음 queue에 위치값을 추가 후 area에 감염정보를 반영한다.
-                next_queue.append((ni,nj))
+                next_queue.append((ni, nj))
                 area[ni][nj] = area[si][sj]
                 # 만약 찾는 위치에 바이러스가 있다면 bfs를 마친다.
                 if (ni, nj) == (X-1, Y-1):
@@ -33,8 +33,8 @@ for k in range(1, K+1):
     for i in range(N):
         for j in range(N):
             if area[i][j] == k:
-                queue.append((i,j))
-                
+                queue.append((i, j))
+
 # S 시간이 될때까지 while문을 진행한다.
 while cnt < S:
     # queue에 담긴 위치를 가지고 bfs를 진행
