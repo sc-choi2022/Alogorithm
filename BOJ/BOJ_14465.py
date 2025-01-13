@@ -16,8 +16,8 @@ for i in range(1, N):
 # 연속 K개의 신호등이 존재하기 위해 필요한 최소 수리 개수 answer
 answer = K-light[K-1]
 
-for i in range(K, N):
-    answer = min(answer, K-(light[i]-light[i-K]))
+for j in range(K, N):
+    answer = min(answer, K-(light[j]-light[j-K]))
 
 # answer 출력
 print(answer)
