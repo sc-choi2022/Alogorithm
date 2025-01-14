@@ -25,11 +25,23 @@ def R4():
 
 # 1번 그룹의 부분 배열을 2번 그룹 위치로, 2번을 3번으로, 3번을 4번으로, 4번을 1번으로 이동
 def R5():
-    return
+    NN, MM = N//2, M//2
+    for i in range(NN):
+        for j in range(MM):
+            graph[i][j] = pre[i+NN][j]
+            graph[i][j+MM] = pre[i][j]
+            graph[i+NN][j+MM] = pre[i][j+MM]
+            graph[i+NN][j] = pre[i+NN][j+MM]
 
 # 1번 그룹의 부분 배열을 4번 그룹 위치로, 4번을 3번으로, 3번을 2번으로, 2번을 1번으로 이동
 def R6():
-    return
+    NN, MM = N//2, M//2
+    for i in range(NN):
+        for j in range(MM):
+            graph[i][j] = pre[i][j+MM]
+            graph[i][j+MM] = pre[i+NN][j+MM]
+            graph[i+NN][j] = pre[i][j]
+            graph[i+NN][j+MM] = pre[i+NN][j]
 
 # 배열의 크기 N, M, 연산의 수 R
 N, M, R = map(int, sys.stdin.readline().split())
@@ -54,5 +66,6 @@ for order in orders:
     else:
         R6()
 
+# R개의 연산을 순서대로 수행한 결과를 출력
 for g in graph:
     print(*g)
