@@ -40,8 +40,8 @@ def R6():
         for j in range(MM):
             graph[i][j] = pre[i][j+MM]
             graph[i][j+MM] = pre[i+NN][j+MM]
-            graph[i+NN][j] = pre[i][j]
             graph[i+NN][j+MM] = pre[i+NN][j]
+            graph[i+NN][j] = pre[i][j]
 
 # 배열의 크기 N, M, 연산의 수 R
 N, M, R = map(int, sys.stdin.readline().split())
