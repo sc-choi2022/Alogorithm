@@ -19,8 +19,6 @@ while board != ['#']:
     # default를 int값으로 가지는 b_dict 생성
     b_dict = defaultdict(int)
     # 퍼즐의 알파벳을 key값으로 b_dict에 저장
-    for b in board:
-        b_dict[b]
 
     # words의 각 단어에 대해
     for word in words:
