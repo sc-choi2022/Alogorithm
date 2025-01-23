@@ -1,33 +1,37 @@
 import sys
 from collections import defaultdict, deque
 
-def bfs(start, end):
-    queue = deque([start])
+def bfs(A, B):
+    queue = deque([A])
 
     while queue:
-        x = queue.popleft()
+        now = queue.popleft()
 
-        if x == end:
-            return True
+        # 명제의 결론에 도달한 경우
+        if now == B:
+            print('T')
+            return
 
-        for node in graph[x]:
-            queue.append(node)
-    return False
+        for next in premise[now]:
+            queue.append(next)
+    print('F')
+    return
 
-# 정수 N
+# 전제의 개수 N
 N = int(sys.stdin.readline())
-graph = defaultdict(list)
+# 전제의 관계를 저장하는 딕셔너리 premise
+premise = defaultdict(list)
 
 for _ in range(N):
-    tmp = list(map(int, sys.stdin.readline().split()))
-    graph[tmp[0]].append(tmp[2])
+    # 전제의 a, b의 관계를 premise에 저장
+    a, b = sys.stdin.readline().rstrip().split(' is ')
+    premise[a].append(b)
 
+# 결론의 개수 M
 M = int(sys.stdin.readline())
 
 for _ in range(M):
-    lst = list(map(int, sys.stdin.readline().split()))
+    # 주어지는 결론 conclusion의 a1, b1
+    a1, b1 = sys.stdin.readline().rstrip().split(' is ')
 
-    if bfs(lst[0], lst[1]):
-        print('T')
-    else:
-        print('F')
+    bfs(a1, b1)
