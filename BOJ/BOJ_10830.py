@@ -2,15 +2,14 @@ import sys
 
 def square(A, B):
     if B == 1:
-        for si in range(N):
-            for sj in range(N):
-                A[si][sj] %= 1000
-        return A
-
+        for i in range(N):
+            for j in range(N):
+                A[i][j] %= 1000
     tmp = square(A, B//2)
 
-    # 제곱 개수가 홀수인 경우
     if B%2:
+        return
+    else:
         return 
 
 # 행렬 A의 크기 N, 제곱하는 수 B
