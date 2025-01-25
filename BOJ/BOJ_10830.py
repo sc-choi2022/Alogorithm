@@ -8,9 +8,9 @@ def square(A, B):
     tmp = square(A, B//2)
 
     if B%2:
-        return
+        return mul(mul(tmp, tmp), A)
     else:
-        return 
+        return mul(tmp, tmp)
 
 # 행렬 A의 크기 N, 제곱하는 수 B
 N, B = map(int, sys.stdin.readline().split())
