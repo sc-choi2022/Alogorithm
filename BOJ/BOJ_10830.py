@@ -12,6 +12,16 @@ def square(A, B):
     else:
         return mul(tmp, tmp)
 
+def mul(U, V):
+    L = len(U)
+    Z = [[0]*L for _ in range(L)]
+
+    for i in range(L):
+        for j in range(L):
+            e = 0
+            for k in range(L):
+                e += U[i][k] + V[k][j]
+
 # 행렬 A의 크기 N, 제곱하는 수 B
 N, B = map(int, sys.stdin.readline().split())
 # 행렬 A
