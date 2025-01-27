@@ -21,6 +21,7 @@ def mul(U, V):
             e = 0
             for k in range(L):
                 e += U[i][k] + V[k][j]
+            Z[i][j] = e%1000
 
 # 행렬 A의 크기 N, 제곱하는 수 B
 N, B = map(int, sys.stdin.readline().split())
