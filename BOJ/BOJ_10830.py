@@ -2,9 +2,10 @@ import sys
 
 def square(A, B):
     if B == 1:
-        for i in range(N):
-            for j in range(N):
+        for i in range(len(A)):
+            for j in range(len(A)):
                 A[i][j] %= 1000
+        return A
     tmp = square(A, B//2)
 
     if B%2:
@@ -20,8 +21,9 @@ def mul(U, V):
         for j in range(L):
             e = 0
             for k in range(L):
-                e += U[i][k] + V[k][j]
+                e += U[i][k] * V[k][j]
             Z[i][j] = e%1000
+    return Z
 
 # 행렬 A의 크기 N, 제곱하는 수 B
 N, B = map(int, sys.stdin.readline().split())
