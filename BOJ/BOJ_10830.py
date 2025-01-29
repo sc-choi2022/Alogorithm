@@ -1,17 +1,19 @@
 import sys
 
-def square(A, B):
-    if B == 1:
-        for i in range(len(A)):
-            for j in range(len(A)):
-                A[i][j] %= 1000
-        return A
-    tmp = square(A, B//2)
+def square(AA, BB):
+    LL = len(AA)
 
-    if B%2:
-        return mul(mul(tmp, tmp), A)
+    if BB == 1:
+        for i in range(LL):
+            for j in range(LL):
+                AA[i][j] %= 1000
+        return AA
+    T = square(AA, BB//2)
+
+    if BB%2:
+        return mul(mul(T, T), AA)
     else:
-        return mul(tmp, tmp)
+        return mul(T, T)
 
 def mul(U, V):
     L = len(U)
