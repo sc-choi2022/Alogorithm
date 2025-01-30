@@ -7,13 +7,14 @@ def bfs(A, B):
     while queue:
         now = queue.popleft()
 
-        # 명제의 결론에 도달한 경우
+        # 명제의 결론에 도달하여 참인 경우 T 출력
         if now == B:
             print('T')
             return
 
         for next in premise[now]:
             queue.append(next)
+    # 거짓인 경우 F출력
     print('F')
     return
 
@@ -33,5 +34,5 @@ M = int(sys.stdin.readline())
 for _ in range(M):
     # 주어지는 결론 conclusion의 a1, b1
     a1, b1 = sys.stdin.readline().rstrip().split(' is ')
-
+    # 결론을 찾고 출력하는 함수 bfs
     bfs(a1, b1)
