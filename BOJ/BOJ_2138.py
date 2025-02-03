@@ -7,7 +7,7 @@ def test():
             cnt += 1
             for j in range(i-1, i+2):
                 now[j] = not now[j]
-    
+
     return
 
 # 스위치의 개수 N
@@ -16,6 +16,3 @@ N = int(sys.stdin.readline())
 now = list(sys.stdin.readline().rstrip())
 # 만들고자 하는 전구의 상태 배열 goal
 goal = list(sys.stdin.readline().rstrip())
-
-print(now)
-print(goal)
