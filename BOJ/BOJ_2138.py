@@ -8,14 +8,16 @@ def test():
             for j in range(i-1, i+2):
                 now[j] = not now[j]
     if now[N-1] != goal[N-1]:
-    return
+        cnt += 1
+        now[N-2] = not now[N-2]
+        now[N-1] = not now[N-1]
+    if now == goal:
+        return cnt
+    else:
+        return -1
 
 # 스위치의 개수 N
 N = int(sys.stdin.readline())
 # 전구의 현재 상태 배열 now
 now = list(sys.stdin.readline().rstrip())
 # 만들고자 하는 전구의 상태 배열 goal
-goal = list(sys.stdin.readline().rstrip())
-
-print(now)
-print(goal)
