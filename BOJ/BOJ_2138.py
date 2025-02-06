@@ -21,3 +21,7 @@ N = int(sys.stdin.readline())
 # 전구의 현재 상태 배열 now
 now = list(sys.stdin.readline().rstrip())
 # 만들고자 하는 전구의 상태 배열 goal
+
+on = off[::]
+on[0] = not on[0]
+on[1] = not on[1]
