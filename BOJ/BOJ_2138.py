@@ -25,3 +25,6 @@ now = list(sys.stdin.readline().rstrip())
 on = off[::]
 on[0] = not on[0]
 on[1] = not on[1]
+
+if off == goal:
+    print(0)
