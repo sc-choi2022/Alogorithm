@@ -1,7 +1,20 @@
 import sys
 
-def change():
-    return
+def change(status, cnt):
+    for i in range(1, N-1):
+        if status[i-1] != goal[i-1]:
+            cnt += 1
+            for j in range(i-1, i+2):
+                status[j] = not status[j]
+    if status[N-1] != goal[N-1]:
+        cnt += 1
+        status[N-2] = not status[N-2]
+        status[N-1] = not status[N-1]
+
+    if status == goal:
+        return cnt
+    else:
+        return -1
 
 # 스위치의 개수 N
 N = int(sys.stdin.readline())
