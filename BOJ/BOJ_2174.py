@@ -43,9 +43,8 @@ flag = False
 for i in range(N):
     # 로봇의 위치 x, y, 방향 d
     x, y, d = sys.stdin.readline().rstrip().split()
-    robots[i+1] = (A-int(y)-1, int(x)-1, d)
+    robots[i+1] = (B-int(y), int(x)-1, d)
     graph[robots[i+1][0]][robots[i+1][1]] = i + 1
-print(robots)
 
 for _ in range(M):
     # 명령을 내리는 로봇 number, 명령의 종류 order, 명령의 횟수 cnt
@@ -60,6 +59,5 @@ for _ in range(M):
         break
     robots[number] = (ci, cj, direct)
     graph[ci][cj] = number
-    print(robots)
 else:
     print('OK')
