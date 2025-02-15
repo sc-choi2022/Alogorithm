@@ -1,4 +1,5 @@
 import sys
+sys.setrecursionlimit(10**5)
 
 # 원소가 어떤 집합에 속해있는 지 확인하는 함수 find
 def find(N):
