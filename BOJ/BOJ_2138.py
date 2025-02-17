@@ -19,9 +19,9 @@ def change(status, cnt):
 # 스위치의 개수 N
 N = int(sys.stdin.readline())
 # 전구의 현재 상태 배열 now
-now = list(sys.stdin.readline().rstrip())
+now = list(map(bool, map(int, sys.stdin.readline().rstrip())))
 # 만들고자 하는 전구의 상태 배열 goal
-goal = list(sys.stdin.readline().rstrip())
+goal = list(map(bool, map(int, sys.stdin.readline().rstrip())))
 
 # 0번 스위치를 누른 상태를 저장한 배열 zero
 zero = now[::]
@@ -33,9 +33,9 @@ if now == goal:
 else:
     cnt = change(now, 0)
     # 불가능한 경우 -1 출력
-    if cnt == -1:
+    if cnt != -1:
         print(cnt)
-    #
     else:
+        # 0번째 전구를 눌렀을 때
         cnt = change(zero, 1)
         print(cnt if cnt else -1)
