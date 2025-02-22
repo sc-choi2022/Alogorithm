@@ -31,18 +31,14 @@ goal = list(map(bool, map(int, sys.stdin.readline().rstrip())))
 zero = now[::]
 zero[0], zero[1] = not zero[0], not zero[1]
 
-# 스위치를 누를 필요가 없는 경우
-if now == goal:
-    print(0)
-else:
-    # 0번 스위치를 제외하고 스위치를 변경
-    cnt = change(now, 0)
+# 0번 스위치를 제외하고 스위치를 변경
+cnt = change(now, 0)
 
-    # 0번 전구의 변경 없이 전구를 완성한 경우 cnt 출력
-    if cnt != -1:
-        print(cnt)
-    else:
-        # 0번 전구을 포함하여 스위치를 변경
-        cnt = change(zero, 1)
-        # 최소 스위치 조작 횟수를 출력, 불가능한 경우에는 -1을 출력
-        print(cnt)
+# 0번 전구의 변경 없이 전구를 완성한 경우 cnt 출력
+if cnt != -1:
+    print(cnt)
+else:
+    # 0번 전구을 포함하여 스위치를 변경
+    cnt = change(zero, 1)
+    # 최소 스위치 조작 횟수를 출력, 불가능한 경우에는 -1을 출력
+    print(cnt)
