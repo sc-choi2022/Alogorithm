@@ -5,8 +5,13 @@ N, T = map(int, sys.stdin.readline().split())
 # 예상 공부 시간 K, 문제의 배점 S을 저장하는 배열 study
 study = [tuple(map(int, sys.stdin.readline().split())) for _ in range(N)]
 
-dp = [[0]*(T+1) for _ in range(N+1)]
+dp = [[0]*T for _ in range(N)]
 
-for i in range(1, N+1):
-    for j in range(1, T+1):
-        
+for i in range(N):
+    for j in range(T):
+        if j >= study[i][0]:
+            dp[i][j] = max(dp[i-1][j], dp[i-1][j-study[i][0]] + study[i][1])
+        else:
+            dp[i][j] = dp[i-1][j]
+
+print(dp[N-1][T-1])
