@@ -12,3 +12,8 @@ for i in range(1, L1):
     for j in range(1, L2):
         if S1[i] == S2[j]:
             dp[i][j] = dp[i-1][j-1] + S1[i]
+        else:
+            if len(dp[i-1][j]) >= len(dp[i][j-1]):
+                dp[i][j] = dp[i-1][j]
+            else:
+                dp[i][j] = dp[i][j-1]
