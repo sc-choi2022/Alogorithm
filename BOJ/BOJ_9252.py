@@ -17,3 +17,6 @@ for i in range(1, L1):
                 dp[i][j] = dp[i-1][j]
             else:
                 dp[i][j] = dp[i][j-1]
+
+print(len(dp[L1][L2]))
+print(dp[L1][L2])
