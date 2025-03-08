@@ -18,5 +18,8 @@ for i in range(1, L1):
             else:
                 dp[i][j] = dp[i][j-1]
 
+# LCS의 길이 출력
 print(len(dp[L1][L2]))
-print(dp[L1][L2])
+# LCS의 길이가 0이 아닌 경우 LCS를 출력
+if len(dp[L1][L2]):
+    print(dp[L1][L2])
