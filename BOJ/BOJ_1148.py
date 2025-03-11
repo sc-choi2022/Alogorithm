@@ -44,6 +44,3 @@ while board != ['#']:
     maxkeys = sorted(list(x for x in b_dict if b_dict[x] == maxvalue))
     # 현재 board에 대해 조건에 맞게 출력
     print(''.join(minkeys), minvalue, ''.join(maxkeys), maxvalue)
-
-    # 다음 퍼즐 정보를 board에 저장
-    board = list(sys.stdin.readline().strip())
