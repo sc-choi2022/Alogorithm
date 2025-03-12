@@ -1,9 +1,4 @@
 def bfs(i, j):
-
-    for di, dj in (0, -1), (-1, -1), (-1, 1), (0, 1):
-        ni, nj = di + i, dj + j
-        if 0 <= ni < N and 0 <= nj < M and seat[ni][nj] == 'C':
-            return False
     return True
 
 # 테스트 케이스 C
