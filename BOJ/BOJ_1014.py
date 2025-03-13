@@ -1,5 +1,5 @@
-def bfs(i, j):
-    return True
+def dfs():
+    return 
 
 # 테스트 케이스 C
 C = int(input())
@@ -15,4 +15,3 @@ for _ in range(C):
             if seat[i][j] == '.' and bfs(i, j):
                 seat[i][j] = 'C'
                 ans += 1
-    print(ans)
