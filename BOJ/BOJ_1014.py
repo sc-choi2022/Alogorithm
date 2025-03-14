@@ -1,5 +1,5 @@
 def dfs():
-    return 
+    return
 
 # 테스트 케이스 C
 C = int(input())
@@ -10,8 +10,5 @@ for _ in range(C):
     seat = [list(input()) for _ in range(N)]
 
     ans = 0
-    for i in range(N):
-        for j in range(M):
-            if seat[i][j] == '.' and bfs(i, j):
-                seat[i][j] = 'C'
-                ans += 1
+
+    cor_map = [[0]*N for _ in range(M)]
