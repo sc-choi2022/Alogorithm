@@ -6,6 +6,7 @@ S2 = sys.stdin.readline().rstrip()
 # 문자열 S1, S2의 길이 L1, L2
 L1, L2 = len(S1), len(S2)
 
+# LCS를 저장하는 배열 dp
 dp = [['']*L2 for _ in range(L1)]
 
 for i in range(1, L1):
