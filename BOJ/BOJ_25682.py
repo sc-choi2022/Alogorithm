@@ -12,4 +12,5 @@ for i in range(N):
     for j in range(M):
         if (i+j)%2:
             if board[i][j] == 'B':
-                
+                B[i][j] = 1 + B[i-1][j] + B[i][j-1] - B[i-1][j-1]
+                W[i][j] = 0 + W[i-1][j] + W[i][j-1] - W[i-1][j-1]
