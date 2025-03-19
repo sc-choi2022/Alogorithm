@@ -14,3 +14,13 @@ for i in range(N):
             if board[i][j] == 'B':
                 B[i][j] = 1 + B[i-1][j] + B[i][j-1] - B[i-1][j-1]
                 W[i][j] = 0 + W[i-1][j] + W[i][j-1] - W[i-1][j-1]
+            else:
+                B[i][j] = 0 + B[i-1][j] + B[i][j-1] - B[i-1][j-1]
+                W[i][j] = 1 + W[i-1][j] + W[i][j-1] - W[i-1][j-1]
+        else:
+            if board[i][j] == 'B':
+                B[i][j] = 0 + B[i - 1][j] + B[i][j - 1] - B[i - 1][j - 1]
+                W[i][j] = 1 + W[i - 1][j] + W[i][j - 1] - W[i - 1][j - 1]
+            else:
+                B[i][j] = 1 + B[i - 1][j] + B[i][j - 1] - B[i - 1][j - 1]
+                W[i][j] = 0 + W[i - 1][j] + W[i][j - 1] - W[i - 1][j - 1]
