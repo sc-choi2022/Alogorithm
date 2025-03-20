@@ -24,3 +24,9 @@ for i in range(N):
             else:
                 B[i][j] = 1 + B[i - 1][j] + B[i][j - 1] - B[i - 1][j - 1]
                 W[i][j] = 0 + W[i - 1][j] + W[i][j - 1] - W[i - 1][j - 1]
+
+answer = 1e7
+
+for i in range(N-k+1):
+    for j in range(M-K+1):
+        
