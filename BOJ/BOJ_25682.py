@@ -29,4 +29,5 @@ answer = 1e7
 
 for i in range(N-k+1):
     for j in range(M-K+1):
-        
+
+        answer = min(answer, BB, WW)
