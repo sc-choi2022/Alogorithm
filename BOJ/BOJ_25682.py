@@ -27,7 +27,10 @@ for i in range(N):
 
 answer = 1e7
 
-for i in range(N-k+1):
+for i in range(N-K+1):
     for j in range(M-K+1):
-
+        BB = B[i+K-1][j+K-1] - B[i-1][j+K-1] - B[i+K-1][j-1] + B[i-1][j-1]
+        WW = W[i+K-1][j+K-1] - B[i-1][j+K-1] - B[i+K-1][j-1] + W[i-1][j-1]
         answer = min(answer, BB, WW)
+
+print(answer)
