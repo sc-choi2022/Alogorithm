@@ -33,4 +33,5 @@ for i in range(N-K+1):
         WW = W[i+K-1][j+K-1] - B[i-1][j+K-1] - B[i+K-1][j-1] + W[i-1][j-1]
         answer = min(answer, BB, WW)
 
+# 체스판으로 만들기 위해 다시 칠해야하는 정사각형 개수의 최솟값 출력
 print(answer)
