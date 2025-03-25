@@ -1,5 +1,18 @@
 import sys
 
+def fill(n, ci, cj):
+    if n == 1:
+        stars[ci][cj] = '*'
+
+    L = 4 * n - 3
+
+    for i in range(L):
+        stars[cj][ci+i] = '*'
+        stars[cj+i][ci] = '*'
+        stars[cj+L-1][ci+i] = '*'
+        stars[cj+i][ci+L-1] = '*'
+    fill(n-1, ci+2, cj+2)
+
 # 기준이 되는 정수 N
 N = int(sys.stdin.readline())
 
