@@ -3,7 +3,7 @@ import sys
 def fill(n, ci, cj):
     if n == 1:
         stars[ci][cj] = '*'
-
+        return
     L = 4 * n - 3
 
     for i in range(L):
@@ -17,3 +17,8 @@ def fill(n, ci, cj):
 N = int(sys.stdin.readline())
 
 stars = [[' ' for _ in range(4*N-3)] for _ in range(4*N-3)]
+
+fill(N, 0, 0)
+
+for star in stars:
+    print(''.join(star))
