@@ -1,5 +1,6 @@
 import sys
 
+# 별을 채우는 함수 fill
 def fill(n, ci, cj):
     if n == 1:
         stars[ci][cj] = '*'
@@ -20,5 +21,6 @@ stars = [[' ' for _ in range(4*N-3)] for _ in range(4*N-3)]
 
 fill(N, 0, 0)
 
+# 규칙에 맞게 별을 출력
 for star in stars:
     print(''.join(star))
