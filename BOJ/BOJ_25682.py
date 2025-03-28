@@ -25,6 +25,7 @@ for i in range(N):
                 B[i][j] = 1 + B[i - 1][j] + B[i][j - 1] - B[i - 1][j - 1]
                 W[i][j] = 0 + W[i - 1][j] + W[i][j - 1] - W[i - 1][j - 1]
 
+# 체스판으로 만들기 위해 다시 칠해야하는 정사각형 개수의 최솟값
 answer = 1e7
 
 for i in range(N-K+1):
@@ -33,5 +34,5 @@ for i in range(N-K+1):
         WW = W[i+K-1][j+K-1] - B[i-1][j+K-1] - B[i+K-1][j-1] + W[i-1][j-1]
         answer = min(answer, BB, WW)
 
-# 체스판으로 만들기 위해 다시 칠해야하는 정사각형 개수의 최솟값 출력
+# answer 출력
 print(answer)
