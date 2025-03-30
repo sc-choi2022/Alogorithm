@@ -5,6 +5,8 @@ def fill(n, ci, cj):
     if n == 1:
         stars[ci][cj] = '*'
         return
+    # 범위 값 L
+    L = 4 * n - 3
 
     for i in range(L):
         stars[cj][ci+i] = '*'
