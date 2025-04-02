@@ -5,7 +5,11 @@ def fish():
     return
 
 def move():
-    return 
+    return
 
 R, C, M = map(int, sys.stdin.readline().split())
 board = [[0]*C for _ in range(R)]
+
+for _ in range(M):
+    r, c, s, d, z = map(int, sys.stdin.readline().split())
+    
