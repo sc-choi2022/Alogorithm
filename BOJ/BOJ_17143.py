@@ -5,6 +5,12 @@ def fish():
     return
 
 def move():
+    # global board
+
+    tmp = [[0]*C for _ in range(R)]
+    for i in range(R):
+        for j in range(C):
+            if board[i][j]:
     return
 
 # 격자판의 크기 R, C, 상어의 수 M
