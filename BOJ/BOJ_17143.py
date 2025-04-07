@@ -10,10 +10,21 @@ def fish(fj):
     return 0
 
 def move():
-    # global board
-
-    tmp = [[0]*C for _ in range(R)]
     return
+
+def next(si, sj, spd, direct):
+    if direct == UP or direct == DOWN:
+        cycle = R * 2 - 2
+        if direct == UP:
+            spd += 2 * (R-1) - i
+        else:
+            spd += i
+
+        spd %= cycle
+        if spd >= R:
+            return (2*R-2-spd, sj, UP)
+        else:
+            return (spd, sj, DOWN)
 
 # 격자판의 크기 R, C, 상어의 수 M
 R, C, M = map(int, sys.stdin.readline().split())
