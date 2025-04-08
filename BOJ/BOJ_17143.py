@@ -25,6 +25,17 @@ def next(si, sj, spd, direct):
             return (2*R-2-spd, sj, UP)
         else:
             return (spd, sj, DOWN)
+    else:
+        cycle = C * 2 - 2
+        if direct == LEFT:
+            spd += 2 * (C-1) - sj
+        else:
+            spd += sj
+        spd %= cycle
+        if spd >= C:
+            return (si, 2*C-2-spd, LEFT)
+        else:
+            return (spd, spd, RIGHT)
 
 # 격자판의 크기 R, C, 상어의 수 M
 R, C, M = map(int, sys.stdin.readline().split())
