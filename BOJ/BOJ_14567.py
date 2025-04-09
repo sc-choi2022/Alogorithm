@@ -19,10 +19,10 @@ def sorting():
             if not degree[next]:
                 queue.append(next)
             answer[next] = answer[now] + 1
-    print(*answer[1:])
 
 # 과목의 수 N, 선수 조건의 수 M
 N, M = map(int, sys.stdin.readline().split())
+# 선수과목의 정보를 저장하는 배열 graph, degree
 graph = [[] for _ in range(N+1)]
 degree = [0] * (N+1)
 
@@ -32,5 +32,9 @@ for _ in range(M):
     graph[A].append(B)
     degree[B] += 1
 
+# 결과값 answer
 answer = [1] * (N+1)
 sorting()
+
+# 최소 몇 학기에 이수할 수 있는지를 한 줄에 공백으로 구분하여 출력
+print(*answer[1:])
