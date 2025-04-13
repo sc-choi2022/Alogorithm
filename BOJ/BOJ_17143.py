@@ -13,7 +13,7 @@ def move():
     return
 
 def next():
-    return 
+    return
 
 # 격자판의 크기 R, C, 상어의 수 M
 R, C, M = map(int, sys.stdin.readline().split())
@@ -24,3 +24,10 @@ for _ in range(M):
     r, c, s, d, z = map(int, sys.stdin.readline().split())
     r, c = r-1, c-1
     board[r][c] = (s, d, z)
+
+answer = 0
+for f in rnage(C):
+    answer += fish(f)
+    move()
+
+print(answer)
