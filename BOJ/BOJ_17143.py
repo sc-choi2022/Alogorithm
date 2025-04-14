@@ -10,6 +10,13 @@ def fish(fj):
     return 0
 
 def move():
+    global board
+    tmp = [[0]*C for _ in range(R)]
+
+    for mi in range(R):
+        for mj in range(C):
+            if board[mi][mj]:
+                return 
     return
 
 def next():
@@ -26,7 +33,8 @@ for _ in range(M):
     board[r][c] = (s, d, z)
 
 answer = 0
-for f in rnage(C):
+
+for f in range(C):
     answer += fish(f)
     move()
 
