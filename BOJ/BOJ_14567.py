@@ -2,23 +2,7 @@ from collections import deque
 import sys
 
 def sorting():
-    result = []
-    queue = deque()
-
-    for i in range(1, N+1):
-        if not degree[i]:
-            queue.append(i)
-            answer[i] = 1
-
-    for j in range(1, N+1):
-        now = queue.popleft()
-        result.append(now)
-
-        for next in graph[now]:
-            degree[next] -= 1
-            if not degree[next]:
-                queue.append(next)
-            answer[next] = answer[now] + 1
+    return 
 
 # 과목의 수 N, 선수 조건의 수 M
 N, M = map(int, sys.stdin.readline().split())
