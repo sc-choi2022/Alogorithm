@@ -1,7 +1,12 @@
+from copy import deepcopy
 import sys
 
 def turn():
-    return
+    tmp = deepcopy(A)
+
+    for ti in range(r-s-1, r+s):
+        for tj in range(c-s-1, c+s):
+            return 
 
 # 배열 A의 크기 N, M, 회전 연산의 개수 K
 N, M, K = map(int, sys.stdin.readline().split())
