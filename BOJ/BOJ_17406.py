@@ -5,10 +5,11 @@ def turn():
     tmp = deepcopy(A)
 
     for t in range(s):
-        si, sj = r-1+t, c-1+t
-        while True:
-            break
-    return 
+        si, sj = r-s+t-1, c-s+t-1
+        ei, ej = r+s-t-1, c+s-t-1
+
+        for di, dj in (1, 0), (0, 1), (-1, 0), (0, -1):
+            while True:
 
 # 배열 A의 크기 N, M, 회전 연산의 개수 K
 N, M, K = map(int, sys.stdin.readline().split())
