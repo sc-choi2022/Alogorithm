@@ -16,7 +16,9 @@ def move():
     for mi in range(R):
         for mj in range(C):
             if board[mi][mj]:
-                return 
+                ni, nj, nd = next(mi, mj, tmp[mi][mj][0], tmp[mi][mj][1])
+                if tmp[ni][nj]:
+                    return 
     return
 
 def next():
