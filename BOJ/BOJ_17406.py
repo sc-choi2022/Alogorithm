@@ -4,9 +4,9 @@ import sys
 def turn():
     tmp = deepcopy(A)
     si, sj = r-1, c-1
+    ei, ej = r+s-1, c+s-1
     for ii in range(s):
         ci, cj = si + ii, sj + jj
-        
 
 # 배열 A의 크기 N, M, 회전 연산의 개수 K
 N, M, K = map(int, sys.stdin.readline().split())
