@@ -6,9 +6,12 @@ def turn():
     si, sj = r-1, c-1
     ei, ej = r+s-1, c+s-1
     for ii in range(s):
-        ci, cj = si + ii, sj + jj
+        ci, cj = si + ii, sj + ii
+        fi, fj = ei - ii, ej - ii
         for di, dj in (0, 1), (1, 0), (0, -1), (-1, 0):
-            
+            ni, nj = ci+di, cj+dj
+            while True:
+                return 
 
 # 배열 A의 크기 N, M, 회전 연산의 개수 K
 N, M, K = map(int, sys.stdin.readline().split())
