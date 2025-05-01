@@ -10,8 +10,9 @@ def turn():
         fi, fj = ei - ii, ej - ii
         for di, dj in (0, 1), (1, 0), (0, -1), (-1, 0):
             ni, nj = ci+di, cj+dj
-            while True:
-                return 
+            while ni <= fi and nj <= fj:
+                tmp[ni][nj] = A[ci][cj]
+                ci, cj = ni, nj
 
 # 배열 A의 크기 N, M, 회전 연산의 개수 K
 N, M, K = map(int, sys.stdin.readline().split())
