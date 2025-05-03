@@ -9,10 +9,14 @@ def turn():
         ci, cj = si + ii, sj + ii
         fi, fj = ei - ii, ej - ii
         for di, dj in (0, 1), (1, 0), (0, -1), (-1, 0):
-            ni, nj = ci+di, cj+dj
-            while ni <= fi and nj <= fj:
+            ni, nj = si, sj
+            while ni < fi and nj < fj:
+                ni, nj = ci + di, cj + dj
                 tmp[ni][nj] = A[ci][cj]
                 ci, cj = ni, nj
+        si, sj = ni, nj
+    for t in tmp:
+        print(*t)
 
 # 배열 A의 크기 N, M, 회전 연산의 개수 K
 N, M, K = map(int, sys.stdin.readline().split())
@@ -22,6 +26,7 @@ A = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
 for _ in range(K):
     # 회전 연산의 세 정수 r, c, s
     r, c, s = map(int, sys.stdin.readline().split())
+    turn()
 
 
 answer = 1e8
