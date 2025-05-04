@@ -11,8 +11,8 @@ def turn():
     ei, ej = r+s, c+s
     for ii in range(s):
         # 시작범위 (ci, cj), 마지막범위 (fi, fj)
-        ci, cj = si + ii, sj + ii
-        fi, fj = ei - ii, ej - ii
+        ci, cj = si+ii, sj+ii
+        fi, fj = ei-ii, ej-ii
 
         i, j = ci, cj
         for di, dj in (0, 1), (1, 0), (0, -1), (-1, 0):
@@ -39,7 +39,7 @@ for _ in range(K):
     turn()
 
 # 배열 A의 값의 최솟값 answer
-answer = 1e8
+answer = int(1e8)
 
 for s in range(N):
     answer = min(answer, sum(A[s]))
