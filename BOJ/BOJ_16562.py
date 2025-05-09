@@ -1,10 +1,10 @@
 import sys
 
-def make(si):
-    for i in range(1, N+1):
-        if not visit[i]:
-
+def find(x):
     return
+
+def union(a, b):
+    return 
 
 # 학생 수 N, 친구관계 수 M, 가지고 있는 돈 K
 N, M, K = map(int, sys.stdin.readline().split())
