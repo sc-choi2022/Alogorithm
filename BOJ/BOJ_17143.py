@@ -18,7 +18,7 @@ def move():
             if board[mi][mj]:
                 ni, nj, nd = next(mi, mj, tmp[mi][mj][0], tmp[mi][mj][1])
                 if tmp[ni][nj]:
-                    return 
+                    return
     return
 
 def next():

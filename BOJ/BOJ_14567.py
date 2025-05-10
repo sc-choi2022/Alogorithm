@@ -4,6 +4,10 @@ import sys
 def sorting():
     queue = deque()
 
+    for i in range(N):
+        if not degree[i]:
+            queue.append(i)
+            answer[i] = 1
 
     for j in range(N):
         now = queue.popleft()
