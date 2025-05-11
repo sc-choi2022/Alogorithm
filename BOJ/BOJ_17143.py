@@ -12,13 +12,6 @@ def fish(fj):
 def move():
     global board
     tmp = [[0]*C for _ in range(R)]
-
-    for mi in range(R):
-        for mj in range(C):
-            if board[mi][mj]:
-                ni, nj, nd = next(mi, mj, tmp[mi][mj][0], tmp[mi][mj][1])
-                if tmp[ni][nj]:
-                    return
     return
 
 def next():
@@ -34,6 +27,7 @@ for _ in range(M):
     r, c = r-1, c-1
     board[r][c] = (s, d, z)
 
+# 낚시왕이 잡은 상어 크기의 합 answer 출력
 answer = 0
 
 for f in range(C):
