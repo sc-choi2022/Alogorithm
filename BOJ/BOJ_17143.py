@@ -1,14 +1,12 @@
 import sys
 sys.setrecursionlimit(10**8)
 
-def fish(fj):
-    for fi in range(R):
-        if board[fi][fj]:
-            x = board[fi][fj][2]
-            board[fi][fj] = 0
-            return x
+# 낚시
+def fish():
+    for fj in range(C):
     return 0
 
+# 상어 이동
 def move():
     global board
     tmp = [[0]*C for _ in range(R)]
