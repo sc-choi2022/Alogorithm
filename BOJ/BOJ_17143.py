@@ -8,6 +8,7 @@ def fish(fj):
             mass = board[fi][fj][2]
             board[fi][fj] = []
             return mass
+
 # 상어가 이동
 def move():
     tmp = [[[] for _ in range(C)] for _ in range(R)]
@@ -15,14 +16,15 @@ def move():
     for mi in range(R):
         for mj in range(C):
             if board[mi][mj]:
-                ms, md, mz = board[mi][mj]
+                # 상어의 속력 ms, 이동방향 md, 크기 mm
+                ms, md, mm = board[mi][mj]
+                # 상어의 시작 위치 (si, sj), 이동방향 (di, dj)
                 si, sj = mi, mj
                 di, dj = direction[md]
-                while True:
-                    # 배수 확인 필요
-                    ni, nj = si+ms*di, sj+ms*dj
-                    if 0 <= ni < R and 0 <= nj < C:
-                        
+                # 상어의 움직임 횟수 cnt
+                cnt = 0
+
+
     return
 
 # 격자판의 크기 R, C, 상어의 수 M
