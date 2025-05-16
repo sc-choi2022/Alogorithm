@@ -1,47 +1,48 @@
 import sys
 
-# 낚시왕이 낚시
-def fish(fj):
-    for fi in range(R):
-        if board[fi][fj]:
-            mass = board[fi][fj][2]
-            board[fi][fj] = []
-            return mass
-    return 0
-
-# 상어가 이동
-def move():
-    global board
-    tmp = [[[] for _ in range(C)] for _ in range(R)]
-
-    for mi in range(R):
-        for mj in range(C):
-            if board[mi][mj]:
-                # 상어의 속력 ms, 이동방향 md, 크기 mm
-                ms, md, mm = board[mi][mj]
-                # 상어의 시작 위치 (si, sj), 이동방향 (di, dj)
-                si, sj = mi, mj
-                di, dj = direction[md]
-                # 상어의 움직임 횟수 cnt
-                cnt = 0
-
-                while cnt != ms:
-                    ni, nj = si+di, sj+dj
-
-                    if 0 <= ni < R and 0 <= nj < C:
-                        cnt += 1
-                        si, sj = ni, nj
-                    else:
-                        di *= -1
-                        dj *= -1
-                if tmp[si][sj] and mj < tmp[si][sj][2]:
-                    continue
-                else:
-                    tmp[si][sj] = (ms, number[(di, dj)], mm)
-    board = tmp
+# # 낚시왕이 낚시
+# def fish(fj):
+#     for fi in range(R):
+#         if board[fi][fj]:
+#             mass = board[fi][fj][2]
+#             board[fi][fj] = []
+#             return mass
+#     return 0
+#
+# # 상어가 이동
+# def move():
+#     global board
+#     tmp = [[[] for _ in range(C)] for _ in range(R)]
+#
+#     for mi in range(R):
+#         for mj in range(C):
+#             if board[mi][mj]:
+#                 # 상어의 속력 ms, 이동방향 md, 크기 mm
+#                 ms, md, mm = board[mi][mj]
+#                 # 상어의 시작 위치 (si, sj), 이동방향 (di, dj)
+#                 si, sj = mi, mj
+#                 di, dj = direction[md]
+#                 # 상어의 움직임 횟수 cnt
+#                 cnt = 0
+#
+#                 while cnt != ms:
+#                     ni, nj = si+di, sj+dj
+#
+#                     if 0 <= ni < R and 0 <= nj < C:
+#                         cnt += 1
+#                         si, sj = ni, nj
+#                     else:
+#                         di *= -1
+#                         dj *= -1
+#                 if tmp[si][sj] and mj < tmp[si][sj][2]:
+#                     continue
+#                 else:
+#                     tmp[si][sj] = (ms, number[(di, dj)], mm)
+#     board = tmp
 
 # 격자판의 크기 R, C, 상어의 수 M
 R, C, M = map(int, sys.stdin.readline().split())
+board = [list(map(int, sys.stdin.readline().split())) for _ in range(M)]
 
 if M:
     # 격자판 board
