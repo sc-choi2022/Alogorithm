@@ -44,12 +44,14 @@ import sys
 R, C, M = map(int, sys.stdin.readline().split())
 board = [list(map(int, sys.stdin.readline().split())) for _ in range(M)]
 
-if M:
-    # 격자판 board
-    board = [[[] for _ in range(C)] for _ in range(R)]
+# 격자판 board
+board = [[0] * C for _ in range(R)]
 
-    direction = {1:(-1, 0), 2:(1, 0), 3:(0, 1), 4:(0, -1)}
-    number = {(-1, 0):1, (1, 0):2, (0, 1):3, (0, -1):4}
+direction = {1: (-1, 0), 2: (1, 0), 3: (0, 1), 4: (0, -1)}
+number = {(-1, 0): 1, (1, 0): 2, (0, 1): 3, (0, -1): 4}
+
+if M:
+
 
     for _ in range(M):
         # 상어의 정보: 위치(r, c), 속력 s, 이동방향 d, 크기 z
