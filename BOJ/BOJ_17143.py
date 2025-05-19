@@ -16,9 +16,45 @@ for _ in range(M):
 # 낚시왕이 잡은 상어 크기의 합 answer 출력
 answer = 0
 
-for i in range(C):
-    for j in range(R):
-        if board[j][i]:
-            answer += board[j][i][2]
-            board[j][i] = 0
+for j in range(C):
+    for i in range(R):
+        if board[i][j]:
+            answer += board[i][j][2]
+            board[i][j] = 0
             break
+    move = [[0]*C for _ in range(R)]
+    for ii in range(R):
+        for jj in range(C):
+            # 상어가 있는 경우
+            if board[ii][jj]:
+                ss, dd, zz = board[ii][jj]
+
+                ni, nj = ii, jj
+                # 상하로 움직이는 상어인 경우
+                if dd == 0 or dd == 1:
+                    cnt = ss%(2*(R-1))
+                    while cnt:
+                        if nj == 0:
+                            dd = 1
+                        if nj == R-1:
+                            dd = 0
+                        nj += direction[dd][0]
+                        cnt -= 1
+                # 좌우로 움직이는 상어인 경우
+                else:
+                    cnt = ss%(2*(C-1))
+                    while cnt:
+                        if ni == 0:
+                            dd = 2
+                        if ni == C-1:
+                            dd = 3
+                        ni += direction[dd][1]
+                        cnt -= 1
+                # 상어 위치 지정
+                # 빈칸이 아니거나 새로운 상어가 더 큰 경우
+
+                if move[ni][nj] == 0 or(move[ni][nj] and move[ni][nj][2] < zz):
+                    move[ni][nj] = (ss, dd, zz)
+    board = move
+
+print(answer)
