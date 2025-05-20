@@ -34,26 +34,27 @@ for j in range(C):
                 if dd == 0 or dd == 1:
                     cnt = ss%(2*(R-1))
                     while cnt:
-                        if nj == 0:
+                        if ni == 0:
                             dd = 1
-                        if nj == R-1:
+                        if ni == R-1:
                             dd = 0
-                        nj += direction[dd][0]
+                        ni += direction[dd][0]
                         cnt -= 1
                 # 좌우로 움직이는 상어인 경우
                 else:
                     cnt = ss%(2*(C-1))
                     while cnt:
-                        if ni == 0:
+                        if nj == 0:
                             dd = 2
-                        if ni == C-1:
+                        if nj == C-1:
                             dd = 3
-                        ni += direction[dd][1]
+                        nj += direction[dd][1]
                         cnt -= 1
                 # 상어 위치 지정
                 # 빈칸이 아니거나 새로운 상어가 더 큰 경우
-
-                if move[ni][nj] == 0 or(move[ni][nj] and move[ni][nj][2] < zz):
+                if move[ni][nj] == 0:
+                    move[ni][nj] = (ss, dd, zz)
+                elif move[ni][nj][2] < zz:
                     move[ni][nj] = (ss, dd, zz)
     board = move
 
