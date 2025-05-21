@@ -4,7 +4,7 @@ import sys
 R, C, M = map(int, sys.stdin.readline().split())
 board = [[0]*C for _ in range(R)]
 
-direction = [(-1, 0), (1, 0), (0, 1), (0, -1)]
+direction = [(0, 0), (-1, 0), (1, 0), (0, 1), (0, -1)]
 
 for _ in range(M):
     # 상어의 정보: 위치(r, c), 속력 s, 이동방향 d, 크기 z
