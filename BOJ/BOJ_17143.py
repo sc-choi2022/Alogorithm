@@ -2,8 +2,10 @@ import sys
 
 # 격자판의 크기 R, C, 상어의 수 M
 R, C, M = map(int, sys.stdin.readline().split())
+# 상어의 정보를 저장하는 배열 board
 board = [[0]*C for _ in range(R)]
 
+# 방향을 저장하는 배열 direction
 direction = [(-1, 0), (1, 0), (0, 1), (0, -1)]
 
 for _ in range(M):
@@ -17,10 +19,12 @@ answer = 0
 
 for j in range(C):
     for i in range(R):
+        # 상어가 있는 경우
         if board[i][j]:
             answer += board[i][j][2]
             board[i][j] = 0
             break
+    # 상어의 다음 위치를 저장하는 배열 move
     move = [[0]*C for _ in range(R)]
     for ii in range(R):
         for jj in range(C):
@@ -57,4 +61,5 @@ for j in range(C):
     # 상어의 위치 정보 갱신
     board = move
 
+# 낚시왕이 잡은 상어 크기의 합을 출력
 print(answer)
