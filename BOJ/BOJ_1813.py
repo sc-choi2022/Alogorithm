@@ -7,6 +7,7 @@ words = list(map(int, sys.stdin.readline().split()))
 answer = -1
 
 for i in range(N+1):
+    # i의 개수 cnt
     cnt = words.count(i)
 
     if cnt == i:
