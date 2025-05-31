@@ -1,11 +1,61 @@
 import sys
 
+# 낚시왕이 낚시
+def fish(fj):
+    global answer
+
+    for fi in range(R):
+        if board[fi][fj]:
+            answer += board[fi][fj][2]
+            board[fi][fj] = 0
+            return
+
+# 상어가 이동
+def move():
+    global board
+    tmp = [[0]*C for _ in range(R)]
+
+    for mi in range(R):
+        for mj in range(C):
+            if board[mi][mj]:
+                # 상어의 속력 ms, 이동방향 md, 크기 mm
+                ms, md, mm = board[mi][mj]
+                ni, nj = mi, mj
+
+                # 방향이 위, 아래인 경우
+                if md == 0 or md == 1:
+                    cnt = ms%(2*(R-1))
+                    while cnt:
+                        if ni == 0:
+                            md = 1
+                        elif ni == R-1:
+                            md = 0
+                        ni += direction[md][0]
+                        cnt -= 1
+                # 방향이 왼쪽, 오른쪽인 경우
+                else:
+                    cnt = ms%(2*(C-1))
+                    while cnt:
+                        if nj == 0:
+                            md = 2
+                        elif nj == C-1:
+                            md = 3
+                        nj += direction[md][1]
+                        cnt -= 1
+                # 상어 위치 지정
+                # 빈칸이 아니거나 새로운 상어가 더 큰 경우
+                if tmp[ni][nj] == 0 or tmp[ni][nj][2] < mm:
+                    tmp[ni][nj] = (ms, md, mm)
+
+    # 상어의 위치 정보 갱신
+    board = tmp
+
 # 격자판의 크기 R, C, 상어의 수 M
 R, C, M = map(int, sys.stdin.readline().split())
-# 상어의 정보를 저장하는 배열 board
-board = [[0]*C for _ in range(R)]
 
-# 방향을 저장하는 배열 direction
+# 격자판 board
+board = [[[] for _ in range(C)] for _ in range(R)]
+
 direction = [(-1, 0), (1, 0), (0, 1), (0, -1)]
 
 for _ in range(M):
@@ -17,49 +67,9 @@ for _ in range(M):
 # 낚시왕이 잡은 상어 크기의 합 answer 출력
 answer = 0
 
-for j in range(C):
-    for i in range(R):
-        # 상어가 있는 경우
-        if board[i][j]:
-            answer += board[i][j][2]
-            board[i][j] = 0
-            break
-    # 상어의 다음 위치를 저장하는 배열 move
-    move = [[0]*C for _ in range(R)]
-    for ii in range(R):
-        for jj in range(C):
-            # 상어가 있는 경우
-            if board[ii][jj]:
-                ss, dd, zz = board[ii][jj]
-                ni, nj = ii, jj
-                # 상하로 움직이는 상어인 경우
-                if dd == 0 or dd == 1:
-                    cnt = ss%(2*(R-1))
-                    while cnt:
-                        if ni == 0:
-                            dd = 1
-                        if ni == R-1:
-                            dd = 0
-                        ni += direction[dd][0]
-                        cnt -= 1
-                # 좌우로 움직이는 상어인 경우
-                else:
-                    cnt = ss%(2*(C-1))
-                    while cnt:
-                        if nj == 0:
-                            dd = 2
-                        if nj == C-1:
-                            dd = 3
-                        nj += direction[dd][1]
-                        cnt -= 1
-                # 상어 위치 지정
-                # 빈칸이 아니거나 새로운 상어가 더 큰 경우
-                if move[ni][nj] == 0:
-                    move[ni][nj] = (ss, dd, zz)
-                elif move[ni][nj][2] < zz:
-                    move[ni][nj] = (ss, dd, zz)
-    # 상어의 위치 정보 갱신
-    board = move
+for f in range(C):
+    fish(f)
+    move()
 
 # 낚시왕이 잡은 상어 크기의 합을 출력
 print(answer)
