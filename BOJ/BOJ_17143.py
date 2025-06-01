@@ -54,7 +54,7 @@ def move():
 R, C, M = map(int, sys.stdin.readline().split())
 
 # 격자판 board
-board = [[[] for _ in range(C)] for _ in range(R)]
+board = [[0]*C for _ in range(R)]
 
 direction = [(-1, 0), (1, 0), (0, 1), (0, -1)]
 
