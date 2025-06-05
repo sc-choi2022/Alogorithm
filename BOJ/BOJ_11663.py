@@ -1,8 +1,14 @@
 import sys
 
-def find_start():
-
-    return
+def find_start(target):
+    start, end = 0, N-1
+    while start <= end:
+        mid = (start+end)//2
+        if line[mid] < target:
+            start = mid + 1
+        else:
+            end = mid - 1
+    return start
 
 def find_end():
     return
