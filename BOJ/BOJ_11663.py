@@ -10,8 +10,15 @@ def find_start(target):
             end = mid - 1
     return start
 
-def find_end():
-    return
+def find_end(target):
+    start, end = 0, N-1
+    while start <= end:
+        mid = (start + end) // 2
+        if line[mid] <= target:
+            start = mid + 1
+        else:
+            end = mid - 1
+    return start
 
 # 점의 개수 N, 선분의 개수 M
 N, M = map(int, sys.stdin.readline().split())
