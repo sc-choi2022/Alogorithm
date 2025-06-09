@@ -20,10 +20,14 @@ for i in range(T):
         heappush(height, -1*(magic//2))
         cnt += 1
 
+# 뿅망치의 최소 사용 횟수 혹은 키가 가장 큰 거인의 키
 result = -1*heappop(height)
+
+# 모든 거인이 센티보다 키가 작도록 할 수 있는 경우
 if result >= H:
     print('NO')
     print(result)
+
 else:
     print('YES')
     print(cnt)
