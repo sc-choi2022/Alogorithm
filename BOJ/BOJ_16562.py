@@ -1,9 +1,13 @@
 import sys
 
 def find(x):
-    return
+    if money[x] == x:
+        return x
+    money[x] = find(money[x])
+    return money[x]
 
 def union(a, b):
+    a, b = find(a), find(b)
     return
 
 # 학생 수 N, 친구관계 수 M, 가지고 있는 돈 K
