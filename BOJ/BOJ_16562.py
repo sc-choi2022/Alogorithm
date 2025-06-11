@@ -8,7 +8,11 @@ def find(x):
 
 def union(a, b):
     a, b = find(a), find(b)
-    return
+
+    if money[a] < money[b]:
+        friends[b] = a
+    else:
+        friends[a] = b
 
 # 학생 수 N, 친구관계 수 M, 가지고 있는 돈 K
 N, M, K = map(int, sys.stdin.readline().split())
