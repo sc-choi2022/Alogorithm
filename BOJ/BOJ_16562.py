@@ -23,9 +23,7 @@ friends = [[] for _ in range(N+1)]
 
 for _ in range(M):
     a, m = map(int, sys.stdin.readline().split())
+    union(a, m)
 
 # 친구로 만드는 최소비용 answer
 answer = 1e9
-
-visit = [0] * (N+1)
-visit[0] = 1
