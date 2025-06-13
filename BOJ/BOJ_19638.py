@@ -1,12 +1,15 @@
 from heapq import heappush, heappop
 import sys
 
+# 거인의 인구수 N, 센티의 키 H, 뿅망치의 횟수 제한 T
 N, H, T = map(int, sys.stdin.readline().split())
 
+# 거인의 키를 저장 height
 height = []
 for _ in range(N):
     heappush(height, -(int(sys.stdin.readline())))
 
+# 뿅망치의 사용 횟수 cnt
 cnt = 0
 
 for i in range(T):
