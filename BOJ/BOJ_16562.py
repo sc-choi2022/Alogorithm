@@ -31,3 +31,8 @@ answer = 0
 for i in range(1, N+1):
     if find(i) not in friends:
         answer += money[friends[i]]
+
+if answer > K:
+    print('Oh no')
+else:
+    print(answer)
