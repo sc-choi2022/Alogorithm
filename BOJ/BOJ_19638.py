@@ -15,22 +15,20 @@ cnt = 0
 for i in range(T):
     magic = -1*heappop(height)
 
-    if magic == 1:
-        heappush(height, -1)
-    elif magic < H:
-        heappush(height, -1*magic)
-    else:
+    if magic >= H:
         heappush(height, -1*(magic//2))
         cnt += 1
+    else:
+        heappush(height, -1*magic)
 
 # 뿅망치의 최소 사용 횟수 혹은 키가 가장 큰 거인의 키
 result = -1*heappop(height)
 
-# 모든 거인이 센티보다 키가 작도록 할 수 있는 경우
+# 뿅망치 횟수를 사용 후 세티보다 키가 큰 거인이 있는 경우
 if result >= H:
     print('NO')
     print(result)
-
+# 모든 거인이 센티보다 키가 작도록 할 수 있는 경우
 else:
     print('YES')
     print(cnt)
