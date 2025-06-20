@@ -19,11 +19,13 @@ for _ in range(T):
 
     if magic == 1:
         heappush(heights, -1)
+        break
     elif magic >= H:
         heappush(heights, -1*(magic//2))
         cnt += 1
     else:
         heappush(heights, -1*magic)
+        break
 
 # 뿅망치 사용 후 가장 큰 거인의 키 giants
 giants = -1*heappop(heights)
