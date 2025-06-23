@@ -25,13 +25,13 @@ for i in range(N):
                 B[i][j] = 1 + B[i-1][j] + B[i][j-1] - B[i-1][j-1]
                 W[i][j] = 0 + W[i-1][j] + W[i][j-1] - W[i-1][j-1]
 
-# 체스판으로 만들기 위해 다시 칠해야하는 정사각형 개수의 최솟값
+# 체스판으로 만들기 위해 다시 칠해야하는 정사각형 개수의 최솟값 answer
 answer = 1e7
 
 for ii in range(N-K+1):
     for jj in range(M-K+1):
         BB = B[ii+K-1][jj+K-1] - B[ii-1][jj+K-1] - B[ii+K-1][jj-1] + B[ii-1][jj-1]
-        WW = W[ii+K-1][jj+K-1] - B[ii-1][jj+K-1] - B[ii+K-1][jj-1] + W[ii-1][jj-1]
+        WW = W[ii+K-1][jj+K-1] - W[ii-1][jj+K-1] - W[ii+K-1][jj-1] + W[ii-1][jj-1]
         answer = min(answer, BB, WW)
 
 # answer 출력
