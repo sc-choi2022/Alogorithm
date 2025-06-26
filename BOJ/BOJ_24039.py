@@ -1,6 +1,8 @@
 import sys
 
+# 주어지는 수 N
 N = int(sys.stdin.readline())
+# 소수의 내용을 저장하는 배열 prime
 prime = [1 for _ in range(N+1)]
 prime_number = []
 start = 0
