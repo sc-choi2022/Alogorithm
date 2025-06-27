@@ -26,10 +26,3 @@ N, M = map(int, sys.stdin.readline().split())
 dots = sorted(list(map(int, sys.stdin.readline().split())))
 # 선분의 시작, 끝 점을 저장하는 배열 lines
 lines = [list(map(int, sys.stdin.readline().split())) for _ in range(M)]
-
-for line in lines:
-    start, end = line
-    start_idx = find_start(start)
-    end_idx = find_end(end)
-
-    print(end_idx - start_idx)
