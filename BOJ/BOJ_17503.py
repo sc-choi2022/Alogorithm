@@ -13,4 +13,6 @@ for b in beer:
     if len(like) < N:
         heappush(like, b)
         answer += b[0]
-        
+        if len(like) == N:
+            if answer >= M:
+                
