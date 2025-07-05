@@ -23,4 +23,6 @@ like = []
 
 answer = 0
 
-test()
+# 최솟값을 출력
+# 조건을 만족시킬 수 없으면 -1 출력
+print(test())
