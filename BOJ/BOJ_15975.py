@@ -17,4 +17,9 @@ for i in range(N):
         if dots[i][0] == dots[i-1][0]:
             result += result[i][1] - result[i-1][1]
     else:
-        continue
+        if dots[i][0] == dots[i+1][0] and dots[i][0] == dots[i-1][0]:
+            if (dots[i+1][1]-dots[i][1] > dots[i][1]-dots[i-1][1]):
+                result += dots[i][1] - result[i-1][1]
+            else:
+                result += dots[i+1][1] - result[i][1]
+        elif dots[i][0] == dots[i+1][0]:
