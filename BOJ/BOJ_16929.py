@@ -7,6 +7,8 @@ def cycle(ci, cj, d):
         if L[0] == L[2] and L[1] == L[3]:
             answer = 'Yes'
             return
+    for dd in (0, 1):
+        ni, nj = D[dd]
 
 # 게임판의 크기 N, M
 N, M = map(int, sys.stdin.readline().split())
