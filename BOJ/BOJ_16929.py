@@ -8,7 +8,8 @@ def cycle(ci, cj, d):
             answer = 'Yes'
             return
     for dd in (0, 1):
-        ni, nj = D[dd]
+        di, dj = D[d + dd]
+        ni, nj = ci+di, cj+dj
 
 # 게임판의 크기 N, M
 N, M = map(int, sys.stdin.readline().split())
