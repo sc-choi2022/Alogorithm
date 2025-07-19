@@ -10,6 +10,8 @@ def cycle(ci, cj, d):
     for dd in (0, 1):
         di, dj = D[d + dd]
         ni, nj = ci+di, cj+dj
+        if 0 <= ni < N and 0 <= nj < M and dots[ni][nj] == dots[ci][cj]:
+            cycle(ni, nj, d+dd)
 
 # 게임판의 크기 N, M
 N, M = map(int, sys.stdin.readline().split())
