@@ -8,10 +8,13 @@ def cycle(ci, cj, d):
             answer = 'Yes'
             return
     for dd in (0, 1):
-        di, dj = D[d + dd]
-        ni, nj = ci+di, cj+dj
-        if 0 <= ni < N and 0 <= nj < M and dots[ni][nj] == dots[ci][cj]:
-            cycle(ni, nj, d+dd)
+        if d+dd <= 3:
+            di, dj = D[d + dd]
+            ni, nj = ci+di, cj+dj
+            if 0 <= ni < N and 0 <= nj < M and dots[ni][nj] == dots[ci][cj]:
+                L[d+dd] += 1
+                cycle(ni, nj, d+dd)
+                L[d+dd] -= 1
 
 # 게임판의 크기 N, M
 N, M = map(int, sys.stdin.readline().split())
@@ -33,4 +36,5 @@ for i in range(N-1):
         if answer == 'Yes':
             print(answer)
             sys.exit()
+
 print(answer)
