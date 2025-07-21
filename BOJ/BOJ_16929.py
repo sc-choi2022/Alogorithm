@@ -4,17 +4,17 @@ def cycle(ci, cj, d):
     global answer
 
     if (ci, cj, d) == (si, sj, 3):
-        if L[0] == L[2] and L[1] == L[3]:
-            answer = 'Yes'
-            return
+        # if L[0] == L[2] and L[1] == L[3]:
+        answer = 'Yes'
+        return
     for dd in (0, 1):
         if d+dd <= 3:
             di, dj = D[d + dd]
             ni, nj = ci+di, cj+dj
             if 0 <= ni < N and 0 <= nj < M and dots[ni][nj] == dots[ci][cj]:
-                L[d+dd] += 1
+                # L[d+dd] += 1
                 cycle(ni, nj, d+dd)
-                L[d+dd] -= 1
+                # L[d+dd] -= 1
 
 # 게임판의 크기 N, M
 N, M = map(int, sys.stdin.readline().split())
@@ -22,7 +22,7 @@ N, M = map(int, sys.stdin.readline().split())
 dots = [list(sys.stdin.readline().rstrip()) for _ in range(N)]
 
 # 방향 칸수를 저장하는 배열 L
-L = [0] * 4
+# L = [0] * 4
 # 방향을 저장하는 딕셔너리 D
 D = {0: (0, 1), 1: (1, 0), 2: (0, -1), 3: (-1, 0)}
 
