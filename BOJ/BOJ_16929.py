@@ -1,40 +1,46 @@
 import sys
 
-def cycle(ci, cj, d):
-    global answer
+def start(ii):
+    global sj
 
-    if (ci, cj, d) == (si, sj, 3):
-        # if L[0] == L[2] and L[1] == L[3]:
-        answer = 'Yes'
-        return
-    for dd in (0, 1):
-        if d+dd <= 3:
-            di, dj = D[d + dd]
-            ni, nj = ci+di, cj+dj
-            if 0 <= ni < N and 0 <= nj < M and dots[ni][nj] == dots[ci][cj]:
-                # L[d+dd] += 1
-                cycle(ni, nj, d+dd)
-                # L[d+dd] -= 1
+    for jj in range(M):
+        sj = jj
+
+        for dd in range(4):
+            ddi, ddj = D[dd]
+            nni, nnj = si+ddi, sj+ddj
+            if 0 <= nni < N and 0 <= nnj < M and dots[si][sj] == dots[nni][nnj]:
+                if cycle(nni, nnj):
+                    return True
+    return False
+
+def cycle(ci, cj):
+    if (ci, cj) == (si, sj):
+        return True
+
+    for dd in range(4):
+        di, dj = D[dd]
+        ni, nj = ci+di, cj+dj
+        if 0 <= ni < N and 0 <= nj < M and not visit[ni][nj] and dots[ni][nj] == dots[ci][cj]:
+            visit[ni][nj] = 1
+            cycle(ni, nj)
+            visit[ni][nj] = 0
+    return False
 
 # 게임판의 크기 N, M
 N, M = map(int, sys.stdin.readline().split())
 # 게이판의 점의 색을 저장하는 배열 dots
 dots = [list(sys.stdin.readline().rstrip()) for _ in range(N)]
+visit = [[0]*M for _ in range(N)]
 
-# 방향 칸수를 저장하는 배열 L
-# L = [0] * 4
 # 방향을 저장하는 딕셔너리 D
 D = {0: (0, 1), 1: (1, 0), 2: (0, -1), 3: (-1, 0)}
-
-answer = 'No'
-
+si, sj = 0, 0
 for i in range(N-1):
-    for j in range(M-1):
-        si, sj = i, j
-        cycle(i, j, 0)
+    si = i
 
-        if answer == 'Yes':
-            print(answer)
-            sys.exit()
-
-print(answer)
+    if start(si):
+        print('Yes')
+        break
+else:
+    print('No')
