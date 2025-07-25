@@ -5,16 +5,18 @@ def solve():
     for si in range(N):
         for sj in range(M):
             visit[si][sj] = 1
-            dfs(si, sj, 1)
+            dfs(si, sj, 0, 1)
             visit[si][sj] = 0
 
             if answer == 'Yes':
                 return
 
-def dfs(ci, cj, cnt):
+def dfs(ci, cj, dn, cnt):
     global answer
 
     for d in range(4):
+        if (dn-2)%4 == d:
+            continue
         di, dj = D[d]
         ni, nj = ci+di, cj+dj
         if 0 <= ni < N and 0 <= nj < M and dots[ni][nj] == dots[ci][cj]:
@@ -23,7 +25,7 @@ def dfs(ci, cj, cnt):
                 return
             if not visit[ni][nj]:
                 visit[ni][nj] = 1
-                dfs(ni, nj, cnt+1)
+                dfs(ni, nj, d, cnt+1)
                 visit[ni][nj] = 0
 
 
