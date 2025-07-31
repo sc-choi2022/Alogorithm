@@ -1,12 +1,13 @@
 import sys
 
 def solve():
-    global si, sj, answer
-    for si in range(N):
-        for sj in range(M):
-            visit[si][sj] = 1
-            dfs(si, sj, 0, 1)
-            visit[si][sj] = 0
+    global si, sj
+    for i in range(N):
+        for j in range(M):
+            si, sj = i, j
+            visit[i][j] = 1
+            dfs(i, j, 0, 1)
+            visit[i][j] = 0
 
             if answer == 'Yes':
                 return
