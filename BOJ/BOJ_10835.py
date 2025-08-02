@@ -10,5 +10,7 @@ dp = [0] * N
 
 for i in range(N):
     for j in range(N):
-        if A[i] == B[j]:
-            dp[i][j] = 1
+        if A[i] < B[j]:
+            dp[i][j] += B[j]
+        else:
+            
