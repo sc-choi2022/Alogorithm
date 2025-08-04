@@ -1,5 +1,8 @@
 import sys
 
+def dfs():
+    return
+
 # 한 더미의 카드의 개수 N
 N = int(sys.stdin.readline())
 
@@ -8,7 +11,5 @@ B = list(map(int, sys.stdin.readline().split()))
 
 dp = [[0]*N for _ in range(N)]
 
-for i in range(N):
-    for j in range(N):
-        if A[i] < B[j]:
-            dp[i][j] += B[j]
+dfs(0,0)
+print(dp[0][0])
