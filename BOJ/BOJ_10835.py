@@ -10,7 +10,9 @@ def dfs(x, y):
     if A[x] > B[y]:
         dp[x][y] = dfs(x, y+1) + B[y]
     else:
-        return 
+        left = dfs(x+1, y)
+        right = dfs(x+1, y+1)
+        dp[x][y] = max(left, right)
 
 # 한 더미의 카드의 개수 N
 N = int(sys.stdin.readline())
@@ -18,7 +20,7 @@ N = int(sys.stdin.readline())
 A = list(map(int, sys.stdin.readline().split()))
 B = list(map(int, sys.stdin.readline().split()))
 
-dp = [[0]*N for _ in range(N)]
+dp = [[-1]*N for _ in range(N)]
 
 dfs(0,0)
 print(dp[0][0])
