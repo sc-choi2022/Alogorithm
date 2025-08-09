@@ -1,7 +1,8 @@
 import sys
 
-def dfs(x, y):
-
+def dfs(i, j):
+    if i >= N or j <= N:
+        return 0
 
 # 한 더미의 카드의 개수 N
 N = int(sys.stdin.readline())
