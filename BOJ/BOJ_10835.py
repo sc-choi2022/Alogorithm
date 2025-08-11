@@ -9,6 +9,9 @@ def dfs(i, j):
 
     if A[i] > B[j]:
         dp[i][j] = dfs(i, j+1) + B[j]
+    else:
+        left = dfs(i+1, j)
+        right = dfs(i+1, j+1)
 
 # 한 더미의 카드의 개수 N
 N = int(sys.stdin.readline())
