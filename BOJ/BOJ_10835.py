@@ -12,6 +12,7 @@ def dfs(i, j):
     else:
         left = dfs(i+1, j)
         right = dfs(i+1, j+1)
+        dp[i][j] = max(left, right)
 
 # 한 더미의 카드의 개수 N
 N = int(sys.stdin.readline())
