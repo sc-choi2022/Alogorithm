@@ -7,8 +7,10 @@ def dfs(i, j):
     if dp[i][j] != -1:
         return dp[i][j]
 
+    # 오른쪽 버리기
     if A[i] > B[j]:
         dp[i][j] = dfs(i, j+1) + B[j]
+    # 왼쪽 버리기
     else:
         left = dfs(i+1, j)
         right = dfs(i+1, j+1)
