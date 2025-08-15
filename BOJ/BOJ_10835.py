@@ -1,4 +1,5 @@
 import sys
+sys.setrecursionlimit(10**6)
 
 def dfs(i, j):
     if i >= N or j <= N:
