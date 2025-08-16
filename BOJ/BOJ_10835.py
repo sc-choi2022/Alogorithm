@@ -2,20 +2,7 @@ import sys
 sys.setrecursionlimit(10**6)
 
 def dfs(i, j):
-    if i >= N or j <= N:
-        return 0
-
-    if dp[i][j] != -1:
-        return dp[i][j]
-
-    # 오른쪽 버리기
-    if A[i] > B[j]:
-        dp[i][j] = dfs(i, j+1) + B[j]
-    # 왼쪽 버리기
-    else:
-        left = dfs(i+1, j)
-        right = dfs(i+1, j+1)
-        dp[i][j] = max(left, right)
+    return 
 
 # 한 더미의 카드의 개수 N
 N = int(sys.stdin.readline())
