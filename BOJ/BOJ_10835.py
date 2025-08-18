@@ -1,4 +1,6 @@
 import sys
+
+# DFS
 sys.setrecursionlimit(10**6)
 
 def dfs(i, j):
@@ -27,3 +29,5 @@ B = list(map(int, sys.stdin.readline().split()))
 dp = [[-1]*N for _ in range(N)]
 
 print(dfs(0, 0))
+
+# DP
