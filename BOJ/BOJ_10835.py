@@ -26,8 +26,12 @@ N = int(sys.stdin.readline())
 A = list(map(int, sys.stdin.readline().split()))
 B = list(map(int, sys.stdin.readline().split()))
 
-dp = [[-1]*N for _ in range(N)]
-
 print(dfs(0, 0))
 
 # DP
+# 한 더미의 카드의 개수 N
+N = int(sys.stdin.readline())
+
+A = list(map(int, sys.stdin.readline().split()))
+B = list(map(int, sys.stdin.readline().split()))
+dp = [[-1]*N for _ in range(N)]
