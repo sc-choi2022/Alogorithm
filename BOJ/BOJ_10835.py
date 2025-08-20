@@ -35,3 +35,9 @@ N = int(sys.stdin.readline())
 A = list(map(int, sys.stdin.readline().split()))
 B = list(map(int, sys.stdin.readline().split()))
 dp = [[-1]*N for _ in range(N)]
+dp[0][0] = 0
+
+for i in range(N):
+    for j in range(N):
+        if dp[i][j] == -1:
+            
