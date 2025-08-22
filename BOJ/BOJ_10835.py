@@ -44,4 +44,7 @@ for i in range(N):
             continue
         if dp[i+1][j] < dp[i][j]:
             dp[i+1][j] = dp[i][j]
-        
+        if dp[i+1][j+1] < dp[i][j]:
+            dp[i+1][j+1] = dp[i][j]
+        if B[j] < A[i] and dp[i][j+1] < dp[i][j] + B[j]:
+            dp[i][j+1] = dp[i][j] + B[j]
