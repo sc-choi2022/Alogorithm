@@ -34,7 +34,7 @@ N = int(sys.stdin.readline())
 
 A = list(map(int, sys.stdin.readline().split()))
 B = list(map(int, sys.stdin.readline().split()))
-dp = [[-1]*N for _ in range(N)]
+dp = [[-1]*(N+1) for _ in range(N+1)]
 dp[0][0] = 0
 
 for i in range(N):
@@ -48,3 +48,8 @@ for i in range(N):
             dp[i+1][j+1] = dp[i][j]
         if B[j] < A[i] and dp[i][j+1] < dp[i][j] + B[j]:
             dp[i][j+1] = dp[i][j] + B[j]
+
+answer = dp[N][N]
+for ni in range(N):
+    answer = max(answer, dp[N][i], dp[i][N])
+print(answer)
