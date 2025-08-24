@@ -42,13 +42,17 @@ for i in range(N):
         if dp[i][j] == -1:
             dp[i][j+1] = -1
             continue
+        # 왼쪽 카드만 버리는 경우
         if dp[i+1][j] < dp[i][j]:
             dp[i+1][j] = dp[i][j]
+        # 두 카드 모두 버리는 경우
         if dp[i+1][j+1] < dp[i][j]:
             dp[i+1][j+1] = dp[i][j]
+        # 오른쪽 카드만 버려서 점수를 얻는 경우
         if B[j] < A[i] and dp[i][j+1] < dp[i][j] + B[j]:
             dp[i][j+1] = dp[i][j] + B[j]
 
+# 최대 점수 answer
 answer = dp[N][N]
 for ni in range(N):
     answer = max(answer, dp[N][i], dp[i][N])
