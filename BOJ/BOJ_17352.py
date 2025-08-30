@@ -1,5 +1,13 @@
 import sys
 
+def fine(x):
+    if x == island[x]:
+        return x
+    island[x] = find(island[x])
+    return island[x]
+
+def union():
+    return 
 
 
 N = int(sys.stdin.readline())
