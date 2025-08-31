@@ -6,9 +6,14 @@ def fine(x):
     island[x] = find(island[x])
     return island[x]
 
-def union():
-    return 
+def union(x, y):
+    x = find(x)
+    y = fine(y)
 
+    if x < y:
+        island[y] = x
+    else:
+        island[x] = y
 
 N = int(sys.stdin.readline())
 island = [tuple(map(int, sys.stdin.readline().split())) for _ in range(N)]
