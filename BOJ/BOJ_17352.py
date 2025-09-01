@@ -1,6 +1,6 @@
 import sys
 
-def fine(x):
+def find(x):
     if x == island[x]:
         return x
     island[x] = find(island[x])
@@ -8,7 +8,7 @@ def fine(x):
 
 def union(x, y):
     x = find(x)
-    y = fine(y)
+    y = find(y)
 
     if x < y:
         island[y] = x
@@ -16,7 +16,7 @@ def union(x, y):
         island[x] = y
 
 N = int(sys.stdin.readline())
-island = [tuple(map(int, sys.stdin.readline().split())) for _ in range(N)]
+island = [i for i in range(N+1)]
 
 for _ in range(N-2):
     a, b = map(int, sys.stdin.readline().split())
