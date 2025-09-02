@@ -7,13 +7,13 @@ def find(x):
     return island[x]
 
 def union(x, y):
-    x = find(x)
-    y = find(y)
+    xx = find(x)
+    yy = find(y)
 
-    if x < y:
-        island[y] = x
+    if xx < yy:
+        island[y] = xx
     else:
-        island[x] = y
+        island[x] = yy
 
 N = int(sys.stdin.readline())
 island = [i for i in range(N+1)]
