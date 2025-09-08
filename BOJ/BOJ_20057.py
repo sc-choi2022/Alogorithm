@@ -1,7 +1,10 @@
 import sys
 
 def move(si, sj):
-    global
+    global sand
+
+    ai, aj = -1, -1
+    
 
 N = int(sys.stdin.readline())
 A = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
