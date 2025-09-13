@@ -16,3 +16,8 @@ A = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
 
 direction = {0: (0, -1), 1:(1, 0), 2:(0, 1), 3:(-1, 0)}
 sand = 0
+
+go = []
+for gi in range(1, N):
+    go.append(gi)
+    go.append(gi)
