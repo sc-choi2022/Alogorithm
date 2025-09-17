@@ -7,9 +7,10 @@ N = int(sys.stdin.readline())
 answer = 0
 check = 0
 
-for _ in range(N):
+for i in range(N):
     # 앵무새가 말한 문장 S
     S = sys.stdin.readline().rstrip()
+    L += len(S[i])
 
 if check and L == len(R):
     print('Impossible')
