@@ -6,6 +6,12 @@ N = int(sys.stdin.readline())
 
 L = deque([])
 
+for _ in range(N):
+    L.append(sys.stdin.readline().rstrip().split())
+
+LL = list(sys.stdin.readline().rstrip().split())
+
+
 if check and L == len(R):
     print('Impossible')
 elif not check and L != len(R):
