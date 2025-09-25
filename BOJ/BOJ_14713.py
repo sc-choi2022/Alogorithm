@@ -4,11 +4,7 @@ import sys
 # 앵무새의 수 N
 N = int(sys.stdin.readline())
 
-L = deque([])
-
-for _ in range(N):
-    L.append(sys.stdin.readline().rstrip().split())
-
+L = [deque(map(str, sys.stdin.readline().split())) for _ in range(N)]
 LL = list(sys.stdin.readline().rstrip().split())
 
 
