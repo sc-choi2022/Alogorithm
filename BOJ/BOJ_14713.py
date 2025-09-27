@@ -10,8 +10,7 @@ N = int(sys.stdin.readline())
 L = [deque(map(str, sys.stdin.readline().split())) for _ in range(N)]
 S = list(sys.stdin.readline().rstrip().split())
 
-
-if check and L == len(R):
-    print('Impossible')
-elif not check and L != len(R):
+if check(S, L):
     print('Possible')
+else:
+    print('Impossible')
