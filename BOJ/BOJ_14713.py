@@ -1,7 +1,9 @@
 from collections import deque
 import sys
 
-def check():
+def check(sentence, lines):
+    cnt = 0
+
     return 
 
 # 앵무새의 수 N
