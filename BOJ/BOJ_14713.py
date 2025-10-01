@@ -15,8 +15,16 @@ def check(sentence, lines):
                 return False
             cnt += 1
         i = (i+1)%N
-    
-    return 
+
+    E = 0
+    for j in range(N):
+        if not len(lines[j]):
+            E += 1
+
+    if not sentence and E == N:
+        return True
+    else:
+        return False
 
 # 앵무새의 수 N
 N = int(sys.stdin.readline())
