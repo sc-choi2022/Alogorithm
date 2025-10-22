@@ -9,3 +9,5 @@ for _ in range(N):
     if time[-1] < T:
         continue
     start, end = 0, C-1
+    while start <= end:
+        mid = (start+end)//2
