@@ -11,3 +11,6 @@ for _ in range(N):
     start, end = 0, C-1
     while start <= end:
         mid = (start+end)//2
+        if time[mid] >= T:
+            answer = mid
+            end = mid - 1
