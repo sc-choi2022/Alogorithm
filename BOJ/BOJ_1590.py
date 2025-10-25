@@ -6,7 +6,7 @@ result = []
 
 for _ in range(N):
     S, I, C = map(int, sys.stdin.readline().split())
-    time = [S+(I*C) for c in range(C)]
+    time = [S+(I*c) for c in range(C)]
     if time[-1] < T:
         continue
     start, end, answer = 0, C-1, 0
