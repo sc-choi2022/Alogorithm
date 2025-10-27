@@ -13,8 +13,8 @@ for c in C:
     for i in range(M):
         if c[i] < M:
             cnt += 1
-        if cnt >= K:
-            win += 1
+    if cnt >= K:
+        win += 1
 
 # 당첨 확률 출력
-print(win/len(list(C)))
+print(win/len(list(combinations([x for x in range(N)], M))))
