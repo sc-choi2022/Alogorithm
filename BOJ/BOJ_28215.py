@@ -4,3 +4,6 @@ import sys
 N, K = map(int, sys.stdin.readline().split())
 
 x, y = [0] * N, [0] * N
+
+for i in range(N):
+    x[i], y[i] = map(int, sys.stdin.readline().split())
