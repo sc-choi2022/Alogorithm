@@ -14,3 +14,6 @@ for c in combinations(range(N), K):
     case = 0
     for idx in range(N):
         dis = INF
+        for hide in c:
+            tmp = abs(x[idx]-x[hide]) + abs(y[idx]-y[hide])
+        case = max(case, dis)
