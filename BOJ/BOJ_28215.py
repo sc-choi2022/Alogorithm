@@ -10,7 +10,7 @@ for i in range(N):
 
 INF = float('INF')
 
-for c in combinations(range(N), K):
+for c in list(combinations(range(N), K)):
     case = 0
     for idx in range(N):
         dis = INF
