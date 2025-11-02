@@ -9,6 +9,7 @@ for i in range(N):
     x[i], y[i] = map(int, sys.stdin.readline().split())
 
 INF = float('INF')
+answer = INF
 
 for c in list(combinations(range(N), K)):
     case = 0
@@ -16,4 +17,8 @@ for c in list(combinations(range(N), K)):
         dis = INF
         for hide in c:
             tmp = abs(x[idx]-x[hide]) + abs(y[idx]-y[hide])
+            dis = min(dis, tmp)
         case = max(case, dis)
+    answer = min(answer, case)
+
+print(answer)
