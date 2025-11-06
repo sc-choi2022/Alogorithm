@@ -20,7 +20,11 @@ for i in range(N):
 
 INF = float('INF')
 
+# 가장 가까운 대피소와 집 사이의 거리 중 가장 큰 값이 가장 작을 때의 거리 answer
 answer = INF
+
 for c in combinations(range(N), K):
     answer = min(answer, solve(c))
+
+# answer 출력
 print(answer)
