@@ -1,16 +1,6 @@
 from itertools import combinations
 import sys
 
-def solve(B):
-    b = 0
-    for idx in range(N):
-        a = INF
-        for b in B:
-            tmp = abs(x[idx]-x[b]) + abs(y[idx]-y[b])
-            a = min(a, tmp)
-        b = max(b, a)
-    return b
-
 # 집의 개수 N, 설치하는 대피소의 개수 K
 N, K = map(int, sys.stdin.readline().split())
 
