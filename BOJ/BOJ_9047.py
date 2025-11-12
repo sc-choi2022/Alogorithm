@@ -7,3 +7,8 @@ T = int(sys.stdin.readline())
 for _ in range(T):
     # 네자리 수 N
     N = list(map(int, sys.stdin.readline().rstrip()))
+
+    cnt = 0
+    while True:
+        n1 = sorted(N, reverse=True)
+        n2 = sorted(N)
