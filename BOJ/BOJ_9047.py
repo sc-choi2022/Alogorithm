@@ -10,5 +10,16 @@ for _ in range(T):
 
     cnt = 0
     while True:
-        n1 = sorted(N, reverse=True)
-        n2 = sorted(N)
+        if int(''.join(N)):
+            break
+        else:
+            n1 = sorted(N, reverse=True)
+            n2 = sorted(N)
+            result = int(''.join(n1)) - int(''.join(n2))
+
+            N = list(str(result).rstrip())
+
+            if len(N) < 4:
+                N = (4-len(N))*['0'] + N
+            cnt += 1
+    print(cnt)
