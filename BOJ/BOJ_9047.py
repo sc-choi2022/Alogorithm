@@ -8,6 +8,7 @@ for _ in range(T):
     # 네자리 수 N
     N = list(map(int, sys.stdin.readline().rstrip()))
 
+    # Kaprekar 연산의 횟수 cnt
     cnt = 0
     while True:
         if int(''.join(N)):
