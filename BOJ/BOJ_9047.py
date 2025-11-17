@@ -1,4 +1,3 @@
-from itertools import combinations
 import sys
 
 # 테스트 케이스의 개수 T
