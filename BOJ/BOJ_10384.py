@@ -1,8 +1,17 @@
+from collections import defaultdict
 import sys
 
-# 테스트 케이스의 수 T
-T = int(sys.stdin.readline())
+# 테스트 케이스의 수 N
+N = int(sys.stdin.readline())
 
-for _ in range(T):
+alphabet = list(range(97, 123))
+
+for _ in range(N):
+    # 주어지는 문장 S
     S = sys.stdin.readline().rstrip()
-    
+
+    cnt = defaultdict(int)
+    for s in S:
+        if s != ' ':
+            cnt[s.lower()] += 1
+    print(list(cnt.items()))
