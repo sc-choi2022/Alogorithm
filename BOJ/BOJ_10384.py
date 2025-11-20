@@ -4,7 +4,7 @@ import sys
 # 테스트 케이스의 수 N
 N = int(sys.stdin.readline())
 
-alphabet = list(range(97, 123))
+alphabet = set(chr(i) for i in range(97, 123))
 
 for _ in range(N):
     # 주어지는 문장 S
@@ -12,6 +12,6 @@ for _ in range(N):
 
     cnt = defaultdict(int)
     for s in S:
-        if s != ' ':
+        if s in alphabet:
             cnt[s.lower()] += 1
     print(list(cnt.items()))
