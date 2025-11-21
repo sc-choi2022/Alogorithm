@@ -14,4 +14,5 @@ for _ in range(N):
     for s in S:
         if s in alphabet:
             cnt[s.lower()] += 1
-    print(list(cnt.items()))
+    result = list(cnt.items())
+    print(result)
