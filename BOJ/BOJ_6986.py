@@ -6,6 +6,6 @@ N, K = map(int, sys.stdin.readline().split())
 scores = list(sorted(float(sys.stdin.readline()) for _ in range(N)))
 
 # 절사 평균(N, K)
-print('{:.2f}'.format(sum(scores[K:N-K])/(N-2*K)))
+print('{:.2f}'.format(sum(scores[K:N-K])/(N-2*K)+1e-8))
 # 보정 평균(N, K)
-print('{:.2f}'.format(sum(scores[K:N-K])+scores[K]*K+scores[N-K-1]*K)/N)
+print('{:.2f}'.format((sum(scores[K:N-K])+scores[K]*K+scores[N-K-1]*K)/N+1e-8))
