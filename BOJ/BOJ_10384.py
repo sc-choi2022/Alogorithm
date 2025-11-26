@@ -15,4 +15,3 @@ for _ in range(N):
         if s in alphabet:
             cnt[s.lower()] += 1
     result = list(cnt.items())
-    print(result)
