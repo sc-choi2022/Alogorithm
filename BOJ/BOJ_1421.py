@@ -7,3 +7,6 @@ N, C, W = map(int, sys.stdin.readline().split())
 trees = [int(sys.stdin.readline()) for _ in range(N)]
 profits = []
 
+for i in range(1, max(trees)):
+    continue
+print(max(profits))
