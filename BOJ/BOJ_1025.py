@@ -12,4 +12,12 @@ for i in range(N):
     for j in range(N):
         for row in range(-N, N):
             for col in range(-M, M):
-                continue
+                if row == 0 and col == 0:
+                    continue
+                step = 0
+                x, y = M, N
+                val = ''
+
+                while (0 <= x < M) and (0 <= y < N):
+                    val += str(numbers[x][y])
+                    step += 1
