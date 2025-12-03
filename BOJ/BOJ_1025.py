@@ -21,3 +21,5 @@ for i in range(N):
                 while (0 <= x < M) and (0 <= y < N):
                     val += str(numbers[x][y])
                     step += 1
+
+                    val_int = int(''.join(val))
