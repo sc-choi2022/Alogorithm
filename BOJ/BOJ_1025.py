@@ -23,3 +23,5 @@ for i in range(N):
                     step += 1
 
                     val_int = int(''.join(val))
+                    val_sqrt = (val_int)**0.5
+                    val_deci = val_sqrt - int(val_sqrt)
