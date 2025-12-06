@@ -27,4 +27,4 @@ for i in range(N):
                     val_deci = val_sqrt - int(val_sqrt)
                     if val_deci == 0 and val_int > answer:
                         answer = val_int
-                        
+print(answer)
