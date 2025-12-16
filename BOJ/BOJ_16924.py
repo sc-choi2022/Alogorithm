@@ -1,5 +1,12 @@
 import sys
 
+def find():
+    for fi in range(1, N):
+        for fj in range(1, M):
+            if board[fi][fj] == '*':
+                continue
+    return
+
 # 격자판의 크기 N, M
 N, M = map(int, sys.stdin.readline().split())
 # 격자판의 상태 board
