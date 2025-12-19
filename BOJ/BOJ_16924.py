@@ -5,7 +5,12 @@ def find():
         for fj in range(1, M):
             if board[fi][fj] == '*':
                 while True:
-                    continue
+                    for d in range(4):
+                        ni = fi + direct[d]
+                        nj = fj + direct[d]
+
+                        if board[ni][nj] == '*':
+                            continue
     return
 
 # 격자판의 크기 N, M
