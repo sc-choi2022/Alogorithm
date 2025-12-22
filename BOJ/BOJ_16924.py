@@ -1,7 +1,8 @@
+from copy import deepcopy
 import sys
 
 def find():
-    return 
+    return
 
 # 격자판의 크기 N, M
 N, M = map(int, sys.stdin.readline().split())
