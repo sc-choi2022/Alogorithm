@@ -2,10 +2,11 @@ from copy import deepcopy
 import sys
 
 def find():
+    cnt = 0
     for fi in range(1, N):
         for fj in range(1, M):
             if board[fi][fj] == '*':
-                return 
+                return
     return
 
 # 격자판의 크기 N, M
