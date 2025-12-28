@@ -6,14 +6,14 @@ def find():
     for fi in range(1, N):
         for fj in range(1, M):
             if board[fi][fj] == '*':
-                L = 1
+                pre = set()
                 for di, dj in ((0, 1), (1, 0), (0, -1), (-1, 0)):
                     ni, nj = fi+L*di, fj+L*dj
                     if 0 <= ni < N and 0 <= nj < M and board[ni][nj] == '*':
-                        continue
+                        pre.add((ni, nj))
                     else:
                         break
-                L += 1
+        
 
 # 격자판의 크기 N, M
 N, M = map(int, sys.stdin.readline().split())
