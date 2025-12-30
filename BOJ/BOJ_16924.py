@@ -19,13 +19,15 @@ def find():
                         break
                     add.union(pre)
                     L += 1
+    for pi, pj in add:
+        visit[pi][pj] = 1
 
 # 격자판의 크기 N, M
 N, M = map(int, sys.stdin.readline().split())
 # 격자판의 상태 board
 board = [sys.stdin.readline().rstrip() for _ in range(N)]
 tmp = deepcopy(board)
-visite = [[0]*N for _ in range(M)]
+visit = [[0]*N for _ in range(M)]
 
 # 필요한 십자가의 수 K
 K = 0
