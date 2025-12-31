@@ -22,6 +22,14 @@ def find():
     for pi, pj in add:
         visit[pi][pj] = 1
 
+def check():
+    for ci in range(N):
+        for cj in range(M):
+            if board[ci][cj] != visit[ci][cj]:
+                return False
+    return True
+
+
 # 격자판의 크기 N, M
 N, M = map(int, sys.stdin.readline().split())
 # 격자판의 상태 board
