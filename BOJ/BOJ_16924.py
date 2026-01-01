@@ -39,3 +39,10 @@ visit = [[0]*N for _ in range(M)]
 
 # 필요한 십자가의 수 K
 K = 0
+
+find()
+
+if check():
+    print(K)
+else:
+    print(-1)
