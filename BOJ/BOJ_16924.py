@@ -13,6 +13,7 @@ def find():
                     ni, nj = fi+L*di, fj+L*dj
                     if 0 <= ni < N and 0 <= nj < M and board[ni][nj] == '*':
                         pre.add((ni, nj))
+                        visit[ni][nj] += 1
                     else:
                         if add:
                             K +=  1
@@ -44,5 +45,7 @@ find()
 
 if check():
     print(K)
+    for v in visit:
+        print(*v)
 else:
     print(-1)
