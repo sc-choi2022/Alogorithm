@@ -16,7 +16,7 @@ def find():
                         visit[ni][nj] += 1
                     else:
                         if add:
-                            K +=  1
+                            K += 1
                         break
                     add.union(pre)
                     L += 1
