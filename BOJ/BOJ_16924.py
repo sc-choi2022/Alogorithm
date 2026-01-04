@@ -11,6 +11,7 @@ def find():
                 L = 1
                 for di, dj in ((0, 1), (1, 0), (0, -1), (-1, 0)):
                     ni, nj = fi+L*di, fj+L*dj
+                    # 십자가가 겹쳐지는 경우 표시 필요
                     if 0 <= ni < N and 0 <= nj < M and board[ni][nj] == '*':
                         pre.add((ni, nj))
                         visit[ni][nj] += 1
