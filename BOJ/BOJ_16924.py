@@ -28,6 +28,7 @@ def check():
     for ci in range(N):
         for cj in range(M):
             if board[ci][cj] != visit[ci][cj]:
+                print(-1)
                 return False
     return True
 
@@ -48,5 +49,3 @@ if check():
     print(K)
     for v in visit:
         print(*v)
-else:
-    print(-1)
