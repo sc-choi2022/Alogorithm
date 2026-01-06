@@ -48,4 +48,4 @@ find()
 if check():
     print(K)
     for v in visit:
-        print(*v)
+        break
