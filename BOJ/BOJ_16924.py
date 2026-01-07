@@ -22,7 +22,7 @@ def find():
                     add.union(pre)
                     L += 1
     for pi, pj in add:
-        visit[pi][pj] = 1
+        visit[pi][pj] = L
 
 def check():
     for ci in range(N):
@@ -39,6 +39,7 @@ N, M = map(int, sys.stdin.readline().split())
 board = [sys.stdin.readline().rstrip() for _ in range(N)]
 tmp = deepcopy(board)
 visit = [[0]*N for _ in range(M)]
+result = []
 
 # 필요한 십자가의 수 K
 K = 0
@@ -46,6 +47,6 @@ K = 0
 find()
 
 if check():
-    print(K)
+    print(len(result))
     for v in visit:
-        print(*v)
+        break
