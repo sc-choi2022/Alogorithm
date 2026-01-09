@@ -14,7 +14,7 @@ def find():
                     # 십자가가 겹쳐지는 경우 표시 필요
                     if 0 <= ni < N and 0 <= nj < M and board[ni][nj] == '*':
                         pre.add((ni, nj))
-                        visit[ni][nj] += 1
+                        visit[ni][nj] = 1
                     else:
                         if add:
                             K += 1
