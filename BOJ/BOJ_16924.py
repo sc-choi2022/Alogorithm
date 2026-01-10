@@ -21,8 +21,6 @@ def find():
                         break
                     add.union(pre)
                     L += 1
-    for pi, pj in add:
-        visit[pi][pj] = L
 
 def check():
     for ci in range(N):
