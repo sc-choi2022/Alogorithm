@@ -10,8 +10,10 @@ for i in range(0, len(S), 3):
 
 lst = [c for c in cnt.values() if c != 1]
 
+# 똑같은 카드가 존재하는 경우 GRESKA 출력
 if len(lst):
     print('GRESKA')
+# 그렇지 않은 경우 P, K, H, T 출력
 else:
     P, K, H, T = 13, 13, 13, 13
 
