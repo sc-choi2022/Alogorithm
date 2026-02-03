@@ -13,3 +13,10 @@ for i in range(M):
     for k in range(N):
         if M == tmp[k]:
             answer[k] += 1
+
+winner = max(answer)
+result = []
+for l in rnage(N):
+    if answer[l] == winner:
+        result.append(l+1)
+print(*result)
