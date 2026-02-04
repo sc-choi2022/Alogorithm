@@ -15,8 +15,10 @@ for i in range(M):
             answer[k] += 1
 
 winner = max(answer)
+
+# 플레이어의 번호를 저장하는 배열
 result = []
-for l in rnage(N):
+for l in range(N):
     if answer[l] == winner:
         result.append(l+1)
 print(*result)
