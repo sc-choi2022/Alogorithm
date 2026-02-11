@@ -1,4 +1,8 @@
-import sys, math
+import sys
+
+def sqr(A):
+    A = int(A)
+    return int(A**0.5)**2 == A
 
 N, M = map(int, sys.stdin.readline().split())
 numbers = [list(sys.stdin.readline().rstrip()) for _ in range(N)]
@@ -14,9 +18,8 @@ for i in range(N):
                     continue
                 while 0 <= x < N and 0 <= y < M:
                     S += numbers[x][y]
-                    if int(S) == math.sqrt(int(S)):
+                    if sqr(S):
                         answer = max(answer, int(S))
-                        print(answer)
                     x += row
                     y += col
 
