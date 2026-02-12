@@ -23,4 +23,6 @@ for i in range(N):
                     x += row
                     y += col
 
+# 만들 수 있는 가장 큰 완전 제곱수를 출력
+# 완전 제곱수를 만들 수 없다면 -1 출력
 print(answer)
