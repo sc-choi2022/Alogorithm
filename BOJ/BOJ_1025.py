@@ -1,5 +1,6 @@
 import sys
 
+# 제곱수를 확인하는 함수 sqr
 def sqr(A):
     A = int(A)
     return int(A**0.5)**2 == A
