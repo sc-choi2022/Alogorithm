@@ -11,4 +11,5 @@ for _ in range(N):
     for song in songs:
         bi += '1' if song == 'Y' else '0'
     guitar.append((name, int(bi, 2)))
-    
+
+answer = int(1e9)
