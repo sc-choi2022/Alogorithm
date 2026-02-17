@@ -1,5 +1,9 @@
 import sys
 
+def func(idx, cnt, s):
+    global answer
+    return 
+
 # 기타의 개수 N, 곡의 개수 M
 N, M = map(int, sys.stdin.readline().split())
 
