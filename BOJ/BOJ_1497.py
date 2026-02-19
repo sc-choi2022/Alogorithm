@@ -1,7 +1,11 @@
 import sys
 
-def play():
-    return 
+def play(number, cnt):
+    global answer
+
+    for k in range(M):
+        if guitar[number][k] == 'Y':
+            return 
 
 # 기타의 개수 N, 곡의 개수 M
 N, M = map(int, sys.stdin.readline().split())
