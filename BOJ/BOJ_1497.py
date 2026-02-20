@@ -3,9 +3,12 @@ import sys
 def play(number, cnt):
     global answer
 
+    if answer < cnt:
+        return 
+
     for k in range(M):
         if guitar[number][k] == 'Y':
-            return 
+            return
 
 # 기타의 개수 N, 곡의 개수 M
 N, M = map(int, sys.stdin.readline().split())
@@ -20,4 +23,4 @@ for i in range(N):
             guitar[i][j] = 1
 
 visit = [0] * M
-answer = 0
+answer = N
