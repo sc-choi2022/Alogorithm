@@ -8,7 +8,9 @@ def play(number, cnt):
 
     for k in range(M):
         if guitar[number][k] == 'Y':
-            return
+            visit[k] = 1
+            cnt += 1
+    play(number+1, cnt)
 
 # 기타의 개수 N, 곡의 개수 M
 N, M = map(int, sys.stdin.readline().split())
