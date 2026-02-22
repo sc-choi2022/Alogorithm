@@ -1,3 +1,4 @@
+from itertools import combinations
 import sys
 
 def play(number, cnt):
