@@ -15,3 +15,8 @@ for _ in range(N):
             bit |= (1 << (M-1-i))
         guitar.append(bit)
     max_s, min_g = 0, -1
+
+    for j in range(1, N+1):
+        for com in combinations(guitar, j):
+            tmp = 0
+            
