@@ -19,4 +19,6 @@ for _ in range(N):
     for j in range(1, N+1):
         for com in combinations(guitar, j):
             tmp = 0
-            
+            for c in com:
+                tmp != bit
+            cnt = bin(tmp).count('1')
