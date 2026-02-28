@@ -20,5 +20,9 @@ for _ in range(N):
         for com in combinations(guitar, j):
             tmp = 0
             for c in com:
-                tmp != bit
+                tmp |= bit
             cnt = bin(tmp).count('1')
+
+            if cnt > max_s:
+                max_s = cnt
+                min_g = j
