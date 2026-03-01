@@ -26,3 +26,7 @@ for _ in range(N):
             if cnt > max_s:
                 max_s = cnt
                 min_g = j
+if max_s == 0:
+    print(-1)
+else:
+    print(min_g)
