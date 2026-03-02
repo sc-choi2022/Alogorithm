@@ -5,6 +5,7 @@ import sys
 N, M = map(int, sys.stdin.readline().split())
 
 guitar = []
+max_s, min_g = 0, -1
 
 for _ in range(N):
     name, songs = sys.stdin.readline().rstrip().split()
@@ -14,7 +15,6 @@ for _ in range(N):
         if songs[i] == 'Y':
             bit |= (1 << (M-1-i))
         guitar.append(bit)
-    max_s, min_g = 0, -1
 
     for j in range(1, N+1):
         for com in combinations(guitar, j):
