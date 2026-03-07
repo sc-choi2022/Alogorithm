@@ -9,6 +9,8 @@ def solve():
             idx = (idx + 1) % 4
         else:
             return 0
+    if right[idx] != 'f':
+        return 0
     return 1
 
 # 단어 S
