@@ -1,6 +1,7 @@
 import sys
 
 def solve():
+    # 위치를 확인하는 변수 idx
     idx = 0
     for s in S:
         if s == right[idx]:
