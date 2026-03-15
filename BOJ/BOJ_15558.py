@@ -4,7 +4,12 @@ import sys
 def bfs():
     queue = deque([0, 0])
     time = 0
-    return 
+
+    next = []
+    while queue:
+        return 
 
 N, K = map(int, sys.stdin.readline().split())
-info = [sys.stdin.readline().rstrip() for _ in range(K)]
+info = [sys.stdin.readline().rstrip() for _ in range(2)]
+
+print(bfs())
