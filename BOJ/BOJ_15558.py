@@ -1,15 +1,9 @@
 from collections import deque
 import sys
 
-def bfs():
-    queue = deque([0, 0])
-    time = 0
-
-    next = []
-    while queue:
-        return 
-
 N, K = map(int, sys.stdin.readline().split())
-info = [sys.stdin.readline().rstrip() for _ in range(2)]
+info = ['0'+sys.stdin.readline().rstrip() for _ in range(2)]
+visit = [[0]*(N+1) for _ in range(2)]
+visit[0][1] = 1
 
-print(bfs())
+queue = deque([(0, 1, 1)])
