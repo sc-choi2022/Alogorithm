@@ -10,3 +10,4 @@ queue = deque([(0, 1, 1)])
 
 while queue:
     line, num, sec = queue.popleft()
+    for n_lin, n_num in 
