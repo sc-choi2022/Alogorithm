@@ -13,3 +13,5 @@ while queue:
     for n_line, n_num in []:
         if n_num > N:
             print(1)
+            exit()
+        
