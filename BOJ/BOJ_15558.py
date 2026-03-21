@@ -10,8 +10,7 @@ queue = deque([(0, 1, 1)])
 
 while queue:
     line, num, sec = queue.popleft()
-    for n_line, n_num in []:
+    for n_line, n_num in [(line, num+1), (line, num-1), (line^1, num+K)]:
         if n_num > N:
             print(1)
             exit()
-        
