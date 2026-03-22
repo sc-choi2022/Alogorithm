@@ -14,3 +14,8 @@ while queue:
         if n_num > N:
             print(1)
             exit()
+        if 0 <= n_line <= N and info[n_line][n_num] == '1' and n_num > sec and not visit[n_line][n_num]:
+            queue.append((n_line, n_num, sec+1))
+            visit[n_line][n_num] = 1
+
+print(0)
