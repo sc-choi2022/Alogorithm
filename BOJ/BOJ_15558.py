@@ -1,6 +1,7 @@
 from collections import deque
 import sys
 
+# 칸의 개수 N, 반대편 넘어가는 기준 K
 N, K = map(int, sys.stdin.readline().split())
 info = ['0'+sys.stdin.readline().rstrip() for _ in range(2)]
 visit = [[0]*(N+1) for _ in range(2)]
