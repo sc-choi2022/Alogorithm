@@ -14,9 +14,9 @@ while queue:
     for n_line, n_num in [(line, num+1), (line, num-1), (line^1, num+K)]:
         if n_num > N:
             print(1)
-            exit()
+            break
         if 0 <= n_line <= N and info[n_line][n_num] == '1' and n_num > sec and not visit[n_line][n_num]:
             queue.append((n_line, n_num, sec+1))
             visit[n_line][n_num] = 1
-
-print(0)
+else:
+    print(0)
