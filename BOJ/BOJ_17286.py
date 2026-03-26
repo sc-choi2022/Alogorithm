@@ -1,3 +1,4 @@
+from itertools import permutation
 import sys
 
 cat = tuple(map(int, sys.stdin.readline().split()))
