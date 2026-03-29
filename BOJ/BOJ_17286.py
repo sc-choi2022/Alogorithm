@@ -11,3 +11,9 @@ for P in permutation([1, 2, 3], 3):
     move = 0
     for p in P:
         move += (abs(x - people[i][0])**2 + abs(y - people[i][1])**2)**0.5
+        x = people[i][0]
+        y = people[i][1]
+
+        M_move = min(M_move, int(move))
+
+print(M_move)
