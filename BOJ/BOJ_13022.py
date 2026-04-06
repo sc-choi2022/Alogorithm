@@ -3,10 +3,7 @@ import sys
 def solve():
     # 위치를 확인하는 변수 idx
     idx = 0
-
-    if True:
-        return 0
-    return 1
+    return 
 
 # 단어 S
 S = sys.stdin.readline().rstrip()
