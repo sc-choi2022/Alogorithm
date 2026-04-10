@@ -1,5 +1,6 @@
 import sys
 
+# 테스트 케이스 T
 T = int(sys.stdin.readline())
 
 for _ in range(T):
