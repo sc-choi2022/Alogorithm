@@ -7,5 +7,4 @@ top_score = -1
 top_id = None
 
 for _ in range(M):
-    data = sys.stdin.readline().rstrip()
-    student_id, result = int(data[0]), date[1:]
+    student_id, result = map(int, sys.stdin.readline().split())
