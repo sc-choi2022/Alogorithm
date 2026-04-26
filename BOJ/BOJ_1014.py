@@ -8,6 +8,4 @@ for _ in range(C):
     N, M = map(int, sys.stdin.readline().split())
     seat = [list(sys.stdin.readline()) for _ in range(N)]
 
-    ans = 0
-
-    cor_map = [[0]*N for _ in range(M)]
+    dp = [[0]*(1<<M) for _ in range(N)]
