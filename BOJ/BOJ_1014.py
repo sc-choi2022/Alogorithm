@@ -7,5 +7,3 @@ for _ in range(C):
     # N행 M열의 N, M
     N, M = map(int, sys.stdin.readline().split())
     seat = [list(sys.stdin.readline()) for _ in range(N)]
-
-    dp = [[0]]
