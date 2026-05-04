@@ -9,5 +9,3 @@ for _ in range(C):
     # 자리를 저장하는 배열 seat
     seat = [list(sys.stdin.readline()) for _ in range(N)]
     visit = [[0]*M for _ in range(N)]
-
-    answer = 0
